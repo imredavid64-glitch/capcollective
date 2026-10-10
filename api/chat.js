@@ -1,12 +1,12 @@
 // /api/chat.js — CapBot serverless endpoint (Vercel, Node 18+ runtime)
-// Keeps the LLM API key secret on the server. The browser only talks to this route.
+// Keeps the Gemini API key secret on the server. The browser only talks to this route.
 //
-// Required env var:  OPENAI_API_KEY
-// Optional env vars: OPENAI_MODEL (default: gpt-4o-mini)
+// Required env var:  GEMINI_API_KEY
+// Optional env vars: GEMINI_MODEL (default: gemini-3.5-flash)
 //                    CAPBOT_ALLOW_ORIGIN (default: "*")
 //
 // Deploy: import this GitHub repo into Vercel with root = repo root.
-// Vite/Next not required — any /api/*.js file becomes a serverless function.
+// Any /api/*.js file becomes a serverless function automatically.
 
 const SYSTEM_PROMPT = `You are "CapBot", the friendly AI assistant for Cap Collective — a student-led school program that recycles plastic bottle caps into useful products.
 
@@ -61,43 +61,61 @@ module.exports = async (req, res) => {
   const ip = (req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
   if (rateLimited(ip)) return res.status(429).json({ error: "Too many requests. Please slow down." });
 
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return res.status(500).json({ error: "Server not configured (missing OPENAI_API_KEY)." });
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: "Server not configured (missing GEMINI_API_KEY)." });
 
   let body = req.body;
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
   const messages = Array.isArray(body && body.messages) ? body.messages : null;
   if (!messages || !messages.length) return res.status(400).json({ error: "Missing 'messages'." });
 
-  const cleaned = messages
+  const contents = messages
     .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
     .slice(-10)
-    .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+    .map((m) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      parts: [{ text: m.content.slice(0, 2000) }],
+    }));
 
-  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+  const model = process.env.GEMINI_MODEL || "gemini-3.5-flash";
 
   try {
-    const r = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model,
-        temperature: 0.4,
-        max_tokens: 500,
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...cleaned],
-      }),
-    });
+    const r = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          contents,
+          generationConfig: { temperature: 0.4, maxOutputTokens: 500 },
+          safetySettings: [
+            { category: "HARM_CATEGORY_HARASSMENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_HATE_SPEECH", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_SEXUALLY_EXPLICIT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+            { category: "HARM_CATEGORY_DANGEROUS_CONTENT", threshold: "BLOCK_MEDIUM_AND_ABOVE" },
+          ],
+        }),
+      }
+    );
 
     if (!r.ok) {
       const detail = await r.text();
-      console.error("OpenAI error", r.status, detail);
+      console.error("Gemini error", r.status, detail);
       return res.status(502).json({ error: "The assistant is unavailable right now." });
     }
 
     const data = await r.json();
-    const reply =
-      data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
-    return res.status(200).json({ reply: reply || "Sorry, I didn't have an answer for that." });
+    let reply = "";
+    if (data.candidates && data.candidates[0] && data.candidates[0].content &&
+        data.candidates[0].content.parts) {
+      reply = data.candidates[0].content.parts.map((p) => p.text || "").join("");
+    }
+    if (!reply) {
+      const fin = data.candidates && data.candidates[0] && data.candidates[0].finishReason;
+      reply = fin ? `The assistant couldn't answer that (${fin}). Please try rephrasing.` : "Sorry, I didn't have an answer for that.";
+    }
+    return res.status(200).json({ reply });
   } catch (err) {
     console.error("CapBot failure", err);
     return res.status(500).json({ error: "Something went wrong. Please try again." });

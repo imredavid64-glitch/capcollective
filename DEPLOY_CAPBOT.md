@@ -7,13 +7,11 @@ This repo ships that function at `api/chat.js`. Here's how to turn it on.
 
 ## 1. Get an API key
 
-Create an API key from your LLM provider. The function is written for **OpenAI**:
+CapBot uses the **Gemini API** by default.
 
-1. Go to <https://platform.openai.com/api-keys>
-2. Create a new secret key (starts with `sk-...`)
-3. Keep it secret. Paste it only into the Vercel dashboard — never into `index.html`.
-
-> Using a different provider (e.g. Google Gemini, Anthropic)? See "Swapping providers" below.
+1. Go to <https://aistudio.google.com/apikey>
+2. Click **Create API key** and copy it (keys look like `AQ.xxxx...`).
+3. Keep it secret — paste it only into the Vercel dashboard, never into `index.html`.
 
 ---
 
@@ -25,8 +23,8 @@ Create an API key from your LLM provider. The function is written for **OpenAI**
 3. **Environment Variables** → add:
    | Name | Value |
    |------|-------|
-   | `OPENAI_API_KEY` | your `sk-...` key |
-   | `OPENAI_MODEL` *(optional)* | `gpt-4o-mini` |
+   | `GEMINI_API_KEY` | your `AQ.…` key |
+   | `GEMINI_MODEL` *(optional)* | `gemini-3.5-flash` |
    | `CAPBOT_ALLOW_ORIGIN` *(optional)* | `https://imredavid64-glitch.github.io` |
 4. Click **Deploy**.
 
@@ -76,10 +74,10 @@ GitHub Pages can't run `/api` functions. Keep the site on Pages and host **only*
 
 ## Swapping providers
 
-`api/chat.js` is a thin wrapper around one API call. To use another provider,
-replace the `fetch("https://api.openai.com/...")` block with your provider's call
-and read the key from a different env var. The request/response shape the front-end
-expects is simply:
+`api/chat.js` is a thin wrapper around one API call. It currently targets the
+Gemini `generateContent` endpoint. To use OpenAI instead, replace the fetch block
+with `https://api.openai.com/v1/chat/completions` and translate the message roles.
+The request/response shape the front-end expects stays the same:
 
 - **In:** `{ "messages": [ { "role": "user", "content": "..." } ] }`
 - **Out:** `{ "reply": "..." }`
@@ -88,10 +86,10 @@ expects is simply:
 
 ## Costs & safety
 
-- Each chat uses a small number of tokens. With `gpt-4o-mini`, casual use costs
-  well under a cent per message.
+- Each chat uses a small number of tokens. Flash-class Gemini models cost
+  well under a cent per message for casual use.
 - The function already includes: input truncation, a 30-requests/10-min per-IP
-  rate limit, CORS control, and server-only key handling.
+  rate limit, CORS control, explicit safety settings, and server-only key handling.
 - Never commit your real `.env`. Only `.env.example` belongs in the repo.
 
 ---

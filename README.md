@@ -35,12 +35,12 @@ const CAPBOT_ENDPOINT = "/api/chat";   // same-origin when hosted on Vercel
 
 ## CapBot AI assistant
 
-CapBot is a floating chat widget that answers questions about the program. It calls `api/chat.js`, which calls the LLM using a **server-side API key** — the key is never exposed to the browser.
+CapBot is a floating chat widget that answers questions about the program. It calls `api/chat.js`, which calls the **Gemini API** using a **server-side API key** — the key is never exposed to the browser.
 
 **Setup:** see [`DEPLOY_CAPBOT.md`](./DEPLOY_CAPBOT.md).
 
-- Required env var: `OPENAI_API_KEY`
-- Optional: `OPENAI_MODEL` (default `gpt-4o-mini`), `CAPBOT_ALLOW_ORIGIN`
+- Required env var: `GEMINI_API_KEY`
+- Optional: `GEMINI_MODEL` (default `gemini-3.5-flash`), `CAPBOT_ALLOW_ORIGIN`
 
 ---
 
@@ -48,7 +48,7 @@ CapBot is a floating chat widget that answers questions about the program. It ca
 
 ### Option A — Vercel (enables CapBot; recommended)
 1. Import this repo at [vercel.com/new](https://vercel.com/new).
-2. Add the `OPENAI_API_KEY` environment variable.
+2. Add the `GEMINI_API_KEY` environment variable.
 3. Deploy. The site and `/api/chat` both go live together.
 
 ### Option B — GitHub Pages (static only)
