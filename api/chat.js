@@ -1,0 +1,105 @@
+// /api/chat.js — CapBot serverless endpoint (Vercel, Node 18+ runtime)
+// Keeps the LLM API key secret on the server. The browser only talks to this route.
+//
+// Required env var:  OPENAI_API_KEY
+// Optional env vars: OPENAI_MODEL (default: gpt-4o-mini)
+//                    CAPBOT_ALLOW_ORIGIN (default: "*")
+//
+// Deploy: import this GitHub repo into Vercel with root = repo root.
+// Vite/Next not required — any /api/*.js file becomes a serverless function.
+
+const SYSTEM_PROMPT = `You are "CapBot", the friendly AI assistant for Cap Collective — a student-led school program that recycles plastic bottle caps into useful products.
+
+PROGRAM KNOWLEDGE (use only this; if unsure, say so and point to the kit):
+- Mission: capture HDPE (#2) and PP (#5) bottle caps and turn them into products (coasters, keychains, phone stands, desk organizers, plant pots, art tiles), funding the school garden.
+- Problem: only ~3% of bottle caps are recycled; they fall through industrial sorting screens and often end up in landfill or the ocean.
+- 5-step process: COLLECT (HDPE #2 / PP #5) -> CLEAN (remove liners, wash, air-dry 24h) -> SHRED (5-8mm flakes) -> MELT (heat press: HDPE ~140C, PP ~170C, NEVER above 200C) -> REFINE (laser-cut / inject / press).
+- Closed loop: broken products are re-shredded, so the loop is 100% recyclable.
+- Accepted plastics: HDPE (#2) and PP (#5) only. NEVER PVC (#3) — it releases toxic gas when heated.
+- Safety is mandatory: no certification = no machine access; max 200C; ventilation required; PPE per station; every machine has an SOP and a certification card.
+- Budget tiers: Core $500-$1,000 (pilots/primary); FabLab $2,500-$5,000 (middle/high makerspaces); Center $10,000+ (technical schools / district hubs).
+- Impact targets per semester: 10,000+ caps, 35+ kg diverted, 65+ kg CO2e avoided, $500+ revenue, 80% participation.
+- Curriculum: 4 grade bands — K-2 Cap Detectives, 3-5 Cap Engineers, 6-8 Cap Innovators, 9-12 Cap Systems Designers; 12 lesson plans mapped to NGSS/Common Core/IB.
+- The free "Implementation Kit" has 29 documents covering pitch, approvals, funding, safety, curriculum, launch, store operations, reporting, scaling and handover.
+
+KEY LINKS:
+- Program Overview PDF: assets/CapCollective_Overview.pdf
+- Full Implementation Kit PDF: assets/CapCollective_Implementation_Kit.pdf
+- Live Cap Tracker: https://bottle-cap-tracker.vercel.app
+- GitHub: https://github.com/imredavid64-glitch/capcollective
+
+STYLE:
+- Be warm, concise and encouraging. Aim for 2-4 short sentences unless more detail is asked.
+- Use plain language a student, teacher or parent can follow.
+- Use **bold** for key terms. When linking, use full https URLs.
+- Never invent statistics, prices, or links that aren't above.
+- If a question is outside Cap Collective, politely redirect to the program.
+- Never give unsafe advice; always reinforce the 200C limit and certification requirement.`;
+
+const WINDOW_MS = 10 * 60 * 1000;
+const MAX_REQ = 30;
+const hits = new Map();
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const rec = hits.get(ip) || { count: 0, start: now };
+  if (now - rec.start > WINDOW_MS) { rec.count = 0; rec.start = now; }
+  rec.count++;
+  hits.set(ip, rec);
+  return rec.count > MAX_REQ;
+}
+
+module.exports = async (req, res) => {
+  const allowOrigin = process.env.CAPBOT_ALLOW_ORIGIN || "*";
+  res.setHeader("Access-Control-Allow-Origin", allowOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") return res.status(204).end();
+  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+
+  const ip = (req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "unknown";
+  if (rateLimited(ip)) return res.status(429).json({ error: "Too many requests. Please slow down." });
+
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) return res.status(500).json({ error: "Server not configured (missing OPENAI_API_KEY)." });
+
+  let body = req.body;
+  if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
+  const messages = Array.isArray(body && body.messages) ? body.messages : null;
+  if (!messages || !messages.length) return res.status(400).json({ error: "Missing 'messages'." });
+
+  const cleaned = messages
+    .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
+    .slice(-10)
+    .map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }));
+
+  const model = process.env.OPENAI_MODEL || "gpt-4o-mini";
+
+  try {
+    const r = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${apiKey}` },
+      body: JSON.stringify({
+        model,
+        temperature: 0.4,
+        max_tokens: 500,
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...cleaned],
+      }),
+    });
+
+    if (!r.ok) {
+      const detail = await r.text();
+      console.error("OpenAI error", r.status, detail);
+      return res.status(502).json({ error: "The assistant is unavailable right now." });
+    }
+
+    const data = await r.json();
+    const reply =
+      data && data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content;
+    return res.status(200).json({ reply: reply || "Sorry, I didn't have an answer for that." });
+  } catch (err) {
+    console.error("CapBot failure", err);
+    return res.status(500).json({ error: "Something went wrong. Please try again." });
+  }
+};

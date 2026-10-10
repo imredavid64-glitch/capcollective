@@ -1,0 +1,10 @@
+Student Name,Grade,Role(s),Shift,Safety Cert?,Shredder Cert?,Press Cert?,Laser Cert?,Hours Logged,Notes
+Alex M.,7,Collection Captain,Mon,Yes,No,No,No,12,Natural leader
+Jordan T.,8,Shredder Operator,Wed,Yes,Yes,No,No,8,
+Sam R.,10,Data Analyst,Fri,Yes,Yes,Yes,Yes,20,Builds dashboard
+Taylor K.,6,Wash Station Lead,Tue,Yes,No,No,No,6,
+,,,,,,,,,
+TOTAL STUDENTS,,,,,=COUNTA(A2:A),,,,,
+CERTIFIED (ANY),,,,,=COUNTIF(E2:E,"Yes"),,,,,
+TOTAL HOURS,,,,,,,,=SUM(I2:I),,
+SHREDDER-READY (6+),,,,,=SUMPRODUCT((B2:B100>=6)*(F2:F100="Yes")),,,,,
