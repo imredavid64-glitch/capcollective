@@ -1,0 +1,104 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', system-ui, sans-serif;
+    --font-plus-jakarta-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans antialiased;
+  }
+  
+  * {
+    @apply border-gray-200;
+  }
+  
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-cap-500 ring-offset-2;
+  }
+  
+  /* Skip link */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400;
+  }
+  
+  /* Recharts tooltip customization */
+  .recharts-tooltip-wrapper {
+    @apply bg-white rounded-lg shadow-lg border border-gray-100 p-3 !important;
+  }
+  
+  .recharts-default-tooltip {
+    @apply bg-transparent shadow-none border-none p-0 !important;
+  }
+  
+  /* Animation for mobile menu */
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-down {
+    animation: slideDown 0.2s ease-out;
+  }
+  
+  /* Print styles */
+  @media print {
+    .no-print {
+      @apply hidden;
+    }
+    
+    .print-break {
+      @apply page-break-after-always;
+    }
+  }
+}
+
+@layer utilities {
+  /* Text balance for headlines */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-cap-600 to-earth-600 bg-clip-text text-transparent;
+  }
+  
+  /* Glass morphism */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md;
+  }
+  
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-md;
+  }
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#052e16"/>
+  <rect x="100" y="100" width="1000" height="430" rx="24" fill="#0a3d1f"/>
+  <circle cx="200" cy="200" r="60" fill="#16a34a"/>
+  <path d="M200 140C167 140 140 167 140 200C140 233 167 260 200 260C233 260 260 233 260 200C260 167 233 140 200 140Z" fill="#052e16"/>
+  <circle cx="200" cy="200" r="12" fill="white"/>
+  <text x="320" y="210" font-family="system-ui, sans-serif" font-size="48" font-weight="700" fill="white">Cap Collective</text>
+  <text x="320" y="270" font-family="system-ui, sans-serif" font-size="24" fill="#86efac">Live Impact Dashboard</text>
+  <text x="320" y="320" font-family="system-ui, sans-serif" font-size="18" fill="#4ade80">Real-time circular economy metrics for schools</text>
+  
+  <!-- Metric cards preview -->
+  <rect x="150" y="380" width="220" height="120" rx="12" fill="#14532d"/>
+  <text x="180" y="420" font-family="system-ui, sans-serif" font-size="14" fill="#86efac">CAPS COLLECTED</text>
+  <text x="180" y="470" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="white">12,450</text>
+  
+  <rect x="410" y="380" width="220" height="120" rx="12" fill="#14532d"/>
+  <text x="440" y="420" font-family="system-ui, sans-serif" font-size="14" fill="#86efac">KG DIVERTED</text>
+  <text x="440" y="470" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="white">43.6</text>
+  
+  <rect x="670" y="380" width="220" height="120" rx="12" fill="#14532d"/>
+  <text x="700" y="420" font-family="system-ui, sans-serif" font-size="14" fill="#86efac">CO₂e AVOIDED</text>
+  <text x="700" y="470" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="white">65.4</text>
+  
+  <rect x="930" y="380" width="220" height="120" rx="12" fill="#14532d"/>
+  <text x="960" y="420" font-family="system-ui, sans-serif" font-size="14" fill="#86efac">REVENUE</text>
+  <text x="960" y="470" font-family="system-ui, sans-serif" font-size="36" font-weight="700" fill="white">$2,847</text>
+  
+  <text x="600" y="560" font-family="system-ui, sans-serif" font-size="16" fill="#4ade80" text-anchor="middle">capcollective.vercel.app</text>
+</svg>

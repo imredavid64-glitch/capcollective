@@ -1,0 +1,18 @@
+Item,Tier,Qty,Unit Cost,Currency,Est. Total (USD),Regional Supplier,Link,Status,Lead Time (wks)
+Heat Press (Transmax),Core,1,320,EUR,,YOW! (DE),,Ordered,2
+Hand Tool Kit,Core,2,45,EUR,,ronixtools,,Received,1
+PPE Bundle (10x),Core,1,180,EUR,,Amazon.de,,Ordered,1
+DIY Box Materials,Core,5,20,EUR,,Local hardware,,Received,1
+Secabo TC5 Press,FabLab,1,950,EUR,,YOW! (DE),,Research,3
+Bambu Lab A1,FabLab,1,299,EUR,,Bambu,,Research,2
+Arduino/ESP32 Sensor Kit,FabLab,5,9,USD,,Amazon,,Ordered,1
+GDPR Shredder (Fellowes 99Ci),FabLab,1,220,EUR,,Viking,,Research,2
+SDS Injection Mini 2,Center,1,3200,EUR,,SDS UK,,Research,6
+Trotec Speedy 50,Center,1,12000,EUR,,Trotec,,Research,8
+Precision Aluminum Molds,Center,3,450,EUR,,DME,,Research,4
+Industrial Ventilation,Center,1,1500,EUR,,Local HVAC,,Research,3
+,,,,,,,,,
+Core Total,,,,,,=SUMIF($B$2:$B$100,"Core",$F$2:$F$100),,,,
+FabLab Total,,,,,,=SUMIF($B$2:$B$100,"FabLab",$F$2:$F$100),,,,
+Center Total,,,,,,=SUMIF($B$2:$B$100,"Center",$F$2:$F$100),,,,
+GRAND TOTAL,,,,,,=SUM(F2:F100),,,,

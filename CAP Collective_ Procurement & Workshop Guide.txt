@@ -1,0 +1,224 @@
+CAP COLLECTIVE
+Procurement & Workshop Equipment Guide
+A comprehensive guide to sourcing the machinery, materials, and tools required for educational plastic recycling and circular innovation.
+
+Model Tier
+Recommended Brand
+Key Procurement Link
+Budget
+Transmax / Microtec (OEM)
+Transmax, Microtec
+Mid-Range
+Secabo (TC5 / TC7 Series)
+Secabo
+Premium
+Stahls' Clam Basic / Hotronix
+Stahls
+*Note: Stahls' Europe (Germany) ensures the lowest direct pricing for institutional buyers in the EU.
+HEAT PRESSES: SOURCING
+Google Sheets Table Here
+
+Institutional Standards
+•
+Budget Option: Bambu Lab A1 Mini (€220+) - Plug & Play reliability. Link
+•
+Safety Standard: Flashforge Adventurer 5M Pro - Enclosed with HEPA filtration. Link
+•
+Long-term Value: Prusa MK4S / Core One - EU-made, gold standard parts. Link
+3D PRINTERS: DESKTOP MANUFACTURING
+Google Sheets Table Here
+
+INJECTION MOLDING
+Manual & Portable Systems
+For school workshops, portable lever-action injection machines are the ideal starting point. They are safe, visible, and teach the core physics of thermal molding.
+Recommended Unit: Sustainable Design Studio Injection Mini 2
+Sustainable Design Studio
+NOTE: You can also buy shredders and many add-ons to this project on this same website above, where it will greatly improve the project.
+
+Standard Molds
+Pre-made stainless steel molds for keychains, badges, and geometric shapes.
+ppcapispain.com
+Custom Tooling
+CNC-milled aluminum molds for proprietary school product designs.
+dmeeu.com
+MOLDS & PRECISION TOOLING
+
+Document & Plastic Prep
+High-security shredders serve two purposes: GDPR compliance for school records and preparing plastic flakes (if using soft materials).
+amazon.de / viking.de
+•
+Fellowes 99Ci: 30-min run time workhorse.
+•
+Hama Premium M10+: P-5 high security.
+MATERIAL PREPARATION
+
+Bulk Procurement
+Quality hand tools are vital for demolding and finishing products.
+ronixtools.com / twwholesale.co.uk
+•
+Pliers & Wire Cutters: For trimming flash and demolding.
+•
+Safety Gear: Goggles, heat-resistant gloves, and respiratory protection.
+ESSENTIAL HAND TOOLS & PPE
+
+Advanced Finishing
+A laser cutter is essential for turning recycled plastic sheets into high-precision parts, signage, or intricate math tools.
+Industry Standard: Trotec Speedy Series
+troteclaser.com
+*Note: Requires integrated ventilation/exhaust systems for classroom use.
+LASER REFINING
+
+1. Collect
+Sorting by color & material type (HDPE/PP).
+2. Clean
+Washing & residue removal (Critical).
+3. Melt
+Thermal processing via Heat Press/Injection.
+4. Finish
+Laser cutting or manual trimming.
+WORKFLOW METHODS
+
+Region
+Key Distributors
+Focus
+DACH (DE/AT/CH)
+YOW!, Gröner, Prusa
+Heat Presses & 3D Tech
+France
+Promattex, TransfertPress
+Sublimation & Pressing
+Spain / Italy
+Brildor, Capi Spain, Shock Line
+Molds & Entry-level kits
+Central Europe
+Polisprit (Sico), Sublimat.pl
+Machinery & Imports
+EU REGIONAL DISTRIBUTION
+
+Core Recycling Plan
+Ideal for primary schools focusing on awareness and basic manual transformation.
+Should buy:
+Est: €500 - €1,000
+FabLab Plan
+Best for high schools and makerspaces focused on STEM and Digital Fabrication.
+Should buy:
+Est: €2,500 - €5,000
+Recycling Center Plan
+Advanced production level for technical colleges or community production hubs.
+Should buy:
+Est: €10,000+
+Budget Heat Press (Transmax/Microtec)
+DIY Wooden Bottle Cap Boxes
+Basic Hand Tools (Pliers, Cutters)
+Essential PPE (Heat Gloves, Goggles)
+Manual Material Sorting System
+Mid-range Auto-Open Press (Secabo TC5)
+Bambu Lab A1 or Prusa MK4S
+Arduino/ESP32 Beam-Break Sensor Kits
+P-4 GDPR Security Shredder
+Basic CNC or Desktop Mill
+Premium Stahls' Hotronix Press
+Manual Injection Molder (SDS UK)
+Trotec Laser Cutter (Speedy Series)
+High-Precision Aluminum Molds
+Industrial Extraction & Ventilation
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+•
+IMPLEMENTATION PLANS
+Select the plan that fits your organization's budget and technical goals. Start small and scale up.
+
+Ask for Educational Discounts: Use keywords like "Schulrabatt" (DE) or "Remise Éducative" (FR) for VAT-exempt or B2B pricing.
+Prioritize Auto-Open: Magnetic locks on heat presses prevent scorched projects and increase safety during student distractions.
+Starter Kits: Look for "Press + Printer" bundles from distributors like Brildor to save up to 15% on separate components.
+Compliance: Ensure all machinery is CE-certified and includes EU-standard safety guards.
+SMART PROCUREMENT TIPS
+
+Material Identification
+Only collect Grade 2 (HDPE) or Grade 5 (PP) caps. Mixes will cause structural failure in the final product.
+Washing & Drying
+Wash in warm soapy water. Residual milk or sugar creates toxic fumes and "burn marks" during heating.
+Removing Liners
+Crucial: Pull out the clear silicone liners from inside the caps. These do not melt and ruin the mold.
+STEP 1: COLLECTION & PREP
+
+Creating the Flake
+Uniform shred size (5mm - 8mm) ensures an even melt. Large chunks create air pockets (voids) in the material.
+•
+Feeding: Drop caps slowly to prevent motor jam.
+•
+Sieving: Pass flakes through a mesh screen to ensure consistency.
+•
+Color Mixing: Pre-mix flakes in buckets to create marbling or solid patterns before melting.
+STEP 2: MATERIAL SHREDDING
+
+Temperature Setting
+Set to 140°C for HDPE. Wait for the platen to reach full temp before starting.
+The Parchment Sandwich
+Place flakes between two sheets of parchment paper (baking paper). Never let plastic touch the metal platen.
+Pressing Cycle
+Press for 5 mins, flip the "sandwich," and press for another 5 mins for a perfectly smooth sheet.
+METHOD: HEAT PRESS OPERATION
+
+Injection SOP
+Best for 3D objects like keychains or small tools.
+•
+Pre-heat Barrel: Set barrel to 180°C (higher than press due to barrel friction).
+•
+Clamping: Secure the mold tightly under the nozzle using a C-clamp.
+•
+Injection: Pull the lever with steady, firm pressure until it stops.
+•
+Demolding: Wait 2-3 mins for plastic to solidify before opening the mold.
+METHOD: INJECTION MOLDING
+
+Material
+ID Code
+Melting Point
+Processing Temp
+HDPE (Caps)
+2
+130°C
+140°C - 150°C
+LDPE (Bags)
+4
+110°C
+120°C
+PP (Lids/Cups)
+5
+160°C
+170°C - 180°C
+Critical Safety Note: Never heat plastic above 200°C. Exceeding this temperature releases hazardous fumes and creates fire risks.
+TUTORIAL: MATERIAL SCIENCE
+
+Finishing Kit
+•
+Flash Cutters: Trimming excess plastic overflow.
+•
+Deburring Tool: Smoothing sharp edges on sheets.
+•
+Digital Scale: Measuring flake weight for consistent molds.
+•
+Infrared Thermometer: Checking mold surface temperature.
+WORKSHOP ESSENTIAL TOOLS
+
+Institutional Discounts: Always ask for "Educational Pricing" or VAT-exempt status for public schools.
+Ventilation: Budget for air extraction. Even "safe" plastics require active air circulation in classrooms.
+Maintenance: Buy shredder oil sheets and heat-press platen cleaners to extend machine life.
+Power: Ensure your workshop has 16A circuits; heat presses and shredders can pull significant amperage during warm-up.
+PROCUREMENT BEST PRACTICES
+
+Questions?
+Resources, sourcing links, and technical specs available at:

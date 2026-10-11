@@ -1,0 +1,1 @@
+Serial.printf("Node 2 ready. Own MAC: %s\n\n", WiFi.macAddress().c_str());

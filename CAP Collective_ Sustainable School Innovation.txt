@@ -1,0 +1,76 @@
+CAP COLLECTIVE
+Empowering Sustainability Through School Innovation
+Bridging the gap between environmental stewardship and economic innovation in our local classrooms.
+
+Environmental Reality
+The Plastic Crisis
+Over 8 million tons of plastic enter our oceans annually. Bottle caps are consistently ranked among the top 5 deadliest marine debris items found during coastal cleanups.
+"The distance between an idea and its impact is the bridge we build today."
+
+Defining The Bridge
+The Bottle Cap Box
+Designed to be an "analog" entry point for student recycling. This collection bin serves as more than just a container; it is a physical commitment to material recovery.
+•
+Accessible placement in high-traffic zones.
+•
+Visual progress tracking for student body.
+•
+Made from sustainable, locally sourced wood.
+
+Why Focus on Bottle Caps?
+Ease of Sorting
+Caps are made of High-Density Polyethylene (HDPE), which is easily separated from standard PET water bottles.
+Value Density
+Small but highly recyclable. HDPE holds its physical properties well during the melting and reshaping process.
+Industrial Versatility
+Easy to clean, melt, and shred, making it the perfect "raw material" for classroom-scale manufacturing.
+
+The Transformation Cycle
+Collect
+Sorting & Cleaning Grade 2 HDPE plastics.
+Shred
+Breaking down caps into uniform plastic flakes.
+Melt
+Heat transformation into workable sheets.
+Refine
+Laser cutting or 3D printing into products.
+
+Measurable Impact Goals
+Metric
+Current State
+Bridge Goal (Per Semester)
+Caps Collected
+~1,000 Units
+10,000+ Units
+Waste Diverted
+~3kg
+35kg+ Diverted
+Economic Value
+€5.00
+€250+ in Recycled Products
+School Participation
+5% of Student Body
+80% Targeted Participation
+
+Technology Integration
+Sensor Integration
+Utilizing IR (Infrared) "beam-break" sensors to automate counting. Data is sent to an Arduino or ESP32 to monitor real-time bin levels and collection speed.
+Data Analysis App
+Students develop custom dashboards to visualize their carbon footprint reduction and material throughput. Bridging Computer Science with Sustainability.
+
+School Implementation Plan
+Identify Hubs: Select high-traffic collection zones (Cafeteria, Entry Hall).
+Workshop Setup: Assign ventilated workspace for shredders and heat presses.
+Curriculum Integration: Map project to Science, Art, and Math double-periods.
+Eco-Store Launch: Sell recycled products locally to fund future projects.
+
+The Implementation Kit
+Please go to these slides for the products, files, and methods for implementation!
+Google Docs Version of that here!
+Check out the Workshop Slides!
+
+Read the Industractables Article!
+
+Questions?
+bottle-cap-tracker.vercel.app
+capcollective.vercel.app
