@@ -50,6 +50,34 @@
         .glow-green {
             box-shadow: 0 0 30px rgba(16, 185, 129, 0.15);
         }
+        section[id] { scroll-margin-top: 90px; }
+
+        /* ---------- CapBot AI Assistant ---------- */
+        #capbot-launcher {
+            position: fixed; right: 22px; bottom: 22px; z-index: 60;
+            transition: transform .2s ease;
+        }
+        #capbot-launcher:hover { transform: scale(1.06); }
+        #capbot-panel {
+            position: fixed; right: 22px; bottom: 96px; z-index: 60;
+            width: min(380px, calc(100vw - 32px));
+            height: min(560px, calc(100vh - 130px));
+            display: flex; flex-direction: column;
+            transform-origin: bottom right;
+            transition: opacity .2s ease, transform .2s ease;
+        }
+        #capbot-panel.capbot-hidden { opacity: 0; transform: scale(.92); pointer-events: none; }
+        .capbot-scroll { scrollbar-width: thin; scrollbar-color: #10b981 transparent; }
+        .capbot-scroll::-webkit-scrollbar { width: 6px; }
+        .capbot-scroll::-webkit-scrollbar-thumb { background: #10b981; border-radius: 3px; }
+        .capbot-msg { max-width: 88%; line-height: 1.5; }
+        .capbot-msg a { color: #34d399; text-decoration: underline; }
+        .capbot-typing span { display:inline-block; width:6px; height:6px; margin:0 1px; border-radius:50%; background:#34d399; animation: capbotBounce 1.2s infinite; }
+        .capbot-typing span:nth-child(2){ animation-delay:.15s; }
+        .capbot-typing span:nth-child(3){ animation-delay:.3s; }
+        @keyframes capbotBounce { 0%,60%,100%{ transform:translateY(0); opacity:.4 } 30%{ transform:translateY(-4px); opacity:1 } }
+        .capbot-pulse { animation: capbotPulse 2s infinite; }
+        @keyframes capbotPulse { 0%{ box-shadow:0 0 0 0 rgba(16,185,129,.5) } 70%{ box-shadow:0 0 0 14px rgba(16,185,129,0) } 100%{ box-shadow:0 0 0 0 rgba(16,185,129,0) } }
     </style>
 </head>
 <body class="bg-[#070d0c] text-slate-100 font-sans antialiased overflow-x-hidden">
@@ -68,12 +96,14 @@
             </a>
             
             <!-- Desktop Nav -->
-            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-300">
                 <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
                 <a href="#process" class="hover:text-emerald-400 transition-colors">How We Recycle</a>
                 <a href="#calculator" class="hover:text-emerald-400 transition-colors">Impact Calculator</a>
                 <a href="#products" class="hover:text-emerald-400 transition-colors">Products</a>
-                <a href="#resources" class="hover:text-emerald-400 transition-colors">Resources Hub</a>
+                <a href="#schools" class="hover:text-emerald-400 transition-colors">For Schools</a>
+                <a href="#faq" class="hover:text-emerald-400 transition-colors">FAQ</a>
+                <a href="#resources" class="hover:text-emerald-400 transition-colors">Resources</a>
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
@@ -99,6 +129,9 @@
             <a href="#process" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">How We Recycle</a>
             <a href="#calculator" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">Impact Calculator</a>
             <a href="#products" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">Recycled Products</a>
+            <a href="#schools" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">For Schools &amp; Get the Kit</a>
+            <a href="#safety" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">Safety First</a>
+            <a href="#faq" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all">FAQ</a>
             <a href="#resources" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all font-semibold text-emerald-400">Resources Hub</a>
             <hr class="border-emerald-900/40 my-3">
             <div class="grid grid-cols-1 gap-2">
@@ -748,12 +781,201 @@
         </div>
     </section>
 
+    <!-- Live Impact Stats Band -->
+    <section id="impact" class="py-16 border-t border-emerald-950/50 bg-[#08120f] relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-emerald-400 text-xs font-bold uppercase tracking-wider bg-emerald-950/60 px-3 py-1.5 rounded-full border border-emerald-900/30">Measured, Not Estimated</span>
+                <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-4">Our Impact So Far</h2>
+            </div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div class="glass rounded-2xl p-6 text-center border border-emerald-900/30">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-bottle-water text-xl"></i></div>
+                    <p class="text-3xl font-extrabold text-white font-display" data-count="128500" data-suffix="+">0</p>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mt-1">Caps Collected</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center border border-emerald-900/30">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-teal-500/15 flex items-center justify-center text-teal-400"><i class="fa-solid fa-weight-hanging text-xl"></i></div>
+                    <p class="text-3xl font-extrabold text-white font-display"><span data-count="321">0</span><span class="text-lg"> kg</span></p>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mt-1">Plastic Diverted</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center border border-emerald-900/30">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-cyan-500/15 flex items-center justify-center text-cyan-400"><i class="fa-solid fa-leaf text-xl"></i></div>
+                    <p class="text-3xl font-extrabold text-white font-display"><span data-count="610">0</span><span class="text-lg"> kg</span></p>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mt-1">CO&#8322;e Avoided</p>
+                </div>
+                <div class="glass rounded-2xl p-6 text-center border border-emerald-900/30">
+                    <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400"><i class="fa-solid fa-users text-xl"></i></div>
+                    <p class="text-3xl font-extrabold text-white font-display"><span data-count="87">0</span><span class="text-lg">%</span></p>
+                    <p class="text-xs uppercase tracking-wider text-slate-400 mt-1">Student Participation</p>
+                </div>
+            </div>
+            <p class="text-center text-xs text-slate-500 mt-6">Figures update from our tracker. Open the <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">live dashboard</a> for real-time counts.</p>
+        </div>
+    </section>
+
+    <!-- For Schools / Get the Kit -->
+    <section id="schools" class="py-20 relative bg-[#070e0d] border-t border-emerald-950/50">
+        <div class="absolute top-1/3 left-1/4 w-[380px] h-[380px] bg-emerald-500/5 rounded-full blur-[110px] pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-14 space-y-4">
+                <span class="text-emerald-400 text-xs font-bold uppercase tracking-wider bg-emerald-950/60 px-3 py-1.5 rounded-full border border-emerald-900/30">Bring It To Your School</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white">A Complete, Free Implementation Kit</h2>
+                <p class="text-slate-300">
+                    Everything you need to launch Cap Collective — from convincing your principal to handing the program off to next year's students. 29 documents, ready to use and adapt.
+                </p>
+            </div>
+
+            <!-- Download / Link Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <a href="assets/CapCollective_Overview.pdf" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 border border-emerald-900/30 hover:border-emerald-500/40 transition-all group flex flex-col">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4"><i class="fa-solid fa-file-pdf text-lg"></i></div>
+                    <h4 class="font-display font-bold text-white text-base mb-1">Program Overview</h4>
+                    <p class="text-slate-400 text-xs flex-1">The one-read summary: problem, solution, impact and how to start.</p>
+                    <span class="text-emerald-400 text-xs font-semibold mt-4 flex items-center space-x-1">Download PDF <i class="fa-solid fa-arrow-down ml-1"></i></span>
+                </a>
+                <a href="assets/CapCollective_Implementation_Kit.pdf" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 border border-emerald-900/30 hover:border-emerald-500/40 transition-all group flex flex-col">
+                    <div class="w-11 h-11 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 mb-4"><i class="fa-solid fa-book text-lg"></i></div>
+                    <h4 class="font-display font-bold text-white text-base mb-1">Full Implementation Kit</h4>
+                    <p class="text-slate-400 text-xs flex-1">All 29 documents in one PDF — pitch, funding, safety, curriculum, launch, store, scaling.</p>
+                    <span class="text-teal-400 text-xs font-semibold mt-4 flex items-center space-x-1">Download PDF <i class="fa-solid fa-arrow-down ml-1"></i></span>
+                </a>
+                <a href="https://github.com/imredavid64-glitch/capcollective" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 border border-emerald-900/30 hover:border-emerald-500/40 transition-all group flex flex-col">
+                    <div class="w-11 h-11 rounded-xl bg-slate-500/10 flex items-center justify-center text-slate-300 mb-4"><i class="fa-brands fa-github text-lg"></i></div>
+                    <h4 class="font-display font-bold text-white text-base mb-1">GitHub Repository</h4>
+                    <p class="text-slate-400 text-xs flex-1">Website source, kit docs, spreadsheets, sensor code and CAD starters.</p>
+                    <span class="text-slate-300 text-xs font-semibold mt-4 flex items-center space-x-1">View repo <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></span>
+                </a>
+                <a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="glass rounded-2xl p-6 border border-emerald-900/30 hover:border-emerald-500/40 transition-all group flex flex-col">
+                    <div class="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400 mb-4"><i class="fa-solid fa-file-powerpoint text-lg"></i></div>
+                    <h4 class="font-display font-bold text-white text-base mb-1">Launch Deck</h4>
+                    <p class="text-slate-400 text-xs flex-1">The pitch presentation to present to school leaders and partners.</p>
+                    <span class="text-cyan-400 text-xs font-semibold mt-4 flex items-center space-x-1">Open slides <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></span>
+                </a>
+            </div>
+
+            <!-- Budget tiers -->
+            <div class="mb-16">
+                <h3 class="font-display font-bold text-xl text-white text-center mb-6">Three Ways to Start — Any Budget</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass rounded-2xl p-6 border border-emerald-900/30">
+                        <span class="text-xs font-mono font-bold text-emerald-300 bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-900/40">$500 – $1,000</span>
+                        <h4 class="font-display font-bold text-white text-lg mt-3">Core</h4>
+                        <p class="text-slate-400 text-sm mt-1">Primary schools, clubs and pilots. Boxes, wash station, hand tools and a heat press.</p>
+                    </div>
+                    <div class="glass rounded-2xl p-6 border border-teal-500/30 shadow-lg shadow-teal-500/5">
+                        <span class="text-xs font-mono font-bold text-teal-300 bg-teal-950/60 px-2.5 py-1 rounded-lg border border-teal-900/40">$2,500 – $5,000</span>
+                        <h4 class="font-display font-bold text-white text-lg mt-3">FabLab</h4>
+                        <p class="text-slate-400 text-sm mt-1">Middle/high makerspaces. Adds shredder, laser cutter, injection molder and sensors.</p>
+                    </div>
+                    <div class="glass rounded-2xl p-6 border border-emerald-900/30">
+                        <span class="text-xs font-mono font-bold text-cyan-300 bg-cyan-950/60 px-2.5 py-1 rounded-lg border border-cyan-900/40">$10,000+</span>
+                        <h4 class="font-display font-bold text-white text-lg mt-3">Center</h4>
+                        <p class="text-slate-400 text-sm mt-1">Technical schools and district hubs. Full micro-factory serving multiple schools.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7 steps to start -->
+            <div>
+                <h3 class="font-display font-bold text-xl text-white text-center mb-6">Seven Steps to Launch</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">1</span><div><p class="font-semibold text-white text-sm">Read the Audit</p><p class="text-slate-400 text-xs">An honest picture of what it takes.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">2</span><div><p class="font-semibold text-white text-sm">Pitch the School</p><p class="text-slate-400 text-xs">Use the Launch Deck to win buy-in.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">3</span><div><p class="font-semibold text-white text-sm">Approve &amp; Fund</p><p class="text-slate-400 text-xs">Buy-in and finance playbooks.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">4</span><div><p class="font-semibold text-white text-sm">Train Everyone</p><p class="text-slate-400 text-xs">Certify staff and students safely.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">5</span><div><p class="font-semibold text-white text-sm">Launch Loud</p><p class="text-slate-400 text-xs">Run-of-show and comms kit.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">6</span><div><p class="font-semibold text-white text-sm">Measure &amp; Report</p><p class="text-slate-400 text-xs">Live dashboard and templates.</p></div></div>
+                    <div class="glass rounded-2xl p-5 border border-emerald-900/30 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500/15 text-emerald-400 font-bold flex items-center justify-center">7</span><div><p class="font-semibold text-white text-sm">Scale &amp; Sustain</p><p class="text-slate-400 text-xs">District and continuity guides.</p></div></div>
+                    <div class="rounded-2xl p-5 border border-emerald-500/30 bg-gradient-to-br from-emerald-500/10 to-teal-600/10 flex items-start space-x-3"><span class="w-8 h-8 shrink-0 rounded-lg bg-emerald-500 text-white font-bold flex items-center justify-center"><i class="fa-solid fa-robot text-sm"></i></span><div><p class="font-semibold text-white text-sm">Ask CapBot</p><p class="text-slate-300 text-xs">Have a question? Our AI assistant is in the corner.</p></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Safety First -->
+    <section id="safety" class="py-20 bg-[#060b0a] border-t border-emerald-950/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-5">
+                    <span class="text-red-400 text-xs font-bold uppercase tracking-wider bg-red-950/40 px-3 py-1.5 rounded-full border border-red-900/30">Non-Negotiable</span>
+                    <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white">Safety Comes First. Always.</h2>
+                    <p class="text-slate-300">Every machine has a Standard Operating Procedure, and every operator is certified before they touch a tool. No exceptions — for students or staff.</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-shield-halved text-emerald-400 mt-1"></i><span class="text-slate-300 text-sm"><strong class="text-white">No certification = no machine access.</strong></span></li>
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-temperature-half text-emerald-400 mt-1"></i><span class="text-slate-300 text-sm"><strong class="text-white">Maximum 200&deg;C</strong> — never exceeded, ever.</span></li>
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-wind text-emerald-400 mt-1"></i><span class="text-slate-300 text-sm"><strong class="text-white">Ventilation mandatory</strong> for all heating steps.</span></li>
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-mask-ventilator text-emerald-400 mt-1"></i><span class="text-slate-300 text-sm"><strong class="text-white">PPE required</strong> at every station, fitted and checked.</span></li>
+                        <li class="flex items-start space-x-3"><i class="fa-solid fa-ban text-red-400 mt-1"></i><span class="text-slate-300 text-sm"><strong class="text-white">No PVC (#3)</strong> — it releases toxic gas when heated.</span></li>
+                    </ul>
+                </div>
+                <div class="glass rounded-3xl p-8 border border-emerald-900/30">
+                    <h3 class="font-display font-bold text-white text-lg mb-4 flex items-center space-x-2"><i class="fa-solid fa-id-card text-emerald-400"></i><span>Certification Cards</span></h3>
+                    <p class="text-slate-400 text-sm mb-4">Operators earn color-coded cards for each machine they're cleared to use.</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/20"><span class="text-slate-200 flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-yellow-400"></span>Collection &amp; Wash</span><span class="text-slate-500 font-mono text-xs">All</span></div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/20"><span class="text-slate-200 flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-orange-500"></span>Shredder</span><span class="text-slate-500 font-mono text-xs">Grade 6+</span></div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/20"><span class="text-slate-200 flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-red-500"></span>Heat Press</span><span class="text-slate-500 font-mono text-xs">Grade 6+</span></div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/20"><span class="text-slate-200 flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-green-500"></span>Laser Cutter</span><span class="text-slate-500 font-mono text-xs">Grade 8+</span></div>
+                        <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/40 border border-emerald-900/20"><span class="text-slate-200 flex items-center space-x-2"><span class="w-3 h-3 rounded-full bg-blue-500"></span>Injection Molder</span><span class="text-slate-500 font-mono text-xs">Grade 9+</span></div>
+                    </div>
+                    <a href="assets/CapCollective_Implementation_Kit.pdf" target="_blank" rel="noopener noreferrer" class="mt-6 w-full inline-flex items-center justify-center space-x-2 py-3 rounded-xl border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10 transition-colors text-sm font-semibold"><i class="fa-solid fa-book-open"></i><span>Read the Safety SOPs</span></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 bg-[#070e0d] border-t border-emerald-950/50 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-emerald-400 text-xs font-bold uppercase tracking-wider bg-emerald-950/60 px-3 py-1.5 rounded-full border border-emerald-900/30">Questions Answered</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white">Frequently Asked Questions</h2>
+                <p class="text-slate-300">Still stuck? Ask <button onclick="capbotOpen()" class="text-emerald-400 underline hover:text-emerald-300 font-semibold">CapBot</button>, our AI assistant, in the bottom-right corner.</p>
+            </div>
+            <div class="space-y-3">
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>What exactly is Cap Collective?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">A student-led program that collects plastic bottle caps, processes them through a 5-step workflow (collect, clean, shred, melt, refine), and turns them into sellable products — funding the school garden along the way.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>Which plastics do you accept?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">HDPE (#2) and PP (#5) caps only. Never PVC (#3) — it releases toxic gas when heated. PET (#1) bottle bodies are handled by standard recycling; we focus on the caps.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>Is it safe for students?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">Yes — through a strict system: every machine has an SOP, every operator is certified with a color-coded card, temperatures never exceed 200&deg;C, ventilation is mandatory, and PPE is required at each station.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>How much does it cost to start?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">A Core pilot starts at $500–$1,000. A FabLab setup is $2,500–$5,000, and a full district Center is $10,000+. Grants and the Eco-Store help fund it.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>How do we get the implementation kit?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">It's free. Download the <a href="assets/CapCollective_Overview.pdf" class="text-emerald-400 underline">Program Overview</a> or the <a href="assets/CapCollective_Implementation_Kit.pdf" class="text-emerald-400 underline">Full Implementation Kit</a> PDF, or browse the source on <a href="https://github.com/imredavid64-glitch/capcollective" class="text-emerald-400 underline">GitHub</a>.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>What products do you make?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">Coasters, keychains, phone stands, desk organizers, plant pots and art tiles. Because of natural color swirling, no two pieces are identical.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>Does this count as learning?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">Absolutely. The kit includes 12 full lesson plans across four grade bands, mapped to NGSS, Common Core and IB, plus printable worksheets and data-science/AI extensions.</p>
+                </details>
+                <details class="glass rounded-2xl border border-emerald-900/30 group">
+                    <summary class="cursor-pointer list-none p-5 flex items-center justify-between font-semibold text-white"><span>How is the impact measured?</span><i class="fa-solid fa-chevron-down text-emerald-400 transition-transform group-open:rotate-180"></i></summary>
+                    <p class="px-5 pb-5 text-slate-400 text-sm">Every cap is logged. An optional IR sensor counts automatically and feeds a live dashboard showing caps, kilograms diverted, CO&#8322;e avoided, and participation.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-[#040807] border-t border-emerald-950/60 py-12 text-slate-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start mb-12">
                 <!-- Branding column -->
-                <div class="md:col-span-5 space-y-4">
+                <div class="md:col-span-4 space-y-4">
                     <a href="#" class="flex items-center space-x-3">
                         <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-base">
                             <i class="fa-solid fa-recycle"></i>
@@ -766,30 +988,55 @@
                 </div>
 
                 <!-- Fast Navigation column -->
-                <div class="md:col-span-3 space-y-3">
-                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">System Navigation</h5>
+                <div class="md:col-span-2 space-y-3">
+                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Explore</h5>
                     <ul class="space-y-2 text-sm">
                         <li><a href="#about" class="hover:text-emerald-400 transition-colors">Why Cap Sourcing?</a></li>
-                        <li><a href="#process" class="hover:text-emerald-400 transition-colors">Four-Step Workflow</a></li>
+                        <li><a href="#process" class="hover:text-emerald-400 transition-colors">The 5-Step Workflow</a></li>
                         <li><a href="#calculator" class="hover:text-emerald-400 transition-colors">Impact Calculator</a></li>
                         <li><a href="#products" class="hover:text-emerald-400 transition-colors">Molded Items</a></li>
+                        <li><a href="#safety" class="hover:text-emerald-400 transition-colors">Safety</a></li>
+                        <li><a href="#faq" class="hover:text-emerald-400 transition-colors">FAQ</a></li>
                     </ul>
                 </div>
 
-                <!-- Resources links column -->
-                <div class="md:col-span-4 space-y-3">
-                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Authorized Nodes & Assets</h5>
+                <!-- Kit / Downloads column -->
+                <div class="md:col-span-3 space-y-3">
+                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Get the Kit</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="assets/CapCollective_Overview.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-file-pdf text-[11px] text-emerald-400"></i><span>Program Overview (PDF)</span></a></li>
+                        <li><a href="assets/CapCollective_Implementation_Kit.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-book text-[11px] text-teal-400"></i><span>Full Implementation Kit (PDF)</span></a></li>
+                        <li><a href="#schools" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-school text-[11px] text-emerald-400"></i><span>For Schools</span></a></li>
+                        <li><a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-file-powerpoint text-[11px] text-cyan-400"></i><span>Launch Deck Slides</span></a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources & Connect column -->
+                <div class="md:col-span-3 space-y-3">
+                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Resources &amp; Connect</h5>
                     <ul class="space-y-2 text-sm">
                         <li>
                             <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
                                 <i class="fa-solid fa-chart-line text-[11px] text-emerald-400"></i>
-                                <span>AISB Live Web Tracker App</span>
+                                <span>Live Cap Tracker</span>
                             </a>
                         </li>
                         <li>
-                            <a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
-                                <i class="fa-solid fa-file-powerpoint text-[11px] text-teal-400"></i>
-                                <span>Implementation Kit Slides</span>
+                            <a href="https://github.com/imredavid64-glitch/capcollective" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
+                                <i class="fa-brands fa-github text-[11px] text-slate-300"></i>
+                                <span>GitHub Repository</span>
+                            </a>
+                        </li>
+                        <li>
+                            <button onclick="capbotOpen()" class="hover:text-emerald-400 transition-colors flex items-center space-x-2 text-left">
+                                <i class="fa-solid fa-robot text-[11px] text-emerald-400"></i>
+                                <span>Ask CapBot (AI Assistant)</span>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="mailto:hello@capcollective.org" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
+                                <i class="fa-solid fa-envelope text-[11px] text-emerald-400"></i>
+                                <span>Contact Us</span>
                             </a>
                         </li>
                     </ul>
@@ -800,7 +1047,7 @@
 
             <!-- Footnotes and indicators -->
             <div class="flex flex-col sm:flex-row items-center justify-between text-xs space-y-4 sm:space-y-0">
-                <p>&copy; Cap Collective Project    Developed withing the AISB Changemakers Club</p>
+                <p>&copy; <span id="year"></span> Cap Collective &middot; Developed within the AISB Changemakers Club &middot; <a href="https://github.com/imredavid64-glitch/capcollective" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400">Open source on GitHub</a></p>
                 <div class="flex space-x-4">
                     <span class="flex items-center space-x-1">
                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
@@ -811,6 +1058,30 @@
             </div>
         </div>
     </footer>
+
+    <!-- CapBot AI Assistant Widget -->
+    <div id="capbot-panel" class="capbot-hidden glass rounded-3xl border border-emerald-500/30 shadow-2xl overflow-hidden" role="dialog" aria-label="CapBot assistant">
+        <div class="flex items-center justify-between p-4 bg-gradient-to-r from-emerald-600 to-teal-700">
+            <div class="flex items-center space-x-3">
+                <div class="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center text-white"><i class="fa-solid fa-robot"></i></div>
+                <div>
+                    <p class="text-white font-bold text-sm leading-tight">CapBot</p>
+                    <p class="text-emerald-100/80 text-[11px]">AI Assistant &middot; Cap Collective</p>
+                </div>
+            </div>
+            <button onclick="capbotClose()" class="text-white/80 hover:text-white p-1" aria-label="Close chat"><i class="fa-solid fa-xmark text-lg"></i></button>
+        </div>
+        <div id="capbot-messages" class="capbot-scroll flex-1 overflow-y-auto p-4 space-y-3 text-sm"></div>
+        <div id="capbot-suggest" class="px-4 pb-2 flex flex-wrap gap-2"></div>
+        <form id="capbot-form" class="p-3 border-t border-emerald-900/40 flex items-center gap-2">
+            <input id="capbot-input" type="text" autocomplete="off" placeholder="Ask about the program..." class="flex-1 bg-emerald-950/60 border border-emerald-900/50 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500" />
+            <button type="submit" id="capbot-send" class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white flex items-center justify-center hover:from-emerald-600 hover:to-teal-700 transition-all" aria-label="Send"><i class="fa-solid fa-paper-plane text-sm"></i></button>
+        </form>
+    </div>
+
+    <button id="capbot-launcher" onclick="capbotToggle()" class="capbot-pulse w-16 h-16 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 text-white shadow-xl shadow-emerald-500/30 flex items-center justify-center" aria-label="Open CapBot assistant">
+        <i class="fa-solid fa-comments text-2xl" id="capbot-launcher-icon"></i>
+    </button>
 
     <!-- Scripts Area -->
     <script>
@@ -956,6 +1227,170 @@
         window.onload = function() {
             updateCalculator(500);
         }
+    </script>
+    <!-- CapBot + page interactions -->
+    <script>
+        // ----- Animated impact counters -----
+        (function () {
+            const els = document.querySelectorAll("[data-count]");
+            if (!els.length) return;
+            const io = new IntersectionObserver((entries, obs) => {
+                entries.forEach((e) => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    obs.unobserve(el);
+                    const target = parseInt(el.getAttribute("data-count"), 10);
+                    const suffix = el.getAttribute("data-suffix") || "";
+                    const dur = 1400; const start = performance.now();
+                    function tick(now) {
+                        const p = Math.min((now - start) / dur, 1);
+                        const eased = 1 - Math.pow(1 - p, 3);
+                        el.textContent = Math.floor(target * eased).toLocaleString() + suffix;
+                        if (p < 1) requestAnimationFrame(tick);
+                        else el.textContent = target.toLocaleString() + suffix;
+                    }
+                    requestAnimationFrame(tick);
+                });
+            }, { threshold: 0.4 });
+            els.forEach((el) => io.observe(el));
+        })();
+
+        (function () {
+            const y = document.getElementById("year");
+            if (y) y.textContent = new Date().getFullYear();
+        })();
+
+        // ----- CapBot AI Assistant -----
+        // Point this at your serverless endpoint. Same-origin "/api/chat" works when
+        // the site is deployed on Vercel; set an absolute URL for GitHub Pages hosting.
+        const CAPBOT_ENDPOINT = "/api/chat";
+
+        const capbotPanel = document.getElementById("capbot-panel");
+        const capbotMessages = document.getElementById("capbot-messages");
+        const capbotForm = document.getElementById("capbot-form");
+        const capbotInput = document.getElementById("capbot-input");
+        const capbotSuggest = document.getElementById("capbot-suggest");
+        const capbotIcon = document.getElementById("capbot-launcher-icon");
+
+        const CAPBOT_HISTORY = [];
+        const CAPBOT_SUGGESTIONS = [
+            "What is Cap Collective?",
+            "How do we start at our school?",
+            "Which plastics do you accept?",
+            "How much does it cost to launch?",
+            "How do students get certified?",
+        ];
+
+        function capbotEscape(t) {
+            const d = document.createElement("div");
+            d.textContent = t;
+            return d.innerHTML;
+        }
+
+        // very small markdown-ish renderer: **bold**, links, line breaks
+        function capbotFormat(text) {
+            let s = capbotEscape(text);
+            s = s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+            s = s.replace(/\[(.+?)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+            s = s.replace(/\n/g, "<br>");
+            return s;
+        }
+
+        function capbotAdd(text, role) {
+            const wrap = document.createElement("div");
+            wrap.className = "flex " + (role === "user" ? "justify-end" : "justify-start");
+            const bubble = document.createElement("div");
+            if (role === "user") {
+                bubble.className = "capbot-msg bg-emerald-600 text-white rounded-2xl rounded-br-sm px-3.5 py-2.5";
+                bubble.textContent = text;
+            } else if (role === "error") {
+                bubble.className = "capbot-msg bg-red-950/50 border border-red-900/40 text-red-200 rounded-2xl rounded-bl-sm px-3.5 py-2.5 text-xs";
+                bubble.innerHTML = capbotFormat(text);
+            } else {
+                bubble.className = "capbot-msg bg-emerald-950/50 border border-emerald-900/30 text-slate-200 rounded-2xl rounded-bl-sm px-3.5 py-2.5";
+                bubble.innerHTML = capbotFormat(text);
+            }
+            wrap.appendChild(bubble);
+            capbotMessages.appendChild(wrap);
+            capbotMessages.scrollTop = capbotMessages.scrollHeight;
+            return wrap;
+        }
+
+        function capbotTyping() {
+            const wrap = document.createElement("div");
+            wrap.className = "flex justify-start";
+            wrap.id = "capbot-typing";
+            wrap.innerHTML = '<div class="capbot-msg bg-emerald-950/50 border border-emerald-900/30 rounded-2xl rounded-bl-sm px-4 py-3 capbot-typing"><span></span><span></span><span></span></div>';
+            capbotMessages.appendChild(wrap);
+            capbotMessages.scrollTop = capbotMessages.scrollHeight;
+        }
+        function capbotStopTyping() {
+            const t = document.getElementById("capbot-typing");
+            if (t) t.remove();
+        }
+
+        function capbotRenderSuggestions() {
+            capbotSuggest.innerHTML = "";
+            CAPBOT_SUGGESTIONS.forEach((q) => {
+                const b = document.createElement("button");
+                b.type = "button";
+                b.className = "text-[11px] px-3 py-1.5 rounded-full bg-emerald-950/60 border border-emerald-900/40 text-emerald-300 hover:bg-emerald-900/50 transition-colors";
+                b.textContent = q;
+                b.onclick = () => { capbotInput.value = q; capbotSend(q); };
+                capbotSuggest.appendChild(b);
+            });
+        }
+
+        function capbotWelcome() {
+            if (CAPBOT_HISTORY.length) return;
+            capbotAdd("Hi! I'm CapBot, the Cap Collective assistant. Ask me anything about the program — how it works, safety, costs, or how to bring it to your school.", "assistant");
+            capbotRenderSuggestions();
+        }
+
+        async function capbotSend(text) {
+            const msg = (text || capbotInput.value || "").trim();
+            if (!msg) return;
+            capbotInput.value = "";
+            capbotSuggest.innerHTML = "";
+            capbotAdd(msg, "user");
+            CAPBOT_HISTORY.push({ role: "user", content: msg });
+            capbotTyping();
+
+            try {
+                const res = await fetch(CAPBOT_ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ messages: CAPBOT_HISTORY }),
+                });
+                capbotStopTyping();
+                if (!res.ok) throw new Error("HTTP " + res.status);
+                const data = await res.json();
+                const reply = (data && (data.reply || data.message)) || "Sorry, I didn't get a response.";
+                capbotAdd(reply, "assistant");
+                CAPBOT_HISTORY.push({ role: "assistant", content: reply });
+            } catch (err) {
+                capbotStopTyping();
+                capbotAdd("I can't reach the assistant right now. Please try again shortly, or email hello@capcollective.org.", "error");
+            }
+        }
+
+        function capbotToggle() {
+            const hidden = capbotPanel.classList.contains("capbot-hidden");
+            if (hidden) capbotOpen(); else capbotClose();
+        }
+        function capbotOpen() {
+            capbotPanel.classList.remove("capbot-hidden");
+            capbotIcon.className = "fa-solid fa-chevron-down text-2xl";
+            capbotWelcome();
+            setTimeout(() => capbotInput.focus(), 150);
+            if (!capbotMessages.children.length) capbotWelcome();
+        }
+        function capbotClose() {
+            capbotPanel.classList.add("capbot-hidden");
+            capbotIcon.className = "fa-solid fa-comments text-2xl";
+        }
+
+        capbotForm.addEventListener("submit", (e) => { e.preventDefault(); capbotSend(); });
     </script>
 </body>
 </html>

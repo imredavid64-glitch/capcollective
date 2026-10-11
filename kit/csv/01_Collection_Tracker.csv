@@ -1,0 +1,11 @@
+Date,Location,Collector(s),Cap Count,Weight (kg),Avg Cap Mass (g),Color Mix % (Light),Color Mix % (Dark),Notes,Photo Link
+2026-10-09,Cafeteria,Group A,842,2.10,,55,45,First collection!,
+2026-10-16,Cafeteria,Group B,1176,2.90,,60,40,After assembly push,
+2026-10-16,Gym,Group C,430,1.10,,50,50,,
+,,,,,,,,,
+,,,,,,,,,
+TOTAL CAPS,,,,,,,,,=SUM(D2:D)
+TOTAL WEIGHT (kg),,,,,,,,,=SUM(E2:E)
+AVG CAP MASS (g),,,,,,,,,=IF(SUM(D2:D)=0,0,SUM(E2:E)*1000/SUM(D2:D))
+% TOWARD 10K GOAL,,,,,,,,,=SUM(D2:D)/10000
+CO2e AVOIDED (kg),,,,,,,,,=SUM(E2:E)*1.9
