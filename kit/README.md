@@ -1,4 +1,4 @@
-# CAP COLLECTIVE — School Implementation Kit
+﻿# CAP COLLECTIVE â€” School Implementation Kit
 ### A Complete, Ready-to-Use System for Launching a Student-Led Bottle Cap Recycling & Circular Manufacturing Program
 
 > *"The distance between an idea and its impact is the bridge we build today."*
@@ -6,18 +6,18 @@
 ---
 
 ## WHAT IS THIS KIT?
-This is a **complete implementation kit** for bringing the Cap Collective circular recycling program into any school. Students collect HDPE bottle caps, process them through a safe 5-step workflow (Collect → Clean → Shred → Melt → Refine), and manufacture valuable products — all while learning STEM, entrepreneurship, and environmental stewardship.
+This is a **complete implementation kit** for bringing the Cap Collective circular recycling program into any school. Students collect HDPE bottle caps, process them through a safe 5-step workflow (Collect â†’ Clean â†’ Shred â†’ Melt â†’ Refine), and manufacture valuable products â€” all while learning STEM, entrepreneurship, and environmental stewardship.
 
 Everything you need is here: presentations, guides, spreadsheets, safety docs, curriculum maps, grant templates, printable posters, and sensor code.
 
 ---
 
-## 📁 KIT CONTENTS
+## đź“ KIT CONTENTS
 
 | # | File | What It Is | Audience |
 |---|------|-----------|----------|
 | 00 | `00_IMPLEMENTATION_READINESS_AUDIT.md` | Honest end-to-end readiness walkthrough + gap list | Everyone |
-| — | `README.md` | This master index | Everyone |
+| â€” | `README.md` | This master index | Everyone |
 | 01 | `01_LAUNCH_DECK_PRESENTATION.md` | 30-slide presentation content | Admin, staff, parents |
 | 02 | `02_TEACHER_IMPLEMENTATION_GUIDE.md` | Full 8-chapter playbook (~50 pages) | Teachers, advisors |
 | 03 | `03_COMMAND_CENTER_SHEETS.md` | 8-tab spreadsheet structure + formulas | Data leads, teachers |
@@ -46,13 +46,17 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 | 26 | `26_DISTRICT_SCALE_AND_REPLICATION_GUIDE.md` | Hub-and-spoke, train-the-trainer, 12-mo rollout | District coordinators |
 | 27 | `27_CONTINUITY_AND_HANDOVER_GUIDE.md` | End-of-year close-out, succession, credentials | Outgoing + incoming leads |
 | 28 | `28_DATA_SCIENCE_AND_AI_EXTENSION_GUIDE.md` | Forecasting, classification, capstone (the "AI" piece) | 6-12, advanced |
-| — | `csv/` | Importable CSVs for the Sheets workbook | Data leads |
-| — | `cad/` | Parametric starter CAD (box, coaster frame, keychain mold) | FabLab+ |
-| — | `resources/sensor_count.ino` | ESP32 bottle cap counter code | FabLab+ students |
+| 29 | `29_IOT_AND_LIVE_TRACKING.md` | Sensor-based auto-counting into the live tracker | FabLab+, data leads |
+| 30 | `30_SUPPLIER_AND_PARTNER_DIRECTORY.md` | Machines, materials, cap & community partners | Program lead |
+| 31 | `31_TRAIN_THE_TRAINER_AND_AMBASSADOR_PROGRAM.md` | Student-as-trainer certification + ambassadors | Everyone |
+| 32 | `32_DIGITAL_PRODUCTS_AND_ONLINE_STORE.md` | Online store, digital goods, compliance, batches | Store managers |
+| â€” | `csv/` | Importable CSVs for the Sheets workbook | Data leads |
+| â€” | `cad/` | Parametric starter CAD (box, coaster frame, keychain mold) | FabLab+ |
+| â€” | `resources/sensor_count.ino` | ESP32 bottle cap counter code | FabLab+ students |
 
 ---
 
-## 🚀 QUICK START (Do This First)
+## đźš€ QUICK START (Do This First)
 
 ### For Administrators
 1. Read `07_ADMIN_QUICKSTART_CHECKLIST.md` (1 page) + `00_IMPLEMENTATION_READINESS_AUDIT.md`
@@ -93,19 +97,19 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## 🗓️ THE 5-STEP PROCESS
+## đź—“ď¸Ź THE 5-STEP PROCESS
 ```
-1. COLLECT  →  HDPE (#2) / PP (#5) caps from campus boxes
-2. CLEAN    →  Remove liners, wash, air-dry 24 hrs
-3. SHRED    →  5-8mm uniform flakes
-4. MELT     →  Heat press: HDPE 140°C / PP 170°C (never >200°C)
-5. REFINE   →  Laser cut / injection mold / 3D filament
+1. COLLECT  â†’  HDPE (#2) / PP (#5) caps from campus boxes
+2. CLEAN    â†’  Remove liners, wash, air-dry 24 hrs
+3. SHRED    â†’  5-8mm uniform flakes
+4. MELT     â†’  Heat press: HDPE 140Â°C / PP 170Â°C (never >200Â°C)
+5. REFINE   â†’  Laser cut / injection mold / 3D filament
 ```
-**Closed loop:** Products are themselves recyclable → back to Step 3.
+**Closed loop:** Products are themselves recyclable â†’ back to Step 3.
 
 ---
 
-## 💰 BUDGET TIERS
+## đź’° BUDGET TIERS
 | Tier | Cost | Best For |
 |------|------|----------|
 | **Core** | $500-1,000 | Primary, clubs, pilots |
@@ -114,35 +118,35 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## ⚠️ SAFETY FIRST
+## âš ď¸Ź SAFETY FIRST
 - **No certification = no machine access.**
-- Maximum temperature: **200°C** (never exceed).
+- Maximum temperature: **200Â°C** (never exceed).
 - Ventilation mandatory for all heating.
 - PPE required per station.
 - See `04_SAFETY_SOPS_AND_RISK_ASSESSMENT.md` before anything else.
 
 ---
 
-## 📊 MEASURABLE GOALS (Per Semester)
+## đź“Š MEASURABLE GOALS (Per Semester)
 | Metric | Target |
 |--------|--------|
 | Caps Collected | 10,000+ |
 | Waste Diverted | 35+ kg |
-| CO₂e Avoided | 65+ kg |
+| COâ‚‚e Avoided | 65+ kg |
 | Product Revenue | $500+ |
 | Student Participation | 80% |
 
 ---
 
-## 🌍 GRADE-BAND PROGRAMS
-- **K-2:** "Cap Detectives" — observation, sorting, storytelling
-- **3-5:** "Cap Engineers" — measurement, build, basic design
-- **6-8:** "Cap Innovators" — data, sensors, entrepreneurship
-- **9-12:** "Cap Systems Designers" — engineering, LCA, policy, scale
+## đźŚŤ GRADE-BAND PROGRAMS
+- **K-2:** "Cap Detectives" â€” observation, sorting, storytelling
+- **3-5:** "Cap Engineers" â€” measurement, build, basic design
+- **6-8:** "Cap Innovators" â€” data, sensors, entrepreneurship
+- **9-12:** "Cap Systems Designers" â€” engineering, LCA, policy, scale
 
 ---
 
-## 🔗 LINKS
+## đź”— LINKS
 - **Live dashboard:** capcollective.vercel.app
 - **Cap tracker:** bottle-cap-tracker.vercel.app
 - **Instructables build guide:** (see original article)
@@ -151,8 +155,8 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ## HOW TO CONVERT THESE FILES TO GOOGLE FORMAT
 1. **Slides:** Copy `01_LAUNCH_DECK_PRESENTATION.md` content into Google Slides (one slide per `## SLIDE`). Use the presentation content as-is.
-2. **Docs:** Import `02_TEACHER_IMPLEMENTATION_GUIDE.md` directly into Google Docs (File → Import). Or paste markdown into a converter.
-3. **Sheets:** Create tabs per `03_COMMAND_CENTER_SHEETS.md` and import the `csv/` files (File → Import → replace).
+2. **Docs:** Import `02_TEACHER_IMPLEMENTATION_GUIDE.md` directly into Google Docs (File â†’ Import). Or paste markdown into a converter.
+3. **Sheets:** Create tabs per `03_COMMAND_CENTER_SHEETS.md` and import the `csv/` files (File â†’ Import â†’ replace).
 4. **PDFs:** Any markdown editor can export these to PDF for printing.
 
 ---
@@ -169,5 +173,5 @@ This kit is **open source** and free to adapt for any school. Change names, colo
 
 ---
 
-**Cap Collective — Empowering Sustainability through Environmental Stewardship and Economic Innovation.**
+**Cap Collective â€” Empowering Sustainability through Environmental Stewardship and Economic Innovation.**
 *Join the Bridge. Create the Impact.*

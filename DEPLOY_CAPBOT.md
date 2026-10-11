@@ -1,7 +1,24 @@
 # Deploying CapBot (the AI assistant)
 
 CapBot needs a small server-side function so the LLM API key stays secret.
-This repo ships that function at `api/chat.js`. Here's how to turn it on.
+This repo ships that function at `api/chat.js` — and the other live web tools
+(tracker, forecast, checkout, contact) each have their own `/api/*.js` module.
+Here's how to turn them on.
+
+---
+
+## Endpoints overview
+
+| Endpoint | Purpose | Requires |
+|---|---|---|
+| `/api/chat` | CapBot assistant (Gemini, context-aware, rate-limited) | `GEMINI_API_KEY` |
+| `/api/tracker` | Read stats / POST a cap drop (KV or in-memory) | none (optional `KV_REST_API_URL`/`KV_REST_API_TOKEN` for persistence) |
+| `/api/forecast` | Trend + 6-month projection from a monthly series | none |
+| `/api/checkout` | Stripe Checkout for the Eco-Store | `STRIPE_SECRET_KEY` (else pickup-order fallback) |
+| `/api/contact` | Contact + newsletter form email | `RESEND_API_KEY` (else hands-off note) |
+
+All non-configured endpoints degrade gracefully (501 + friendly message + built-in fallback),
+so the site still works with zero env vars besides `GEMINI_API_KEY`.
 
 ---
 
@@ -98,3 +115,16 @@ The request/response shape the front-end expects stays the same:
 
 Edit the `SYSTEM_PROMPT` at the top of `api/chat.js` to change what CapBot knows
 and how it speaks. Keep it factual — CapBot is instructed not to invent stats or links.
+
+## Context focus chips & voice
+
+The widget sends an extra field with every message:
+
+```json
+{ "messages": [ ... ], "context": "safety" }
+```
+
+`context` values are `"" | safety | store | tracker | kit`. `api/chat.js` maps them
+to extra system guidance via `CONTEXT_PROMPTS`. The mic button uses the browser's
+Web Speech API (voice input) and needs no server change; if unsupported, CapBot
+politely tells the user to type.

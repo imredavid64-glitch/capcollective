@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Tracker &amp; Forecast | The Cap Collective</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='%23059669'%3E%3Ccircle cx='32' cy='8' r='5'/%3E%3Ccircle cx='44' cy='11.2' r='5'/%3E%3Ccircle cx='52.8' cy='20' r='5'/%3E%3Ccircle cx='56' cy='32' r='5'/%3E%3Ccircle cx='52.8' cy='44' r='5'/%3E%3Ccircle cx='44' cy='52.8' r='5'/%3E%3Ccircle cx='32' cy='56' r='5'/%3E%3Ccircle cx='20' cy='52.8' r='5'/%3E%3Ccircle cx='11.2' cy='44' r='5'/%3E%3Ccircle cx='8' cy='32' r='5'/%3E%3Ccircle cx='11.2' cy='20' r='5'/%3E%3Ccircle cx='20' cy='11.2' r='5'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='24' fill='%2310b981' stroke='%23047857' stroke-width='2'/%3E%3C/svg%3E">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = { theme: { extend: {
+            fontFamily: { sans: ['Inter','sans-serif'], display: ['Plus Jakarta Sans','sans-serif'] },
+            colors: { brand: { 500:'#10b981', 600:'#059669', 700:'#047857', 900:'#064e3b' } }
+        } } };
+    </script>
+    <style>.glass { background: rgba(18,31,28,.7); backdrop-filter: blur(12px); border: 1px solid rgba(16,185,129,.15); }</style>
+</head>
+<body class="bg-[#070d0c] text-slate-100 font-sans antialiased">
+
+    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-400 to-teal-600 flex items-center justify-center text-white font-bold text-xl"><i class="fa-solid fa-recycle text-lg"></i></div>
+                <div>
+                    <span class="font-display font-bold text-lg tracking-tight bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent">THE CAP COLLECTIVE</span>
+                    <span class="block text-[10px] text-emerald-400/80 uppercase tracking-widest font-semibold">Live Tracker</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center space-x-5 text-sm font-medium text-slate-300">
+                <a href="index.html" class="hover:text-emerald-400 transition-colors">Home</a>
+                <a href="shop.html" class="hover:text-emerald-400 transition-colors">Eco-Store</a>
+                <a href="tracker.html" class="text-emerald-400">Live Tracker</a>
+                <a href="learn.html" class="hover:text-emerald-400 transition-colors">Safety Quiz</a>
+                <a href="gallery.html" class="hover:text-emerald-400 transition-colors">Impact</a>
+                <a href="kit.html" class="hover:text-emerald-400 transition-colors">The Kit</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="pt-28 pb-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 space-y-3">
+            <h1 class="font-display font-extrabold text-4xl sm:text-5xl text-white">Live Cap Tracker</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto">Every cap logged counts. Data flows in from collection drives, and soon from IoT hoppers — see it live, forecast the trend, and beat last semester.</p>
+        </div>
+
+        <div id="stats" class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            <div class="glass rounded-2xl p-6 text-center"><p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Total caps</p><p id="st-caps" class="font-display font-extrabold text-3xl mt-1 text-emerald-300">—</p></div>
+            <div class="glass rounded-2xl p-6 text-center"><p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Plastic diverted</p><p id="st-kg" class="font-display font-extrabold text-3xl mt-1 text-emerald-300">—</p></div>
+            <div class="glass rounded-2xl p-6 text-center"><p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">CO₂e avoided (kg)</p><p id="st-co2" class="font-display font-extrabold text-3xl mt-1 text-emerald-300">—</p></div>
+            <div class="glass rounded-2xl p-6 text-center"><p class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Data source</p><p id="st-src" class="font-display font-extrabold text-3xl mt-1 text-emerald-300">—</p></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
+            <div class="glass rounded-2xl p-6 lg:col-span-2">
+                <h2 class="font-display font-bold text-xl mb-5"><i class="fa-solid fa-chart-line text-emerald-400 mr-2"></i>Trend &amp; Forecast</h2>
+                <div id="chart" class="w-full"></div>
+                <p id="forecast-note" class="text-xs text-slate-500 mt-4"></p>
+            </div>
+            <div class="glass rounded-2xl p-6">
+                <h2 class="font-display font-bold text-xl mb-5"><i class="fa-solid fa-ranking-star text-emerald-400 mr-2"></i>Class leaderboard</h2>
+                <ol id="class-list" class="space-y-2 text-sm"></ol>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+            <div class="glass rounded-2xl p-6">
+                <h2 class="font-display font-bold text-xl mb-5"><i class="fa-solid fa-school text-emerald-400 mr-2"></i>School leaders</h2>
+                <ul id="school-list" class="space-y-3"></ul>
+            </div>
+            <div class="glass rounded-2xl p-6">
+                <h2 class="font-display font-bold text-xl mb-5"><i class="fa-solid fa-clipboard-check text-emerald-400 mr-2"></i>Log a drop-off</h2>
+                <p class="text-sm text-slate-400 mb-4">Count a bag of caps and log it. Data feeds the leaderboard and the forecast.</p>
+                <form id="log-form" class="space-y-3">
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="col-span-2"><label class="text-xs font-semibold text-slate-400 block mb-1">School</label>
+                            <select id="f-school" class="w-full px-4 py-2.5 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white focus:outline-none focus:border-emerald-500">
+                                <option>AISB</option><option>Greenfield</option><option>Other</option>
+                            </select></div>
+                        <div><label class="text-xs font-semibold text-slate-400 block mb-1">Class</label>
+                            <input id="f-class" type="text" placeholder="7B" class="w-full px-4 py-2.5 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500" /></div>
+                        <div><label class="text-xs font-semibold text-slate-400 block mb-1">Number of caps</label>
+                            <input id="f-caps" type="number" min="1" step="1" placeholder="250" class="w-full px-4 py-2.5 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500" /></div>
+                    </div>
+                    <button class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold transition-all hover:from-emerald-600">Log caps</button>
+                    <p id="log-msg" class="text-xs text-slate-400"></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-emerald-950/60 py-10 text-center text-sm text-slate-500">
+        <p>&copy; <span id="year"></span> Cap Collective · Tracking every cap toward a cleaner community · <a class="text-emerald-500 hover:text-emerald-400" href="kit.html">The Kit</a></p>
+    </footer>
+
+    <script>
+        async function load() {
+            try {
+                let res = await fetch("/api/tracker");
+                if (!res.ok) throw new Error("tracker");
+                let data = await res.json();
+                paint(data);
+                await drawForecast(data.monthly || []);
+            } catch (e) {
+                document.getElementById("st-caps").textContent = "—";
+            }
+        }
+
+        function paint(d) {
+            document.getElementById("st-caps").textContent = d.totalCaps.toLocaleString();
+            document.getElementById("st-kg").textContent = d.kg + " kg";
+            document.getElementById("st-co2").textContent = d.co2e + " kg";
+            document.getElementById("st-src").textContent = d.source === "kv" ? "Live · KV" : "Live · Demo";
+            const cl = document.getElementById("class-list");
+            cl.innerHTML = d.byClass.slice(0, 8).map((c, i) => `
+                <li class="flex items-center justify-between p-3 rounded-xl bg-emerald-950/30 border border-emerald-900/40">
+                    <span class="flex items-center space-x-2"><span class="w-6 h-6 rounded-full bg-emerald-900/60 text-emerald-300 text-xs font-bold flex items-center justify-center">${i + 1}</span><span>${c.name}</span></span>
+                    <span class="font-bold text-emerald-300">${c.caps.toLocaleString()} caps</span>
+                </li>`).join("") || '<li class="text-slate-500">No data yet.</li>';
+            const sl = document.getElementById("school-list");
+            sl.innerHTML = d.bySchool.map(s => `
+                <li class="flex items-center justify-between">
+                    <span><i class="fa-solid fa-school mr-2 text-emerald-400"></i>${s.name}</span>
+                    <span class="font-bold">${s.caps.toLocaleString()}</span>
+                </li>`).join("");
+            const recent = d.recent.slice(0, 5).map(r => `${r.date} · ${r.school} ${r.classLabel} · ${r.caps} caps`).join(" · ");
+            document.querySelector("#log-msg").textContent = recent ? `Latest: ${recent}` : "";
+        }
+
+        function svgChart(points) {
+            const W = 720, H = 260, P = 30;
+            const max = Math.max(...points.map(p => p.value), 1);
+            const bw = (W - P * 2) / points.length;
+            let bars = "";
+            points.forEach((p, i) => {
+                const h = (p.value / max) * (H - P * 2);
+                const x = P + i * bw + bw * 0.18;
+                const y = H - P - h;
+                const fill = p.kind === "forecast" ? "#0ea5e9" : (i === points.length - 1 ? "#10b981" : "#34d399");
+                const opacity = p.kind === "forecast" ? 0.45 : 0.95;
+                bars += `<rect x="${x}" y="${y}" width="${bw * 0.64}" height="${Math.max(h,2)}" rx="3" fill="${fill}" opacity="${opacity}">
+                            <title>${p.label} · ${p.value.toLocaleString()}</title></rect>`;
+            });
+            const labels = points.map((p, i) => {
+                const x = P + i * bw + bw * 0.5;
+                const show = points.length > 24 ? (i % Math.ceil(points.length / 10) === 0) : true;
+                return show ? `<text x="${x}" y="${H - 12}" text-anchor="middle" font-size="9" fill="#64748b">${p.label}</text>` : "";
+            }).join("");
+            return `<svg viewBox="0 0 ${W} ${H}" class="w-full h-auto">
+                <line x1="${P}" y1="${H - P}" x2="${W - P}" y2="${H - P}" stroke="#1e3a34" stroke-width="1"/>
+                ${bars}${labels}
+            </svg>`;
+        }
+
+        async function drawForecast(monthly) {
+            const el = document.getElementById("chart");
+            el.innerHTML = '<p class="text-slate-400 text-sm">Loading forecast…</p>';
+            try {
+                const res = await fetch("/api/forecast", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ series: monthly, steps: 6 }),
+                });
+                const d = await res.json();
+                document.getElementById("forecast-note").textContent =
+                    `Forecast: ~${d.generatedAt ? "6 month look-ahead" : ""} · trend ${d.trend} (+${d.slope} caps/month) · projected +${d.projectedTotal.toLocaleString()} caps. Blue = forecast.`;
+                el.innerHTML = svgChart(d.points);
+            } catch (e) {
+                el.innerHTML = '<p class="text-slate-400 text-sm">Forecast unavailable right now.</p>';
+            }
+        }
+
+        document.getElementById("log-form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const caps = parseInt(document.getElementById("f-caps").value, 10);
+            if (!caps || caps < 1) { document.getElementById("log-msg").textContent = "Enter a positive number of caps."; return; }
+            document.getElementById("log-msg").textContent = "Logging…";
+            try {
+                const r = await fetch("/api/tracker", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        school: document.getElementById("f-school").value,
+                        classLabel: document.getElementById("f-class").value.trim() || "Student",
+                        caps,
+                    }),
+                });
+                if (!r.ok) throw new Error("save");
+                document.getElementById("f-caps").value = "";
+                document.getElementById("log-msg").textContent = "✓ Logged! Leaderboard updated.";
+                await load();
+            } catch (err) {
+                document.getElementById("log-msg").textContent = "Couldn't log — please try again.";
+            }
+        });
+
+        const yEl = document.getElementById("year");
+        if (yEl) yEl.textContent = new Date().getFullYear();
+        load();
+    </script>
+</body>
+</html>

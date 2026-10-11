@@ -78,6 +78,14 @@
         @keyframes capbotBounce { 0%,60%,100%{ transform:translateY(0); opacity:.4 } 30%{ transform:translateY(-4px); opacity:1 } }
         .capbot-pulse { animation: capbotPulse 2s infinite; }
         @keyframes capbotPulse { 0%{ box-shadow:0 0 0 0 rgba(16,185,129,.5) } 70%{ box-shadow:0 0 0 14px rgba(16,185,129,0) } 100%{ box-shadow:0 0 0 0 rgba(16,185,129,0) } }
+
+        /* ---------- Accessibility / i18n ---------- */
+        html.a11y-lg { font-size: 118%; }
+        html.a11y-contour a:focus-visible, html.a11y-contour button:focus-visible,
+        html.a11y-contour input:focus-visible, html.a11y-contour select:focus-visible,
+        html.a11y-contour textarea:focus-visible, html.a11y-contour [tabindex]:focus-visible {
+            outline: 2px solid #34d399; outline-offset: 2px; border-radius: 4px;
+        }
     </style>
 </head>
 <body class="bg-[#070d0c] text-slate-100 font-sans antialiased overflow-x-hidden">
@@ -107,14 +115,22 @@
             </nav>
 
             <div class="hidden md:flex items-center space-x-4">
-                <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="px-4 py-2 text-sm font-semibold text-emerald-300 hover:text-emerald-100 transition-colors flex items-center space-x-2">
+                <a href="shop.html" class="px-4 py-2 text-sm font-semibold text-emerald-300 hover:text-emerald-100 transition-colors flex items-center space-x-2">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Eco-Store</span>
+                </a>
+                <a href="tracker.html" class="px-4 py-2 text-sm font-semibold text-emerald-300 hover:text-emerald-100 transition-colors flex items-center space-x-2">
                     <i class="fa-solid fa-chart-line"></i>
                     <span>Live Tracker</span>
                 </a>
-                <a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl text-sm font-semibold shadow-lg shadow-emerald-500/10 transition-all hover:scale-[1.02] flex items-center space-x-2">
-                    <i class="fa-solid fa-file-powerpoint"></i>
-                    <span>Implementation Kit</span>
+                <a href="kit.html" class="px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white rounded-xl text-sm font-semibold shadow-lg shadow-emerald-500/10 transition-all hover:scale-[1.02] flex items-center space-x-2">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>The Kit</span>
                 </a>
+                <button onclick="toggleA11y()" aria-label="Accessibility mode" title="Accessibility: larger text &amp; outlines"
+                    class="w-9 h-9 rounded-lg border border-emerald-900/50 text-slate-300 hover:text-white hover:border-emerald-500/50 transition-all text-xs font-bold">Aa</button>
+                <button onclick="toggleLang()" id="lang-toggle" aria-label="Switch language" title="Română / English"
+                    class="w-9 h-9 rounded-lg border border-emerald-900/50 text-slate-300 hover:text-white hover:border-emerald-500/50 transition-all text-xs font-bold">RO</button>
             </div>
 
             <!-- Mobile menu button -->
@@ -135,13 +151,17 @@
             <a href="#resources" class="block py-2 px-3 rounded-lg hover:bg-emerald-900/20 text-slate-300 hover:text-white transition-all font-semibold text-emerald-400">Resources Hub</a>
             <hr class="border-emerald-900/40 my-3">
             <div class="grid grid-cols-1 gap-2">
-                <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10 transition-colors text-sm font-semibold flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-chart-line"></i>
-                    <span>Open Tracker App</span>
+                <a href="shop.html" class="w-full text-center py-2.5 rounded-xl border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10 transition-colors text-sm font-semibold flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Eco-Store</span>
                 </a>
-                <a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all text-sm flex items-center justify-center space-x-2">
-                    <i class="fa-solid fa-file-powerpoint"></i>
-                    <span>Implementation Slides</span>
+                <a href="tracker.html" class="w-full text-center py-2.5 rounded-xl border border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/10 transition-colors text-sm font-semibold flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Open Live Tracker</span>
+                </a>
+                <a href="kit.html" class="w-full text-center py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold hover:from-emerald-600 hover:to-teal-700 transition-all text-sm flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span>Browse the Kit</span>
                 </a>
             </div>
         </div>
@@ -163,23 +183,23 @@
                         <span>Official AISB Circular Economy System</span>
                     </div>
                     
-                    <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1]">
+                    <h1 data-i18n="hero-title" class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white leading-[1.1]">
                         Transforming Small Waste into <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Big Impact</span>
                     </h1>
                     
-                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    <p data-i18n="hero-sub" class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                         The Cap Collective is dedicated to capturing discarded plastic bottle caps and recycling them into valuable community-sourced items. Standard systems miss them—we gather, shred, and mold them back into life.
                     </p>
                     
                     <!-- Quick Call to Action Buttons -->
                     <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
-                        <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl transition-all hover:scale-[1.03] shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-3 text-base">
+                        <a href="tracker.html" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl transition-all hover:scale-[1.03] shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-3 text-base">
                             <i class="fa-solid fa-chart-line text-lg"></i>
-                            <span>AISB Cap Tracker</span>
+                            <span data-i18n="cta-tracker">Explore the Live Tracker</span>
                         </a>
-                        <a href="https://docs.google.com/presentation/d/1cXUBR2XjPX6kRnGMhwWLmx35DcEWYCkQUFDpJScUSlM/edit?slide=id.p3#slide=id.p3" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-4 glass text-slate-200 hover:text-white font-semibold rounded-xl border border-slate-700 hover:border-emerald-500/40 transition-all flex items-center justify-center space-x-3 text-base">
+                        <a href="kit.html" class="w-full sm:w-auto px-8 py-4 glass text-slate-200 hover:text-white font-semibold rounded-xl border border-slate-700 hover:border-emerald-500/40 transition-all flex items-center justify-center space-x-3 text-base">
                             <i class="fa-solid fa-book-open"></i>
-                            <span>Implementation Kit</span>
+                            <span data-i18n="cta-kit">Browse the Implementation Kit</span>
                         </a>
                     </div>
 
@@ -245,8 +265,8 @@
                                 <div class="absolute -top-12 -right-12 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl"></div>
                                 <h3 class="text-sm font-semibold text-slate-200 mb-1">Check the Live Collection Metrics</h3>
                                 <p class="text-xs text-slate-400 mb-3">Our schools are keeping plastic out of the environment and logging every single cap.</p>
-                                <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center space-x-2 px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 hover:text-white rounded-xl text-xs font-bold transition-all w-full">
-                                    <span>Visit bottle-cap-tracker.vercel.app</span>
+                                <a href="tracker.html" class="inline-flex items-center justify-center space-x-2 px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 hover:text-white rounded-xl text-xs font-bold transition-all w-full">
+                                    <span>Open the Live Cap Tracker</span>
                                     <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                                 </a>
                             </div>
@@ -810,7 +830,7 @@
                     <p class="text-xs uppercase tracking-wider text-slate-400 mt-1">Student Participation</p>
                 </div>
             </div>
-            <p class="text-center text-xs text-slate-500 mt-6">Figures update from our tracker. Open the <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="text-emerald-400 hover:underline">live dashboard</a> for real-time counts.</p>
+            <p class="text-center text-xs text-slate-500 mt-6">Figures update from our tracker. Open the <a href="tracker.html" class="text-emerald-400 hover:underline">live dashboard</a> for real-time counts.</p>
         </div>
     </section>
 
@@ -822,7 +842,7 @@
                 <span class="text-emerald-400 text-xs font-bold uppercase tracking-wider bg-emerald-950/60 px-3 py-1.5 rounded-full border border-emerald-900/30">Bring It To Your School</span>
                 <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-white">A Complete, Free Implementation Kit</h2>
                 <p class="text-slate-300">
-                    Everything you need to launch Cap Collective — from convincing your principal to handing the program off to next year's students. 29 documents, ready to use and adapt.
+                    Everything you need to launch Cap Collective — from convincing your principal to handing the program off to next year's students. 33 documents, ready to use and adapt.
                 </p>
             </div>
 
@@ -970,6 +990,57 @@
         </div>
     </section>
 
+    <!-- Contact & Newsletter -->
+    <section id="contact" class="py-20 bg-[#060b0a] border-t border-emerald-950/50 relative">
+        <div class="absolute top-0 right-1/3 w-[360px] h-[360px] bg-teal-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="space-y-5">
+                    <span class="inline-block text-emerald-400 text-xs font-bold uppercase tracking-wider bg-emerald-950/60 px-3 py-1.5 rounded-full border border-emerald-900/30">Stay in the loop</span>
+                    <h2 data-i18n="contact-title" class="font-display font-extrabold text-3xl sm:text-4xl text-white">Ask us anything</h2>
+                    <p data-i18n="contact-sub" class="text-slate-300 leading-relaxed">Questions about starting a node, donating caps, or buying from the Eco-Store? Message the club and subscribe for parent updates — one email at launch, that's it.</p>
+                    <div class="space-y-3 text-sm text-slate-400">
+                        <p class="flex items-center space-x-3"><i class="fa-solid fa-envelope text-emerald-400"></i><span>hello@capcollective.org</span></p>
+                        <p class="flex items-center space-x-3"><i class="fa-solid fa-location-dot text-emerald-400"></i><span>AISB Changemakers Club · Bucharest</span></p>
+                        <p class="flex items-center space-x-3"><i class="fa-solid fa-robot text-emerald-400"></i><span>Need a quick answer? Ask CapBot in the corner.</span></p>
+                    </div>
+                </div>
+                <form id="contact-form" class="glass rounded-3xl p-7 sm:p-8 space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-semibold text-slate-300 block mb-1" for="cf-name">Name</label>
+                            <input id="cf-name" name="name" required type="text" placeholder="Your name" class="w-full px-4 py-3 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500" />
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold text-slate-300 block mb-1" for="cf-email">Email</label>
+                            <input id="cf-email" name="email" required type="email" placeholder="you@school.edu" class="w-full px-4 py-3 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500" />
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-slate-300 block mb-1" for="cf-topic">Topic</label>
+                        <select id="cf-topic" name="topic" class="w-full px-4 py-3 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white focus:outline-none focus:border-emerald-500">
+                            <option>General question</option>
+                            <option>Starting a node at our school</option>
+                            <option>Eco-Store / ordering products</option>
+                            <option>Donating caps</option>
+                            <option>Partnership</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-slate-300 block mb-1" for="cf-message">Message</label>
+                        <textarea id="cf-message" name="message" required rows="3" placeholder="How can we help?" class="w-full px-4 py-3 rounded-xl bg-[#0b1311] border border-emerald-900/40 text-white placeholder-slate-600 focus:outline-none focus:border-emerald-500"></textarea>
+                    </div>
+                    <label class="flex items-center space-x-3 text-sm text-slate-300 cursor-pointer">
+                        <input id="cf-news" name="newsletter" type="checkbox" class="w-4 h-4 rounded accent-emerald-500" />
+                        <span>Also subscribe me to the quarterly parent newsletter</span>
+                    </label>
+                    <button class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold transition-all" type="submit">Send message</button>
+                    <p id="contact-msg" class="text-sm text-slate-400" role="status"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-[#040807] border-t border-emerald-950/60 py-12 text-slate-400">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1000,6 +1071,17 @@
                     </ul>
                 </div>
 
+                <!-- Live tools column -->
+                <div class="md:col-span-3 space-y-3">
+                    <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Live Tools</h5>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="tracker.html" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-chart-line text-[11px] text-emerald-400"></i><span>Live Tracker &amp; Forecast</span></a></li>
+                        <li><a href="shop.html" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-cart-shopping text-[11px] text-emerald-400"></i><span>Eco-Store</span></a></li>
+                        <li><a href="learn.html" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-clipboard-check text-[11px] text-teal-400"></i><span>Safety Certification</span></a></li>
+                        <li><a href="gallery.html" class="hover:text-emerald-400 transition-colors flex items-center space-x-2"><i class="fa-solid fa-camera text-[11px] text-emerald-400"></i><span>Impact Gallery</span></a></li>
+                    </ul>
+                </div>
+
                 <!-- Kit / Downloads column -->
                 <div class="md:col-span-3 space-y-3">
                     <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Get the Kit</h5>
@@ -1016,7 +1098,7 @@
                     <h5 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-200">Resources &amp; Connect</h5>
                     <ul class="space-y-2 text-sm">
                         <li>
-                            <a href="https://bottle-cap-tracker.vercel.app" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
+                            <a href="tracker.html" class="hover:text-emerald-400 transition-colors flex items-center space-x-2">
                                 <i class="fa-solid fa-chart-line text-[11px] text-emerald-400"></i>
                                 <span>Live Cap Tracker</span>
                             </a>
@@ -1071,10 +1153,15 @@
             </div>
             <button onclick="capbotClose()" class="text-white/80 hover:text-white p-1" aria-label="Close chat"><i class="fa-solid fa-xmark text-lg"></i></button>
         </div>
+        <div id="capbot-context" class="px-4 py-2 border-b border-emerald-900/30 flex flex-wrap gap-1.5 text-[11px]">
+            <span class="text-slate-500 mr-1">Focus:</span>
+        </div>
         <div id="capbot-messages" class="capbot-scroll flex-1 overflow-y-auto p-4 space-y-3 text-sm"></div>
         <div id="capbot-suggest" class="px-4 pb-2 flex flex-wrap gap-2"></div>
+        <div id="capbot-actions" class="px-4 pb-1 hidden flex flex-wrap gap-2"></div>
         <form id="capbot-form" class="p-3 border-t border-emerald-900/40 flex items-center gap-2">
             <input id="capbot-input" type="text" autocomplete="off" placeholder="Ask about the program..." class="flex-1 bg-emerald-950/60 border border-emerald-900/50 rounded-xl px-3 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500" />
+            <button type="button" onclick="capbotMic()" id="capbot-mic" class="w-10 h-10 shrink-0 rounded-xl border border-emerald-700/60 text-emerald-300 hover:text-white hover:bg-emerald-900/40 transition-all flex items-center justify-center" aria-label="Speak your question" title="Voice input"><i class="fa-solid fa-microphone text-sm"></i></button>
             <button type="submit" id="capbot-send" class="w-10 h-10 shrink-0 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white flex items-center justify-center hover:from-emerald-600 hover:to-teal-700 transition-all" aria-label="Send"><i class="fa-solid fa-paper-plane text-sm"></i></button>
         </form>
     </div>
@@ -1270,7 +1357,17 @@
         const capbotForm = document.getElementById("capbot-form");
         const capbotInput = document.getElementById("capbot-input");
         const capbotSuggest = document.getElementById("capbot-suggest");
+        const capbotContextEl = document.getElementById("capbot-context");
         const capbotIcon = document.getElementById("capbot-launcher-icon");
+
+        let CAPBOT_CONTEXT = "";
+        const CAPBOT_CONTEXTS = [
+            { id: "", label: "All" },
+            { id: "safety", label: "Safety" },
+            { id: "store", label: "Eco-Store" },
+            { id: "tracker", label: "Tracker" },
+            { id: "kit", label: "The Kit" },
+        ];
 
         const CAPBOT_HISTORY = [];
         const CAPBOT_SUGGESTIONS = [
@@ -1339,6 +1436,40 @@
                 b.onclick = () => { capbotInput.value = q; capbotSend(q); };
                 capbotSuggest.appendChild(b);
             });
+            capbotContextEl.innerHTML = '<span class="text-slate-500 mr-1">Focus:</span>';
+            CAPBOT_CONTEXTS.forEach((c) => {
+                const b = document.createElement("button");
+                b.type = "button";
+                b.dataset.ctx = c.id;
+                b.className = "px-2.5 py-1 rounded-full border transition-colors " +
+                    (c.id === CAPBOT_CONTEXT
+                        ? "bg-emerald-500/25 border-emerald-400/50 text-emerald-200"
+                        : "bg-emerald-950/40 border-emerald-900/40 text-slate-400 hover:text-emerald-300");
+                b.textContent = c.label;
+                b.onclick = () => {
+                    CAPBOT_CONTEXT = c.id;
+                    document.querySelectorAll("#capbot-context button").forEach(x => {
+                        const act = x.dataset.ctx === c.id;
+                        x.className = "px-2.5 py-1 rounded-full border transition-colors " +
+                            (act ? "bg-emerald-500/25 border-emerald-400/50 text-emerald-200" : "bg-emerald-950/40 border-emerald-900/40 text-slate-400 hover:text-emerald-300");
+                    });
+                };
+                capbotContextEl.appendChild(b);
+            });
+        }
+
+        function capbotChips(buttons) {
+            const wrap = document.getElementById("capbot-actions");
+            wrap.innerHTML = "";
+            buttons.forEach((btn) => {
+                const b = document.createElement("button");
+                b.type = "button";
+                b.className = "text-[11px] px-3 py-1.5 rounded-full bg-slate-800/60 border border-slate-600/50 text-slate-200 hover:border-emerald-400/60 hover:text-emerald-300 transition-colors";
+                b.textContent = btn.label;
+                b.onclick = btn.onClick;
+                wrap.appendChild(b);
+            });
+            wrap.classList.remove("hidden");
         }
 
         function capbotWelcome() {
@@ -1352,6 +1483,7 @@
             if (!msg) return;
             capbotInput.value = "";
             capbotSuggest.innerHTML = "";
+            document.getElementById("capbot-actions").classList.add("hidden");
             capbotAdd(msg, "user");
             CAPBOT_HISTORY.push({ role: "user", content: msg });
             capbotTyping();
@@ -1360,7 +1492,7 @@
                 const res = await fetch(CAPBOT_ENDPOINT, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ messages: CAPBOT_HISTORY }),
+                    body: JSON.stringify({ messages: CAPBOT_HISTORY, context: CAPBOT_CONTEXT }),
                 });
                 capbotStopTyping();
                 if (!res.ok) throw new Error("HTTP " + res.status);
@@ -1370,8 +1502,31 @@
                 CAPBOT_HISTORY.push({ role: "assistant", content: reply });
             } catch (err) {
                 capbotStopTyping();
-                capbotAdd("I can't reach the assistant right now. Please try again shortly, or email hello@capcollective.org.", "error");
+                capbotAdd("I can't reach the assistant right now. You can retry, or email the club directly.", "error");
+                capbotChips([
+                    { label: "↻ Retry", onClick: () => capbotSend(msg) },
+                    { label: "✉ hello@capcollective.org", onClick: () => location.href = "mailto:hello@capcollective.org?subject=CapBot question" },
+                ]);
             }
+        }
+
+        function capbotMic() {
+            const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+            if (!SR) { capbotAdd("Voice input isn't supported in this browser — just type your question.", "error"); return; }
+            const rec = new SR();
+            rec.lang = "en-US";
+            rec.interimResults = false;
+            const micBtn = document.getElementById("capbot-mic");
+            micBtn.classList.add("!bg-red-500/30");
+            rec.onresult = (e) => {
+                micBtn.classList.remove("!bg-red-500/30");
+                const t = e.results[0][0].transcript;
+                capbotInput.value = t;
+                capbotSend(t);
+            };
+            rec.onerror = () => { micBtn.classList.remove("!bg-red-500/30"); capbotAdd("I couldn't hear that. Please try again or type instead.", "error"); };
+            rec.onend = () => micBtn.classList.remove("!bg-red-500/30");
+            rec.start();
         }
 
         function capbotToggle() {
@@ -1391,6 +1546,83 @@
         }
 
         capbotForm.addEventListener("submit", (e) => { e.preventDefault(); capbotSend(); });
+
+        // ----- i18n (EN / RO) -----
+        const I18N = {
+            en: {
+                "hero-title": 'Transforming Small Waste into <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Big Impact</span>',
+                "hero-sub": "The Cap Collective turns discarded bottle caps into valuable community products — no big factory needed. We gather, shred and mold them back into life.",
+                "cta-tracker": "Explore the Live Tracker",
+                "cta-kit": "Browse the Implementation Kit",
+                "contact-title": "Ask us anything",
+                "contact-sub": "Questions about starting a node, donating caps, or buying from the Eco-Store? Message the club and subscribe for parent updates.",
+            },
+            ro: {
+                "hero-title": 'Devenim deșeuri mici în <span class="bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 bg-clip-text text-transparent">Impact Mare</span>',
+                "hero-sub": "Cap Collective transformă capacele de sticle aruncate în produse valoroase pentru comunitate — fără fabrici mari. Le adunăm, le mărunțim și le turnăm din nou în viață.",
+                "cta-tracker": "Vezi Trackerul Live",
+                "cta-kit": "Deschide Kitul de Implementare",
+                "contact-title": "Întreabă-ne orice",
+                "contact-sub": "Întrebări despre începerea unui nod, donarea de capace sau cumpărături de la Eco-Store? Scrie clubului și abonează-te la noutăți.",
+            },
+        };
+        function applyLang(lang) {
+            const dict = I18N[lang] || I18N.en;
+            Object.entries(dict).forEach(([k, v]) => {
+                const el = document.querySelector("[data-i18n='" + k + "']");
+                if (el) el.innerHTML = v;
+            });
+            document.documentElement.lang = lang;
+            const btn = document.getElementById("lang-toggle");
+            if (btn) btn.textContent = lang === "en" ? "RO" : "EN";
+            try { localStorage.setItem("cc_lang", lang); } catch (e) {}
+        }
+        function toggleLang() {
+            applyLang(document.documentElement.lang === "ro" ? "en" : "ro");
+        }
+        (function () { applyLang(localStorage.getItem("cc_lang") === "ro" ? "ro" : "en"); })();
+
+        // ----- Accessibility toggles -----
+        function applyA11y(on) {
+            document.documentElement.classList.toggle("a11y-lg", on);
+            document.documentElement.classList.toggle("a11y-contour", on);
+            try { localStorage.setItem("cc_a11y", on ? "1" : "0"); } catch (e) {}
+        }
+        function toggleA11y() {
+            applyA11y(!document.documentElement.classList.contains("a11y-lg"));
+        }
+        (function () { applyA11y(localStorage.getItem("cc_a11y") === "1"); })();
+
+        // ----- Contact / newsletter form -----
+        const contactForm = document.getElementById("contact-form");
+        if (contactForm) {
+            contactForm.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const msgEl = document.getElementById("contact-msg");
+                msgEl.textContent = "Sending…";
+                try {
+                    const r = await fetch("/api/contact", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            name: document.getElementById("cf-name").value.trim(),
+                            email: document.getElementById("cf-email").value.trim(),
+                            topic: document.getElementById("cf-topic").value,
+                            message: document.getElementById("cf-message").value.trim(),
+                            newsletter: document.getElementById("cf-news").checked,
+                        }),
+                    });
+                    if (r.ok) {
+                        msgEl.textContent = "✓ Message sent — we'll get back to you soon.";
+                        contactForm.reset();
+                    } else {
+                        msgEl.textContent = "We couldn't send that right now. Email us directly at hello@capcollective.org.";
+                    }
+                } catch (err) {
+                    msgEl.textContent = "Network error — email us directly at hello@capcollective.org.";
+                }
+            });
+        }
     </script>
 </body>
 </html>

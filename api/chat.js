@@ -20,12 +20,15 @@ PROGRAM KNOWLEDGE (use only this; if unsure, say so and point to the kit):
 - Budget tiers: Core $500-$1,000 (pilots/primary); FabLab $2,500-$5,000 (middle/high makerspaces); Center $10,000+ (technical schools / district hubs).
 - Impact targets per semester: 10,000+ caps, 35+ kg diverted, 65+ kg CO2e avoided, $500+ revenue, 80% participation.
 - Curriculum: 4 grade bands — K-2 Cap Detectives, 3-5 Cap Engineers, 6-8 Cap Innovators, 9-12 Cap Systems Designers; 12 lesson plans mapped to NGSS/Common Core/IB.
-- The free "Implementation Kit" has 29 documents covering pitch, approvals, funding, safety, curriculum, launch, store operations, reporting, scaling and handover.
+- The free "Implementation Kit" has 33 documents covering pitch, approvals, funding, safety, curriculum, launch, store operations, IoT tracking, reporting, scaling and handover.
 
 KEY LINKS:
+- Browse the Kit online: kit.html (searchable reader with every module)
 - Program Overview PDF: assets/CapCollective_Overview.pdf
 - Full Implementation Kit PDF: assets/CapCollective_Implementation_Kit.pdf
-- Live Cap Tracker: https://bottle-cap-tracker.vercel.app
+- Live Cap Tracker & forecast: tracker.html
+- Eco-Store (shop recycled products): shop.html
+- Safety certification quiz: learn.html
 - GitHub: https://github.com/imredavid64-glitch/capcollective
 
 STYLE:
@@ -39,6 +42,13 @@ STYLE:
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQ = 30;
 const hits = new Map();
+
+const CONTEXT_PROMPTS = {
+  safety: `\n\nCONTEXT: The user is asking about SAFETY. Lead with certification-first: no certification = no machine access. Mention the 200C maximum, ventilated rooms, PPE per station, e-stop and fire blanket locations, and the quick quiz at learn.html for Foundation certification.`,
+  store: `\n\nCONTEXT: The user is asking about the ECO-STORE. Products are student-made from recycled caps (coasters, keychains, phone stands, organizers, plant pots, art tiles); buyers can checkout online or order for pickup; revenue funds the school garden.`,
+  tracker: `\n\nCONTEXT: The user is asking about the LIVE TRACKER / data. We log every cap (school, class, count), show leaderboards, and forecast future collection with a trend model. Soon hopper sensors push counts automatically (IoT).`,
+  kit: `\n\nCONTEXT: The user is asking about the IMPLEMENTATION KIT. Point them to kit.html where every one of the 33 modules is searchable and PDF downloads are available.`,
+};
 
 function rateLimited(ip) {
   const now = Date.now();
@@ -68,6 +78,8 @@ module.exports = async (req, res) => {
   if (typeof body === "string") { try { body = JSON.parse(body); } catch { body = {}; } }
   const messages = Array.isArray(body && body.messages) ? body.messages : null;
   if (!messages || !messages.length) return res.status(400).json({ error: "Missing 'messages'." });
+  const context = typeof body.context === "string" ? body.context.trim().toLowerCase() : "";
+  const systemText = SYSTEM_PROMPT + (CONTEXT_PROMPTS[context] || "");
 
   const contents = messages
     .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
@@ -86,7 +98,7 @@ module.exports = async (req, res) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          systemInstruction: { parts: [{ text: SYSTEM_PROMPT }] },
+          systemInstruction: { parts: [{ text: systemText }] },
           contents,
           generationConfig: { temperature: 0.4, maxOutputTokens: 500 },
           safetySettings: [
