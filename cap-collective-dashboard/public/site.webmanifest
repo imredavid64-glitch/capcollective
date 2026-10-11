@@ -1,0 +1,36 @@
+{
+  "name": "Cap Collective Dashboard",
+  "short_name": "Cap Collective",
+  "description": "Live impact dashboard for Cap Collective school circular economy program",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f0fdf4",
+  "theme_color": "#16a34a",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "environment", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "View Impact",
+      "short_name": "Impact",
+      "description": "View live impact metrics",
+      "url": "/impact",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Student Leaderboard",
+      "short_name": "Leaderboard",
+      "description": "View top student collectors",
+      "url": "/students",
+      "icons": [{ "src": "/favicon.svg", "sizes": "96x96" }]
+    }
+  ]
+}

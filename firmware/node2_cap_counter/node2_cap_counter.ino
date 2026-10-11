@@ -1,0 +1,1 @@
+Serial.println("\n=== Node 2 (Cap Counter) ===");

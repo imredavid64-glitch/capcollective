@@ -1,0 +1,17 @@
+Metric,Value,Formula Reference
+Caps Collected,,='Collection Tracker'!K7
+Weight Diverted (kg),,='Collection Tracker'!K8
+Products Made,,=SUM('Product Inventory'!D2:D1000)
+Products Sold,,=SUM('Product Inventory'!E2:E1000)
+Revenue (USD),,=SUM('Product Inventory'!H2:H1000)
+Students Engaged,,='Student Roles'!K7
+Students Certified,,='Student Roles'!K8
+CO2e Avoided (kg),,='Collection Tracker'!K11
+Est. Recycling Value (EUR),,='Collection Tracker'!K8*0.35
+,,,,,
+GOALS,,,,,
+Goal,Current,Target,Status
+Caps,,10000,=IF(B15>=C15,"ACHIEVED","TO GO")
+Weight (kg),,35,
+Revenue,,500,
+Participation (%),,80,

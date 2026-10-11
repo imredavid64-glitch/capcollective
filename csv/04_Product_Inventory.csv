@@ -1,0 +1,10 @@
+SKU,Product,Batch #,Qty Made,Qty Sold,Qty In Stock,Price,Revenue,Material Cost,Margin %,Customer Type
+CST-001,Coaster Set,B001,60,40,,10,,2.50,,Student
+KEY-001,Keychain,B002,120,95,,4,,0.60,,Community
+ORG-001,Desk Organizer,B003,30,18,,15,,4.00,,Staff
+POT-001,Plant Pot,B004,50,22,,8,,3.00,,Community
+,,,,,,,,,,
+TOTAL MADE =SUM(D2:D),,,,,,,,,,
+TOTAL SOLD =SUM(E2:E),,,,,,,,,,
+TOTAL REVENUE =SUM(H2:H),,,,,,,,,,
+BEST SELLER =INDEX(B2:B100,MATCH(MAX(E2:E100),E2:E100,0)),,,,,,,,,,
