@@ -84,12 +84,12 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/capcollective
     - icon: fontawesome/brands/twitter
-      link: https://twitter.com/CapCollective
+      link: https://twitter.com/capcollective
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/@CapCollective
   analytics:
     provider: google
-    property: G-XXXXXXXXXX  # Replace with your GA4 Measurement ID (Admin > Data Streams > Web)
+    property: G-XXXXXXXXXX  # Replace with your GA4 Measurement ID
   consent:
     title: Cookie consent
     description: >-
@@ -141,6 +141,7 @@ nav:
       - Forms & Permissions: resources/forms.md
       - Supplier Directory: resources/suppliers.md
       - FAQ & Troubleshooting: resources/faq.md
+      - Accessibility Guide: resources/accessibility.md
   - Contributing:
       - Contribution Guide: contributing/guide.md
       - Code of Conduct: contributing/conduct.md

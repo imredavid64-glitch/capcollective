@@ -2,7 +2,10 @@
 
 ## MIT License
 
-Copyright (c) 2024 Cap Collective
+```
+MIT License
+
+Copyright (c) 2024 Cap Collective Community
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,73 +24,201 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+```
 
 ---
 
-## What This Means for You
+## What This Means
 
-### ✅ You CAN:
-- **Use** the kit in any school, anywhere in the world
-- **Modify** documents, CAD, firmware, code for your needs
-- **Distribute** copies to other schools, districts, organizations
-- **Sell** products made using the program (student revenue)
-- **Incorporate** parts into other educational programs
-- **Translate** into any language
+### ✅ You CAN
+- **Use** commercially or personally
+- **Modify** the code, docs, designs
+- **Distribute** copies
+- **Sublicense** (include in larger works)
+- **Sell** products made with it
 
-### ⚠️ You MUST:
-- **Include** the copyright notice and license in distributions
-- **Not hold us liable** for any issues (use at your own risk)
-- **Follow safety protocols** — they're not optional
+### ❌ You CANNOT
+- Hold us liable for damages
+- Claim warranty or guarantees
+- Remove copyright/license notices
 
-### ❌ You CANNOT:
-- Claim the original work as your own without attribution
-- Use the Cap Collective name/logo for unrelated commercial products
-- Remove safety warnings or modify temperature limits
-
----
-
-## Attribution
-
-When sharing or adapting, please include:
-
-> "Based on Cap Collective (https://github.com/imredavid64-glitch/capcollective) — MIT Licensed"
+### 📋 You MUST
+- Include the license in all copies
+- Keep copyright notices intact
+- Not use our trademarks without permission
 
 ---
 
-## Third-Party Components
+## What's Covered
 
-This project includes or references:
-
-| Component | License | Source |
-|-----------|---------|--------|
-| Next.js | MIT | Vercel |
-| React | MIT | Meta |
-| Tailwind CSS | MIT | Tailwind Labs |
-| Recharts | MIT | Recharts Contributors |
-| Supabase JS | Apache 2.0 | Supabase |
-| PlatformIO | MIT | PlatformIO Labs |
-| OpenSCAD | GPL-2.0+ | OpenSCAD Team |
-| Arduino Core | LGPL-2.1+ | Arduino |
-| ESP32 Arduino Core | LGPL-2.1+ | Espressif |
+| Component | License | Notes |
+|-----------|---------|-------|
+| **Documentation** (`.md` files) | MIT | All guides, curriculum, resources |
+| **Dashboard Code** (`cap-collective-dashboard/`) | MIT | Next.js, TypeScript, React |
+| **Firmware** (`firmware/`) | MIT | ESP32/ESP32-S3 Arduino/PlatformIO |
+| **CAD Designs** (`cad/`) | CC-BY-SA 4.0 | OpenSCAD parametric files |
+| **Printables** (`docs/resources/printables.md`) | CC-BY-SA 4.0 | Posters, signs, worksheets |
+| **Templates** (`templates/`) | CC-BY-SA 4.0 | Forms, lesson plans, letters |
+| **Dashboard UI** | MIT | Recharts, Tailwind, Lucide components |
 
 ---
 
-## Educational Use Clarification
+## Third-Party Licenses
 
-**This license explicitly permits:**
-- Commercial use by schools (selling student-made products)
-- Use in for-profit educational programs
-- Adaptation for corporate training programs
-- Integration into paid curriculum packages
+### Dashboard Dependencies
+| Package | License | Link |
+|---------|---------|------|
+| Next.js | MIT | https://github.com/vercel/next.js |
+| React | MIT | https://github.com/facebook/react |
+| Recharts | MIT | https://github.com/recharts/recharts |
+| Tailwind CSS | MIT | https://github.com/tailwindlabs/tailwindcss |
+| Lucide React | ISC | https://github.com/lucide-icons/lucide |
+| Supabase JS | MIT | https://github.com/supabase/supabase-js |
+| TypeScript | Apache-2.0 | https://github.com/microsoft/TypeScript |
 
-**The only requirement:** Keep the license notice intact.
+### Firmware Dependencies
+| Library | License | Source |
+|---------|---------|--------|
+| Arduino ESP32 Core | LGPL-2.1 | Espressif |
+| ESP-NOW | Espressif MIT | Espressif |
+| esp_camera | Espressif MIT | Espressif |
+| Adafruit GFX | BSD | Adafruit |
+| Adafruit ST7735 | BSD | Adafruit |
+| Adafruit SSD1306 | BSD | Adafruit |
+| ArduinoJson | MIT | Benoit Blanchon |
+
+### Documentation Tools
+| Tool | License |
+|------|---------|
+| MkDocs | BSD-2-Clause |
+| MkDocs Material | MIT |
+| Mermaid | MIT |
+| Pymdown Extensions | BSD-3-Clause |
+
+---
+
+## Trademarks
+
+**Cap Collective** name, logo, and "Building the Bridge. Creating the Impact." tagline are trademarks.
+
+### Permitted Use
+- Referring to the project: "Cap Collective"
+- Describing compatibility: "Compatible with Cap Collective"
+- Community events: "Cap Collective Meetup"
+
+### Requires Permission
+- Modified logos/branding
+- Commercial products using the name
+- Official certification programs
+- Merchandise
+
+**Contact:** trademark@capcollective.org
+
+---
+
+## Digital Assets (CC-BY-SA 4.0)
+
+The following are licensed under **Creative Commons Attribution-ShareAlike 4.0 International**:
+
+- CAD files (`.scad`, `.dxf`, `.stl`, `.step`)
+- Printable posters, signs, worksheets
+- Form templates
+- Lesson plan templates
+- Grant templates
+- Social media templates
+
+### CC-BY-SA 4.0 Summary
+| ✅ You CAN | ❌ You CANNOT | 📋 You MUST |
+|------------|---------------|-------------|
+| Share | Add restrictions | Give credit |
+| Adapt | Remove license | Share alike |
+| Commercial use | | Link to license |
+
+**Attribution:** "Designed by [Name] for Cap Collective — CC-BY-SA 4.0"
+
+---
+
+## Hardware Designs
+
+### Open Hardware (CERN-OHL-S-2.0)
+Physical designs for:
+- Collection boxes
+- Press frames
+- Injection molds
+- Sensor enclosures
+- Radio Tower enclosure
+
+**CERN-OHL-S-2.0** = Strongly reciprocal (share alike for hardware)
+
+---
+
+## Patent Policy
+
+**No patents** will be filed on Cap Collective designs by the core team.
+
+**Defensive Publication:** All innovations published in this repo serve as prior art.
+
+**Contributors:** By contributing, you agree not to patent your contributions and grant a royalty-free license to the community.
+
+---
+
+## Educational Use
+
+### Schools & Districts
+- **Free** for all educational use
+- **No student data** collected by core project
+- **FERPA/COPPA** compliant by design
+- **No vendor lock-in** — export anytime
+
+### Commercial Educational Products
+- Contact: education@capcollective.org
+- Revenue share for certified curriculum partners
+- Branding guidelines apply
+
+---
+
+## Warranty Disclaimer
+
+**THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.**
+
+**HARDWARE DESIGNS ARE PROVIDED "AS IS". BUILD AT YOUR OWN RISK. FOLLOW ALL SAFETY PROTOCOLS. CONSULT PROFESSIONALS FOR ELECTRICAL/MECHANICAL WORK.**
+
+---
+
+## Liability Limitation
+
+**IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
+
+---
+
+## Compliance
+
+### Export Control
+- **ECCN:** EAR99 (no license required)
+- **Encryption:** TLS only (publicly available)
+- **Military End-Use:** Prohibited
+
+### Sanctions
+- No use in sanctioned countries (OFAC, EU, UN lists)
+- No use by sanctioned entities/individuals
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | October 2024 | Initial release |
 
 ---
 
 ## Questions?
 
-Contact: legal@capcollective.org
+- **Licensing:** legal@capcollective.org
+- **Trademarks:** trademark@capcollective.org
+- **Commercial:** business@capcollective.org
+- **General:** hello@capcollective.org
 
 ---
 
-*This license chosen to maximize adoption and impact. If you improve the kit, we'd love for you to share it back — but you're not required to.*
+**TL;DR:** Use freely, share improvements, keep attribution, don't sue us. 🌉♻️

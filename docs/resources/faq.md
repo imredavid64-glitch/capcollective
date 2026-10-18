@@ -1,142 +1,310 @@
----
-title: FAQ & Troubleshooting
----
-
 # FAQ & Troubleshooting
 
-Common questions and solutions from schools running Cap Collective.
+Frequently asked questions and solutions for Cap Collective operations.
 
 ---
 
-## Common Issues
+## Getting Started
 
-| Problem | Solution |
-|---------|----------|
-| **Uneven sheets** | Check flake size (5-8mm), press temp, parchment quality |
-| **Burn marks** | Lower temp 5°C, reduce time, check parchment |
-| **Shredder jams** | Reverse, clear with stick (never hands!), oil blades |
-| **Sensor not posting** | Check WiFi, webhook URL, Apps Script "Anyone" access |
-| **Low participation** | Gamify! Badges, class competitions, leaderboard |
-| **Grant rejected** | Get feedback, strengthen data, resubmit |
+### Q: How much does it cost to start?
+**A:** Three budget tiers:
+- **Core:** $500-1,000 (press, hand tools, PPE, manual shredder)
+- **FabLab:** $2,500-5,000 (auto press, 3D printer, sensors, GDPR shredder)
+- **Center:** $10,000+ (injection molder, laser, CNC, ventilation)
 
----
+Start Core. Scale up. Every tier produces real products.
 
-## Frequently Asked Questions
+### Q: Do I need a dedicated room?
+**A:** Minimum 200 sq ft with:
+- Exterior wall for ventilation (100+ CFM exhaust)
+- 16A dedicated circuit (press)
+- Sink access (wash station)
+- Fire extinguisher + blanket + first aid
 
-### Materials & Process
+### Q: What grades can participate?
+**A:** K-12 with differentiated roles:
+- **K-2:** Cap Detectives (sort, count, decorate)
+- **3-5:** Cap Engineers (build boxes, wash/shred supervised, Tinkercad)
+- **6-8:** Cap Innovators (Arduino, Fusion 360, business plan)
+- **9-12:** Systems Designers (LCA, CNC, grants, B2B)
 
-**Q: Can we use other plastics (PP, LDPE)?**
-A: Yes, but separate by type. PP melts at 170°C. Never mix types in one batch.
-
-**Q: What if we don't have a laser cutter?**
-A: Hand-cut with scissors/utility knife, or use pre-cut templates. Coasters work great as squares.
-
-**Q: Can products go back into the system?**
-A: Yes! That's the circular loop. Failed coasters → re-shred → re-press.
-
-**Q: What about PET (#1) bottles?**
-A: No. PET melts at 260°C (too high for school equipment) and releases different fumes. Stick to HDPE #2 and PP #5 caps.
-
-**Q: How many caps per product?**
-A: Coaster ≈ 15 caps, Keychain ≈ 4 caps, Organizer ≈ 30 caps, Tile ≈ 50 caps.
-
----
-
-### Equipment & Safety
-
-**Q: How many students per machine?**
-A: 1 certified adult per 4 students at heat press/shredder. Laser: 1:2.
-
-**Q: What's the minimum age for machines?**
-A: Heat press & shredder: 14+ (certified). Laser: 16+. No exceptions.
-
-**Q: Can we use a kitchen oven instead of a heat press?**
-A: No. No temperature control, no pressure, no safety features. Not allowed.
-
-**Q: What ventilation do we need?**
-A: Minimum 100 CFM exhaust fan. Fume hood recommended. Window alone is not enough.
-
-**Q: What PPE is required?**
-A: Goggles (ANSI Z87.1), heat gloves (500°F rated), N95+ respirator, closed-toe shoes, hair tied back.
+### Q: How long before we make products?
+**A:** Typical timeline:
+- Weeks 1-2: Approvals, equipment arrival, safety certs
+- Weeks 3-4: Box building, first collection, wash/shred demo
+- Weeks 5-8: First sheets pressed, first coasters cut
+- Week 9+: Product sales, eco-store launch
 
 ---
 
-### Data & Dashboard
+## Equipment & Operations
 
-**Q: Do we need IoT sensors?**
-A: No. Manual entry to Google Sheets works perfectly. Sensors are optional (FabLab+).
+### Q: What plastic caps work?
+**A:** Only HDPE #2 and PP #5:
+- ✅ Milk jug caps (HDPE #2)
+- ✅ Water bottle caps (HDPE #2)
+- ✅ Detergent caps (HDPE #2)
+- ✅ Yogurt cups (PP #5)
+- ✅ Ketchup/mayo caps (PP #5)
+- ✅ Medicine bottle caps (PP #5)
+- ❌ PET #1 bottles (sinks, different melt)
+- ❌ Metal caps
+- ❌ Caps with liners still in
+- ❌ Dirty/contaminated caps
 
-**Q: How do we set up the dashboard?**
-A: See [Dashboard Deployment](../technical/dashboard.md) — fork repo, create Supabase, deploy to Vercel.
+### Q: How do I identify HDPE vs PP?
+**A:** 
+- **Float test:** HDPE floats in water, PP sinks (barely)
+- **Look for symbol:** #2 = HDPE, #5 = PP
+- **Feel:** HDPE softer, PP more rigid
+- **Burn test (teachers only):** HDPE = candle wax smell, PP = diesel smell
 
-**Q: Can we use Excel instead of Google Sheets?**
-A: Yes, CSV files import into Excel. Formulas may need adjustment.
+### Q: What temperature for pressing?
+**A:** 
+- **HDPE:** 140°C (284°F) — 5 min + flip + 5 min
+- **PP:** 170°C (338°F) — 4 min + flip + 4 min
+- **MAX:** 200°C (NEVER EXCEED)
+- **Always verify with IR thermometer**
 
-**Q: How often should we update the dashboard?**
-A: After every collection (daily/weekly). Students love seeing real-time updates.
+### Q: Why do my sheets warp?
+**A:** Common causes:
+- Not cooling under weight (10 min minimum)
+- Uneven flake distribution
+- Parchment not clean/flat
+- Temp too high / time too long
+- Removed before fully cool
+
+**Fix:** Cool 10+ min under flat weight (steel plate works)
+
+### Q: Why are my sheets burnt/discolored?
+**A:** 
+- Temp too high → Lower 5-10°C
+- Time too long → Reduce 1 min per side
+- Parchment reused too many times → Fresh parchment
+- Flakes too thick → Spread thinner (~3mm)
+
+### Q: Why do my coasters crack/break?
+**A:**
+- Sheet too thin (<2.5mm) → Press thicker
+- Edges not sanded → Sand all edges
+- Material too brittle (old/oxidized flakes) → Fresher flakes
+- Design has sharp internal corners → Add 0.5mm fillets
+
+### Q: Shredder keeps jamming. Help!
+**A:**
+1. **REVERSE → STOP → WAIT 30 SEC** → Clear with stick (NEVER hands)
+2. Feed slower, one handful at a time
+3. Check sieve: 5-8mm only (no fines, no chunks)
+4. Oil blades weekly (shredder oil sheets)
+5. Check for metal contamination (magnet on input)
+
+### Q: Laser cuts are messy/burnt.
+**A:**
+- **Focus test first** (ramp test or material test)
+- **Air assist ON** (mandatory for HDPE)
+- **Settings for 3mm HDPE (60W CO2):** 60% power, 20mm/s, 2 passes
+- **Frame check** before every cut
+- **Watch ENTIRE cut** — never leave
+- **30 sec wait** after cut before opening
+
+### Q: Sensor not sending data.
+**A:**
+1. Check WiFi credentials (2.4GHz only!)
+2. Verify Apps Script URL (redeploy as "Anyone")
+3. Check Serial Monitor for error codes
+4. Verify bin_id matches Command Center
+5. Check GPIO pin matches code (default 27)
+6. Restart ESP32 (power cycle)
 
 ---
 
-### Funding & Grants
+## Safety & Compliance
 
-**Q: How much does it cost to start?**
-A: Core tier: $500-1,000. Many schools start with PTA grant + DonorsChoose.
+### Q: What PPE is required?
+**A:** Per station:
+| Station | Goggles | Heat Gloves | N95+ | Apron | Ear Pro |
+|---------|---------|-------------|------|-------|---------|
+| Wash | ✅ | ❌ | ❌ | ✅ | ❌ |
+| Shredder | ✅ | ❌ | ✅ | ✅ | ✅ |
+| Press | ✅ | ✅ 500°F | ✅ | ✅ | ❌ |
+| Laser | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Injection | ✅ | ✅ 500°F | ✅ | ✅ | ❌ |
 
-**Q: Which grants work best?**
-A: Local foundations, PTA, DonorsChoose, Erasmus+ (EU), STEM grants from utilities.
+### Q: What age for machines?
+**A:**
+- **Shredder/Press/Laser/Injection:** 14+ with certification
+- **CNC:** 16+ with certification
+- **3D Printer:** 12+ with supervision
+- **Wash/Wash/Sort:** Any age (with supervision)
 
-**Q: When do we break even?**
-A: Typically semester 2. Coasters at $10/set, 70% margin = $7 profit/set.
+### Q: Do students need parental consent?
+**A:** Yes. Forms required:
+1. Program Consent (all activities)
+2. Safety Pledge (student signed)
+3. Photo/Video Release (opt-out available)
+4. Medical Info (confidential)
+5. Machine-specific consent (for 14+ machines)
+
+### Q: What insurance do we need?
+**A:** Typically covered under school general liability. Verify:
+- [ ] Student activities endorsement
+- [ ] Equipment coverage
+- [ ] Product liability (for sales)
+- [ ] Volunteer coverage
+- [ ] Field trip/event endorsement
+
+### Q: What about fumes?
+**A:** 
+- HDPE/PP at 140-170°C = minimal fumes (below degradation temp)
+- **Never exceed 200°C** (degradation starts ~250°C)
+- **Ventilation mandatory:** 100+ CFM at press
+- **N95+ required** at press/shredder/laser
+- **CO2 monitor** recommended (alert >1000 ppm)
 
 ---
 
-### Scaling & Handover
+## Data & Dashboard
 
-**Q: How do we hand off to next year's students?**
-A: Use [Continuity Guide](../scaling/continuity.md) — outgoing leads train incoming leads.
+### Q: How does the dashboard work?
+**A:** Two options:
+- **Option A (Sheets + Looker):** Free, 15-min refresh, no code
+- **Option B (Supabase + Next.js):** Real-time, custom, CS project
+- **Option C (HTML/JS + Supabase):** Real-time, no build
 
-**Q: Can we expand to other schools?**
-A: Yes! Hub-and-spoke model. See [District Scaling](../scaling/district.md).
+### Q: How do I connect sensors to Google Sheets?
+**A:** 
+1. ESP32 + FC-51 sensor → WiFi → Apps Script webhook
+2. Apps Script → appends to "Sensor Data Log" tab
+3. Formulas in "Impact Dashboard" tab auto-calculate
+5. Looker Studio connects to Sheet → charts
 
-**Q: What if our teacher lead leaves?**
-A: Document everything in Command Center. Train 2+ teacher champions. Use [Handover Checklist](../scaling/continuity.md).
+### Q: Can I use the dashboard without sensors?
+**A:** Yes! Manual entry in Collection Tracker tab works perfectly. Sensors just automate counting.
+
+### Q: How do I publish the Command Center as CSV?
+**A:** File → Share → Publish to web → Select tab → CSV → Copy URL → Use in dashboard config
+
+### Q: Dashboard shows old data.
+**A:** 
+- Google Sheets caches (open sheet to refresh)
+- Looker: Refresh data source or wait 15 min
+- Supabase: Check realtime subscription active
+- Check sensor battery/WiFi
 
 ---
 
-## Quick Reference Cards
+## Products & Sales
 
-Print and post at each station:
+### Q: What products sell best?
+**A:** Ranked by margin × velocity:
+1. **Coaster 4-pack** — $12, 70% margin, high volume
+2. **Keychains** — $4, 80% margin, impulse buy
+3. **Desk Organizers** — $18, 65% margin, gift market
+4. **Keychain/Badge** — $3-5, 80% margin, events
+5. **Outdoor Tiles** — $25, 60% margin, B2B
 
-### Heat Press Card
-```
-TEMP: HDPE 140°C | PP 170°C | MAX 200°C
-TIME: 5 min + flip + 5 min
-PARCHMENT: Top + bottom (mandatory)
-COOL: 10 min before handling
-QC: Thickness ±0.5mm
-```
+### Q: How do I price products?
+**A:** Formula: `(Material + Energy + Packaging) ÷ (1 - Target Margin)`
+- Target 65-70% margin
+- Include: flakes, parchment, energy, packaging, labor ($0 student)
+- Round to psychological price ($12 not $11.99)
 
-### Shredder Card
-```
-FEED: Slow, steady, one handful
-SIEVE: 5-8mm only (discard fines)
-OIL: Weekly (shredder oil sheets)
-JAM: REVERSE → STOP → Clear with stick
-```
+### Q: Can we sell online?
+**A:** Yes, with compliance:
+- **Shopify/Etsy:** Marketplace facilitator collects sales tax
+- **Local pickup only** (sustainability — no shipping plastic)
+- **Digital products:** Curriculum packs, design files (100% margin)
+- **Compliance:** Sales tax nexus, business license (usually under school/PTA)
 
-### Collection Card
-```
-ACCEPT: HDPE #2 caps (milk, water, soda)
-REJECT: PET #1 bottles, metal, dirty caps
-LINERS: Remove ALL (soak 10 min if stuck)
-DRY: 24 hrs minimum on mesh rack
-```
+### Q: How do we handle cash?
+**A:** 
+- Square Reader (2.6% + $0.10) — auto-syncs to dashboard
+- Cash box: $50 float ($20 ones, $10 fives, $20 change)
+- **Dual count:** 2 students + teacher verify open/close
+- Daily deposit log in Command Center Tab 3
+
+### Q: What if a product fails QC?
+**A:** 
+1. Document: photo + batch # + failure mode
+2. Root cause (5 Whys)
+3. Re-shred → Re-press → Re-test
+4. Log in Command Center (failed batch = learning)
+5. Update process doc
+
+---
+
+## Grants & Funding
+
+### Q: Where do I find grants?
+**A:** 
+- **Foundation Directory Online** (Candid)
+- **GrantWatch, GrantStation**
+- **Local community foundation**
+- **Corporate foundations** (local HQ)
+- **DonorsChoose** (crowdfunding for teachers)
+- **State Dept of Education** (STEM grants)
+
+### Q: What makes a strong application?
+**A:** 
+- **Narrative:** "Student-run circular manufacturing diverting 10K caps/yr"
+- **Metrics:** Baseline → Target (caps, kg, CO2e, students, revenue)
+- **Sustainability:** Revenue covers consumables Year 2+
+- **Scalability:** Open-source, district replication plan
+- **Student voice:** Testimonials, photos, data
+
+### Q: Can product revenue fund the program?
+**A:** Yes! Typical Year 1:
+- $500-2,000 revenue
+- Covers: parchment, molds, PPE, filament
+- Reinvest: new molds, equipment upgrades, garden
+- **Key:** Reinvest 100% → compounding growth
+
+---
+
+## Troubleshooting Quick Reference
+
+| Symptom | Likely Cause | Quick Fix |
+|---------|--------------|-----------|
+| Sheets warp | Cool time / weight | 10 min + steel plate |
+| Burn marks | Temp / time / parchment | -5°C, -1 min, fresh paper |
+| Uneven melt | Flake size / spread | Sieve 5-8mm, spread even |
+| Shredder jam | Feed rate / debris | Reverse→Stop→Stick |
+| Sensor offline | WiFi / webhook / power | Reboot, check creds |
+| No data in dashboard | Sheets not published | Publish to web → CSV |
+| Low sales | Price / visibility | Promo, bundle, relocate |
+| Contamination | Liners / dirt | Longer soak, better sort |
+| Warped mold | Cool too fast / no vent | Slow cool, add vents |
+| Flash on parts | Pressure high / temp high | Lower pressure/temp |
+
+---
+
+## Escalation Path
+
+| Issue Level | Contact | Response Time |
+|-------------|---------|---------------|
+| **Safety Emergency** | 911 → Nurse → Principal | Immediate |
+| **Machine Down (Press)** | District Tech → Vendor | 4 hrs / 24 hrs |
+| **Sensor Network Down** | Data Analyst → District IT | 1 hr / 4 hrs |
+| **Grant Deadline** | Grant Lead → District Office | 24 hrs |
+| **Safety Concern** | Safety Officer → Principal | Immediate |
+| **Student Injury** | Nurse → Parents → Principal → District | Immediate |
+| **Budget Overrun** | Business Mgr → Principal → Finance | 48 hrs |
+| **Vendor Issue** | Procurement → Vendor | 24 hrs |
 
 ---
 
 ## Still Stuck?
 
-- **Discord:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg) — 50+ teachers online
+### Community Support
+- **Discord:** [discord.gg/capcollective](https://discord.gg/capcollective) — 50+ teachers
+- **Office Hours:** First Tuesday, 4pm ET
 - **GitHub Issues:** [Report bugs](https://github.com/imredavid64-glitch/capcollective/issues)
 - **Email:** support@capcollective.org
-- **Office Hours:** First Tuesday, 4pm ET
+
+### Before Asking, Include:
+1. **Tier:** Core / FabLab / Center
+2. **Equipment:** Model + specs
+3. **Error:** Exact message / behavior
+4. **Tried:** What you've already attempted
+5. **Photos:** Of setup, error, results
+6. **Data:** Relevant Command Center screenshots
