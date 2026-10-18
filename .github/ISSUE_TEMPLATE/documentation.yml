@@ -1,0 +1,81 @@
+name: Documentation Improvement
+description: Report unclear, missing, or incorrect documentation
+title: "[Docs]: "
+labels: ["documentation", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us make Cap Collective documentation clearer and more complete!
+
+  - type: input
+    id: file
+    attributes:
+      label: File(s) to Improve
+      description: Which markdown file(s) need changes?
+      placeholder: e.g., 02_TEACHER_IMPLEMENTATION_GUIDE.md, 04_SAFETY_SOPS_AND_RISK_ASSESSMENT.md
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type of Issue
+      options:
+        - Typo / Grammar / Formatting
+        - Unclear Instructions
+        - Missing Information
+        - Outdated Information
+        - Broken Link / Missing Resource
+        - Needs Better Examples
+        - Needs Translation
+        - Accessibility Issue
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: Current Content (Problem)
+      description: Quote or describe the problematic section
+      placeholder: |
+        In section 3.2 "Equipment Procurement", the supplier list...
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested
+    attributes:
+      label: Suggested Improvement
+      description: What should it say instead? Provide exact wording if possible.
+      placeholder: |
+        Replace with: "Updated supplier list for 2024 including..."
+        Add example: "For US schools, recommend..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: audience
+    attributes:
+      label: Primary Audience Affected
+      options:
+        - Administrators
+        - Teachers / Club Advisors
+        - Students
+        - IT / Data Leads
+        - Makerspace / FabLab Staff
+        - Parents / Community
+        - All Audiences
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have verified this against the latest version
+          required: true
+        - label: This doesn't change technical accuracy (or I've verified with an expert)
+          required: true

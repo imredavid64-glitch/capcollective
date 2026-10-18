@@ -1,0 +1,50 @@
+{
+  "replacementPatterns": [
+    {
+      "pattern": "^\\./",
+      "replacement": "https://github.com/imredavid64-glitch/capcollective/blob/main/"
+    },
+    {
+      "pattern": "^\\.\\./",
+      "replacement": "https://github.com/imredavid64-glitch/capcollective/blob/main/"
+    }
+  ],
+  "ignorePatterns": [
+    {
+      "pattern": "^mailto:"
+    },
+    {
+      "pattern": "^tel:"
+    },
+    {
+      "pattern": "calendly\\.com"
+    },
+    {
+      "pattern": "discord\\.gg"
+    },
+    {
+      "pattern": "capcollective\\.vercel\\.app"
+    },
+    {
+      "pattern": "bottle-cap-tracker\\.vercel\\.app"
+    },
+    {
+      "pattern": "vercel\\.app"
+    },
+    {
+      "pattern": "supabase\\.co"
+    },
+    {
+      "pattern": "github\\.com/imredavid64-glitch/capcollective"
+    }
+  ],
+  "aliveStatusCodes": [200, 206, 301, 302, 307, 308],
+  "retryCount": 3,
+  "retryDelay": 1000,
+  "timeout": 10000,
+  "httpHeaders": [
+    {
+      "User-Agent": "markdown-link-check/3.11.2 (Cap Collective CI)"
+    }
+  ]
+}

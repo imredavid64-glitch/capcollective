@@ -1,0 +1,148 @@
+# MkDocs Configuration for Cap Collective Documentation Site
+# ============================================================
+# Install: pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin mkdocs-git-revision-date-localized-plugin
+# Run: mkdocs serve (local) / mkdocs gh-deploy (deploy to GitHub Pages)
+
+site_name: Cap Collective — School Implementation Kit
+site_description: Complete K-12 circular economy program where students turn bottle caps into products
+site_author: Cap Collective Community
+site_url: https://capcollective.org
+
+repo_name: imredavid64-glitch/capcollective
+repo_url: https://github.com/imredavid64-glitch/capcollective
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2024 Cap Collective — MIT License
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: green
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: green
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - toc.integrate
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - mermaid2
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/imredavid64-glitch/capcollective
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/capcollective
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/CapCollective
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@CapCollective
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX  # Replace with your GA4 Measurement ID
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Quick Start: getting-started/quick-start.md
+      - Implementation Readiness: getting-started/readiness-audit.md
+      - Admin Checklist: getting-started/admin-checklist.md
+      - Budget Tiers: getting-started/budget-tiers.md
+  - The Program:
+      - Overview: program/overview.md
+      - 5-Step Process: program/process.md
+      - Grade Bands: program/grade-bands.md
+      - Safety First: program/safety.md
+  - Implementation:
+      - Teacher Guide: implementation/teacher-guide.md
+      - Launch Week: implementation/launch-week.md
+      - Operations Playbook: implementation/operations.md
+      - Command Center: implementation/command-center.md
+      - Student Roles: implementation/student-roles.md
+  - Curriculum:
+      - Standards Mapping: curriculum/standards.md
+      - Lesson Plans: curriculum/lesson-plans.md
+      - Student Worksheets: curriculum/worksheets.md
+      - Certification: curriculum/certification.md
+  - Products & Business:
+      - Product Development: business/product-development.md
+      - Eco-Store Operations: business/eco-store.md
+      - Digital Products: business/digital-products.md
+      - Grant Templates: business/grants.md
+  - Technical:
+      - IoT & Sensors: technical/iot.md
+      - Firmware: technical/firmware.md
+      - Dashboard Deployment: technical/dashboard.md
+      - CAD Designs: technical/cad.md
+      - Supabase Schema: technical/supabase.md
+  - Scaling:
+      - District Replication: scaling/district.md
+      - Continuity & Handover: scaling/continuity.md
+      - Train the Trainer: scaling/train-trainer.md
+  - Resources:
+      - Printable Resources: resources/printables.md
+      - Forms & Permissions: resources/forms.md
+      - Supplier Directory: resources/suppliers.md
+      - FAQ & Troubleshooting: resources/faq.md
+  - Contributing:
+      - Contribution Guide: contributing/guide.md
+      - Code of Conduct: contributing/conduct.md
+      - Security Policy: contributing/security.md
+      - License: contributing/license.md

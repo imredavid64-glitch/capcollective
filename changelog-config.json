@@ -1,0 +1,45 @@
+{
+  "template": "# {{tag_name}}\n\n{{#each commits}}\n## {{title}}\n\n{{body}}\n\n{{/each}}\n\n---\n\n*Full changelog: https://github.com/imredavid64-glitch/capcollective/compare/{{previous_tag}}...{{tag_name}}*",
+  "categories": [
+    {
+      "title": "🚀 Features",
+      "labels": ["feature", "enhancement", "feat"]
+    },
+    {
+      "title": "🐛 Bug Fixes",
+      "labels": ["bug", "fix", "bugfix"]
+    },
+    {
+      "title": "📚 Documentation",
+      "labels": ["documentation", "docs"]
+    },
+    {
+      "title": "🔧 Hardware / CAD",
+      "labels": ["cad", "hardware", "firmware", "iot"]
+    },
+    {
+      "title": "💻 Software / Dashboard",
+      "labels": ["dashboard", "software", "nextjs", "react", "typescript"]
+    },
+    {
+      "title": "📊 Spreadsheets / Data",
+      "labels": ["spreadsheet", "csv", "sheets", "data"]
+    },
+    {
+      "title": "🔒 Security",
+      "labels": ["security", "vulnerability"]
+    },
+    {
+      "title": "♻️ Refactoring / Maintenance",
+      "labels": ["refactor", "chore", "maintenance", "ci", "build"]
+    },
+    {
+      "title": "🧪 Tests",
+      "labels": ["test", "testing"]
+    }
+  ],
+  "excludeLabels": ["wip", "draft", "duplicate", "invalid", "question", "help wanted", "good first issue"],
+  "authors": {
+    "exclude": ["github-actions[bot]", "dependabot[bot]", "renovate[bot]"]
+  }
+}

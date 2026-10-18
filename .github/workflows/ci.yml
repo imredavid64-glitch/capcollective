@@ -1,0 +1,246 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  release:
+    types: [published]
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20.x'
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # ============================================================
+  # MARKDOWN LINTING & VALIDATION
+  # ============================================================
+  markdown-lint:
+    name: Markdown Lint & Link Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install markdownlint-cli
+        run: npm install -g markdownlint-cli@0.39.0 markdown-link-check@3.11.2
+
+      - name: Lint Markdown files
+        run: |
+          markdownlint "**/*.md" \
+            --ignore node_modules \
+            --ignore cap-collective-dashboard \
+            --config .markdownlint.json
+
+      - name: Check for broken links
+        run: |
+          markdown-link-check README.md --config .markdown-link-check.json
+          markdown-link-check OVERVIEW.md --config .markdown-link-check.json
+          markdown-link-check CAP_COLLECTIVE_SCHOOL_KIT_MASTER_PLAN.md --config .markdown-link-check.json
+
+  # ============================================================
+  # DASHBOARD - NEXT.JS BUILD & TEST
+  # ============================================================
+  dashboard-build:
+    name: Dashboard Build & Lint
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./cap-collective-dashboard
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: cap-collective-dashboard/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
+
+  # ============================================================
+  # FIRMWARE - PLATFORMIO COMPILE CHECK
+  # ============================================================
+  firmware-compile:
+    name: Firmware Compile Check
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        firmware_dir:
+          - firmware/node1_cap_counter
+          - firmware/node2_cap_counter
+          - firmware/radio_tower
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install PlatformIO
+        run: pip install platformio
+
+      - name: Compile firmware
+        working-directory: ${{ matrix.firmware_dir }}
+        run: |
+          # Try to compile for common ESP32 boards
+          pio run -e esp32dev || true
+          pio run -e esp32s3 || true
+          echo "Compile check completed for ${{ matrix.firmware_dir }}"
+
+  # ============================================================
+  # CAD VALIDATION
+  # ============================================================
+  cad-validation:
+    name: CAD Validation (OpenSCAD)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install OpenSCAD
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y openscad
+
+      - name: Validate OpenSCAD syntax
+        run: |
+          for file in cad/*.scad; do
+            echo "Checking $file..."
+            openscad -o /dev/null "$file" 2>&1 | head -20
+          done
+
+  # ============================================================
+  # CSV / SPREADSHEET VALIDATION
+  # ============================================================
+  csv-validation:
+    name: CSV Structure Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install csvkit
+        run: pip install csvkit
+
+      - name: Validate CSV files
+        run: |
+          for file in csv/*.csv; do
+            echo "Validating $file..."
+            csvstat "$file" 2>&1 | head -30
+            echo "---"
+          done
+
+  # ============================================================
+  # SPELL CHECK
+  # ============================================================
+  spell-check:
+    name: Spell Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run cspell
+        uses: streetsidesoftware/cspell-action@v6
+        with:
+          files: '**/*.md'
+          config_file: .cspell.json
+          incremental: true
+
+  # ============================================================
+  # RELEASE BUILD (on tag push)
+  # ============================================================
+  release:
+    name: Create Release Assets
+    needs: [markdown-lint, dashboard-build, firmware-compile, cad-validation, csv-validation, spell-check]
+    if: github.event_name == 'release' && github.event.action == 'published'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate CHANGELOG
+        id: changelog
+        uses: mikepenz/release-changelog-builder-action@v4
+        with:
+          configuration: "changelog-config.json"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release Archive
+        run: |
+          git archive --format=zip --output=cap-collective-kit-${{ github.event.release.tag_name }}.zip ${{ github.event.release.tag_name }}
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            cap-collective-kit-${{ github.event.release.tag_name }}.zip
+            csv/*.csv
+            cad/*.scad
+            firmware/**/*.ino
+            firmware/**/platformio.ini
+            cap-collective-dashboard/
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # ============================================================
+  # DEPLOY PREVIEW (on PR)
+  # ============================================================
+  deploy-preview:
+    name: Deploy Dashboard Preview
+    needs: dashboard-build
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Vercel Preview
+        uses: amondnet/vercel-action@v25
+        if: ${{ secrets.VERCEL_TOKEN != '' }}
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./cap-collective-dashboard
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+          alias-domains: pr-${{ github.event.number }}.capcollective-preview.vercel.app

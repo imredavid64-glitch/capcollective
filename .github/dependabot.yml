@@ -1,0 +1,63 @@
+version: 2
+updates:
+  # Dashboard dependencies (npm)
+  - package-ecosystem: "npm"
+    directory: "/cap-collective-dashboard"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "dashboard"
+    commit-message:
+      prefix: "deps(dashboard):"
+    groups:
+      dev-dependencies:
+        patterns:
+          - "@types/*"
+          - "eslint*"
+          - "typescript*"
+          - "tailwind*"
+          - "postcss*"
+          - "autoprefixer*"
+        update-types: ["minor", "patch"]
+      react-ecosystem:
+        patterns:
+          - "react*"
+          - "@radix-ui/*"
+          - "lucide-react"
+          - "clsx"
+          - "tailwind-merge"
+        update-types: ["minor", "patch"]
+      recharts:
+        patterns:
+          - "recharts"
+        update-types: ["minor", "patch"]
+
+  # GitHub Actions dependencies
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "deps(actions):"
+
+  # Python dependencies (for any Python scripts)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "python"
+    commit-message:
+      prefix: "deps(python):"

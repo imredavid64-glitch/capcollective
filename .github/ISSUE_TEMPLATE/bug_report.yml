@@ -1,0 +1,103 @@
+name: Bug Report
+description: Report a bug in documentation, firmware, dashboard, or CAD files
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill out the sections below to help us understand and fix the issue.
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component Affected
+      description: Which part of the kit is affected?
+      options:
+        - Documentation (markdown files)
+        - Firmware (ESP32/Arduino code)
+        - Dashboard (Next.js/React/TypeScript)
+        - CAD (OpenSCAD files)
+        - Spreadsheets (CSV/Google Sheets formulas)
+        - Printable Resources
+        - Safety Procedures
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: file
+    attributes:
+      label: File(s) Affected
+      description: Which file(s) contain the bug? (e.g., `02_TEACHER_IMPLEMENTATION_GUIDE.md`, `firmware/node1_cap_counter/node1_cap_counter.ino`)
+      placeholder: Path to file(s)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: Clear and concise description of the bug
+      placeholder: What happened? What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Step-by-step instructions to reproduce the bug
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error '...'
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Details about your environment
+      placeholder: |
+        - OS: [e.g., Windows 11, Ubuntu 22.04, macOS 14]
+        - Browser: [e.g., Chrome 120, Firefox 121] (for dashboard)
+        - Hardware: [e.g., ESP32-S3 CAM, ESP32 DevKit] (for firmware)
+        - Software versions: [e.g., Node 20, PlatformIO 6.1, OpenSCAD 2021.01]
+        - Deployment: [Local / Vercel / Netlify / Supabase Cloud / Self-hosted]
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Error Messages / Screenshots
+      description: Paste any relevant logs, error messages, or screenshots
+      render: text
+      placeholder: |
+        Error: ...
+        Stack trace: ...
+        Serial monitor output: ...
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical (safety issue, data loss, complete failure)
+        - High (major feature broken, incorrect calculations)
+        - Medium (minor feature broken, cosmetic issue with impact)
+        - Low (typo, minor formatting, enhancement)
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I have searched existing issues to avoid duplicates
+          required: true
+        - label: I have tested this on the latest version
+          required: true
+        - label: This is not a security vulnerability (report those privately)
+          required: true

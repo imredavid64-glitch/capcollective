@@ -4,6 +4,7 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  output: 'standalone',
 }
 
 module.exports = nextConfig

@@ -1,7 +1,16 @@
-﻿# CAP COLLECTIVE â€” School Implementation Kit
+﻿# CAP COLLECTIVE — School Implementation Kit
 ### A Complete, Ready-to-Use System for Launching a Student-Led Bottle Cap Recycling & Circular Manufacturing Program
 
 > *"The distance between an idea and its impact is the bridge we build today."*
+
+---
+
+## 🏷️ Version & Status
+[![Version](https://img.shields.io/github/v/release/imredavid64-glitch/capcollective?label=Latest%20Release)](https://github.com/imredavid64-glitch/capcollective/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Build Status](https://github.com/imredavid64-glitch/capcollective/actions/workflows/ci.yml/badge.svg)](https://github.com/imredavid64-glitch/capcollective/actions)
+[![Contributors](https://img.shields.io/github/contributors/imredavid64-glitch/capcollective)](https://github.com/imredavid64-glitch/capcollective/graphs/contributors)
+[![Discord](https://img.shields.io/discord/123456789?label=Discord&logo=discord&color=5865F2)](https://discord.gg/capcollective)
 
 ---
 
@@ -12,12 +21,18 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## đź“ KIT CONTENTS
+## 📁 KIT CONTENTS
 
 | # | File | What It Is | Audience |
 |---|------|-----------|----------|
+| — | `LICENSE` | MIT License | Everyone |
+| — | `CONTRIBUTING.md` | Contribution guidelines | Contributors |
+| — | `CODE_OF_CONDUCT.md` | Community standards | Everyone |
+| — | `SECURITY.md` | Security policy & reporting | Everyone |
+| — | `CHANGELOG.md` | Version history | Everyone |
+| — | `CONTRIBUTORS.md` | Contributor recognition | Everyone |
 | 00 | `00_IMPLEMENTATION_READINESS_AUDIT.md` | Honest end-to-end readiness walkthrough + gap list | Everyone |
-| â€” | `README.md` | This master index | Everyone |
+| — | `README.md` | This master index | Everyone |
 | 01 | `01_LAUNCH_DECK_PRESENTATION.md` | 30-slide presentation content | Admin, staff, parents |
 | 02 | `02_TEACHER_IMPLEMENTATION_GUIDE.md` | Full 8-chapter playbook (~50 pages) | Teachers, advisors |
 | 03 | `03_COMMAND_CENTER_SHEETS.md` | 8-tab spreadsheet structure + formulas | Data leads, teachers |
@@ -51,11 +66,23 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 | 31 | `31_TRAIN_THE_TRAINER_AND_AMBASSADOR_PROGRAM.md` | Student-as-trainer certification + ambassadors | Everyone |
 | 32 | `32_DIGITAL_PRODUCTS_AND_ONLINE_STORE.md` | Online store, digital goods, compliance, batches | Store managers |
 | 33 | `FIRMWARE_AND_IOT_GUIDE.md` | Complete ESP32/ESP32-S3 IoT firmware & integration guide | FabLab+, data leads |
-| â€” | `csv/` | Importable CSVs for the Sheets workbook | Data leads |
-| â€” | `cad/` | Parametric starter CAD (box, coaster frame, keychain mold) | FabLab+ |
-| â€” | `resources/sensor_count.ino` | ESP32 bottle cap counter code (WiFi→Sheets) | FabLab+ students |
-| â€” | `firmware/` | ESP32/ESP32-S3 firmware (Node 1, Node 2, Radio Tower) | FabLab+ students |
-| â€” | `web/supabase_dashboard/` | Live Supabase-powered analytics dashboard | Data leads, students |
+| — | `csv/` | Importable CSVs for the Sheets workbook | Data leads |
+| — | `cad/` | Parametric starter CAD (box, coaster frame, keychain mold) | FabLab+ |
+| — | `resources/sensor_count.ino` | ESP32 bottle cap counter code (WiFi→Sheets) | FabLab+ students |
+| — | `firmware/` | ESP32/ESP32-S3 firmware (Node 1, Node 2, Radio Tower) | FabLab+ students |
+| — | `cap-collective-dashboard/` | Next.js + Supabase live analytics dashboard | Data leads, students |
+| — | `docs/` | MkDocs documentation site source | Everyone |
+
+---
+
+## 📊 PRESENTATION FILES (PPTX)
+
+| File | Slides | Description |
+|------|--------|-------------|
+| `Cap_Collective_Launch_Deck.pptx` | 29 | Main launch presentation with speaker notes |
+| `Cap_Collective_Teacher_PD_Workshop.pptx` | 14 | 2-hour teacher professional development workshop |
+| `Cap_Collective_Launch_Week_Run_of_Show.pptx` | 12 | Day-by-day launch week run-of-show |
+| `Cap_Collective_Grant_Pitch_Deck.pptx` | 15 | Grant proposal presentation with budget tables |
 
 ---
 
@@ -159,15 +186,21 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## đź”— LINKS
-- **Live dashboard:** capcollective.vercel.app
-- **Cap tracker:** bottle-cap-tracker.vercel.app
-- **Instructables build guide:** (see original article)
-- **Supabase Dashboard:** (deploy `web/supabase_dashboard/` to Vercel/Netlify)
+## 🔗 LINKS
+
+- **Documentation Site:** [capcollective.org/docs](https://capcollective.org/docs) (MkDocs)
+- **Live Dashboard:** [capcollective.vercel.app](https://capcollective.vercel.app)
+- **Cap Tracker:** [bottle-cap-tracker.vercel.app](https://bottle-cap-tracker.vercel.app)
+- **GitHub Repository:** [github.com/imredavid64-glitch/capcollective](https://github.com/imredavid64-glitch/capcollective)
+- **GitHub Discussions:** [Community Q&A](https://github.com/imredavid64-glitch/capcollective/discussions)
+- **Issue Tracker:** [Report Bugs/Request Features](https://github.com/imredavid64-glitch/capcollective/issues)
+- **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective)
+- **Instructables Build Guide:** [12-Step Guide](https://www.instructables.com/Cap-Collective/)
+- **Supabase Dashboard:** (deploy `cap-collective-dashboard/` to Vercel/Netlify)
 
 ---
 
-## đź¤– FIRMWARE & IoT SYSTEM (FabLab+ / Center Tier)
+## 🤖 FIRMWARE & IoT SYSTEM (FabLab+ / Center Tier)
 
 The kit includes a complete ESP32/ESP32-S3 IoT system for automated cap counting:
 
@@ -192,16 +225,35 @@ See `FIRMWARE_AND_IOT_GUIDE.md` for complete hardware specs, wiring, configurati
 ---
 
 ## LICENSE & REUSE
-This kit is **open source** and free to adapt for any school. Change names, colors, and local suppliers as needed. If you improve it, share it back with the network.
+
+This kit is **open source** under the [MIT License](LICENSE) — free to use, modify, and distribute for any school. Change names, colors, and local suppliers as needed. If you improve it, share it back with the network.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute, and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards.
 
 ---
 
-## SUPPORT
-- See the Troubleshooting FAQ (Appendix E of the Teacher Guide)
-- Join the teacher community (invite in Launch Deck)
-- Contact: [your email]
+## SUPPORT & COMMUNITY
+
+- **Troubleshooting FAQ:** Appendix E of the Teacher Guide (`02_TEACHER_IMPLEMENTATION_GUIDE.md`)
+- **GitHub Discussions:** [Ask questions, share ideas](https://github.com/imredavid64-glitch/capcollective/discussions)
+- **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective) — 50+ teachers globally
+- **Monthly Office Hours:** First Tuesday, 4pm ET (calendar link in Discord)
+- **Email:** support@capcollective.org
+- **Security Issues:** security@capcollective.org (see [SECURITY.md](SECURITY.md))
 
 ---
 
-**Cap Collective â€” Empowering Sustainability through Environmental Stewardship and Economic Innovation.**
-*Join the Bridge. Create the Impact.*
+## 🙏 ACKNOWLEDGMENTS
+
+- **Instructables Community** — Original 12-step build guide inspiration
+- **Precious Plastic** — Open-source recycling machine designs
+- **Arduino & ESP32 Communities** — Firmware libraries and examples
+- **Supabase Team** — Realtime backend platform
+- **Vercel** — Free hosting for educational projects
+- **All Pilot Teachers & Students** — For testing, breaking, and improving everything
+
+---
+
+**Cap Collective — Empowering Sustainability through Environmental Stewardship and Economic Innovation.**
+
+*Join the Bridge. Create the Impact.* 🌉♻️

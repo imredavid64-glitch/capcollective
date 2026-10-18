@@ -1,0 +1,20 @@
+# GitHub Sponsors / Funding Configuration
+# These buttons appear on the repo's "Sponsor" button
+
+github: [imredavid64-glitch]  # GitHub username(s) with Sponsors enabled
+
+# Other platforms (uncomment and add your usernames)
+# patreon: capcollective
+# open_collective: capcollective
+# ko_fi: capcollective
+# tidelift: npm/cap-collective
+# community_bridge: capcollective
+# liberapay: capcollective
+# issuehunt: capcollective
+# otechie: capcollective
+# polar: capcollective
+# buy_me_a_coffee: capcollective
+# thanks_dev: capcollective
+
+# Custom funding link (e.g., your own sponsorship page)
+# custom: ["https://capcollective.org/sponsor"]
