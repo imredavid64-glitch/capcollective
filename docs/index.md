@@ -108,7 +108,7 @@ See [Safety Documentation](program/safety.md) for complete SOPs.
 - **Dashboard:** [capcollective.vercel.app](https://capcollective.vercel.app)
 - **Cap Tracker:** [bottle-cap-tracker.vercel.app](https://bottle-cap-tracker.vercel.app)
 - **GitHub:** [github.com/imredavid64-glitch/capcollective](https://github.com/imredavid64-glitch/capcollective)
-- **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective)
+- **Discord Community:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg)
 - **Instructables:** [12-Step Build Guide](https://www.instructables.com/Cap-Collective/)
 
 ---

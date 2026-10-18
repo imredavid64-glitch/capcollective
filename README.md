@@ -236,7 +236,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute, and [CODE_OF_CONDU
 
 - **Troubleshooting FAQ:** Appendix E of the Teacher Guide (`02_TEACHER_IMPLEMENTATION_GUIDE.md`)
 - **GitHub Discussions:** [Ask questions, share ideas](https://github.com/imredavid64-glitch/capcollective/discussions)
-- **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective) — 50+ teachers globally
+- **Discord Community:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg) — 50+ teachers globally
 - **Monthly Office Hours:** First Tuesday, 4pm ET (calendar link in Discord)
 - **Email:** support@capcollective.org
 - **Security Issues:** security@capcollective.org (see [SECURITY.md](SECURITY.md))

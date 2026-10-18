@@ -4,7 +4,8 @@ import {
   CollectionChart, 
   ProductMixChart, 
   Leaderboard, 
-  SensorStatus 
+  SensorStatus,
+  ImplementationKit
 } from '@/components/dashboard';
 import { 
   StatCardSkeleton, 
@@ -23,7 +24,8 @@ import {
   RefreshCw, 
   ExternalLink,
   AlertTriangle,
-  CheckCircle2
+  CheckCircle2,
+  BookOpen,
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -218,6 +220,20 @@ async function DashboardContent({ data }: { data: Awaited<ReturnType<typeof fetc
           )}
         </div>
       </div>
+      
+      {/* Implementation Kit Progress Tracker */}
+      <section aria-labelledby="implementation-kit-heading" className="mb-8">
+        <div className="flex items-center justify-between mb-6">
+          <h2 id="implementation-kit-heading" className="text-2xl font-display font-bold text-gray-900">
+            Implementation Progress Tracker
+          </h2>
+          <Badge variant="outline" className="text-sm">
+            <BookOpen className="h-3 w-3 mr-1" />
+            Visual Kit — Local Progress Saved
+          </Badge>
+        </div>
+        <ImplementationKit />
+      </section>
       
       {/* Footer CTA */}
       <div className="bg-cap-600 rounded-2xl p-8 text-white">

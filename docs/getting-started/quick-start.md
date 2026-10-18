@@ -92,7 +92,7 @@ If you only have 2 weeks:
 
 ## Need Help?
 
-- **Discord:** [discord.gg/capcollective](https://discord.gg/capcollective) — 50+ teachers online
+- **Discord:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg) — 50+ teachers online
 - **Office Hours:** First Tuesday, 4pm ET
 - **Email:** support@capcollective.org
 - **GitHub Issues:** [Report a problem](https://github.com/imredavid64-glitch/capcollective/issues)
