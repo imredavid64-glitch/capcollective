@@ -47,8 +47,6 @@ theme:
 
 plugins:
   - search
-  - git-revision-date-localized:
-      enable_creation_date: true
   - mermaid2
 
 markdown_extensions:
