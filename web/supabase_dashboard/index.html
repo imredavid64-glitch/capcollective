@@ -74,8 +74,9 @@
 </div>
 
 <script>
-const SB_URL  = 'https://kccukmdmlznaqiytsqwl.supabase.co';
-const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjY3VrbWRtbHpuYXFpeXRzcXdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3MTk0MDIsImV4cCI6MjA4NDI5NTQwMn0.YPvHtGUH8Mnar9G0fxBl2pcvMX-dl73bhyxx6JBlON4';
+// Configure these for your own Supabase project (Project Settings -> API)
+const SB_URL  = 'https://YOUR_PROJECT.supabase.co';
+const SB_ANON = 'YOUR_ANON_KEY';
 const sb = window.supabase.createClient(SB_URL, SB_ANON);
 
 const HEX = {red:'#ef4444',blue:'#3b82f6',green:'#22c55e',white:'#e5e7eb',unknown:'#7f8ba5'};

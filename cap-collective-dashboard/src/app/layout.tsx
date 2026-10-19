@@ -17,6 +17,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://capcollective.vercel.app'),
   title: {
     default: 'Cap Collective — Live Impact Dashboard',
     template: '%s | Cap Collective',

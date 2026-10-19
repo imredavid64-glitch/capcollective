@@ -50,7 +50,7 @@ async function DashboardContent({ data }: { data: Awaited<ReturnType<typeof fetc
               Live Impact Dashboard
             </h1>
             <p className="mt-2 text-lg text-gray-600 max-w-2xl">
-              Real-time tracking of Cap Collective's circular economy program. 
+              Real-time tracking of Cap Collective&apos;s circular economy program. 
               Students collect caps, process them into products, and measure environmental impact.
             </p>
           </div>

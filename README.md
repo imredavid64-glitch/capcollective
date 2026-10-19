@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Build Status](https://github.com/imredavid64-glitch/capcollective/actions/workflows/ci.yml/badge.svg)](https://github.com/imredavid64-glitch/capcollective/actions)
 [![Contributors](https://img.shields.io/github/contributors/imredavid64-glitch/capcollective)](https://github.com/imredavid64-glitch/capcollective/graphs/contributors)
-[![Discord](https://img.shields.io/discord/123456789?label=Discord&logo=discord&color=5865F2)](https://discord.gg/capcollective)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord)](https://discord.gg/capcollective)
 
 ---
 

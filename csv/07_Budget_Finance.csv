@@ -1,0 +1,31 @@
+# Section A - Income
+Date,Source,Category,Amount (USD)
+2026-10-01,PTA Grant,Grant,1500
+2026-11-15,Coaster sales,Product,240
+2026-11-20,Cafe sponsorship,Sponsorship,300
+,,,,,
+# Section B - Expenses
+Date,Item,Category,Amount (USD)
+2026-10-05,Heat press,Equipment,350
+2026-10-20,Baking paper,Consumable,25
+2026-11-01,PPE restock,Consumable,90
+,,,,,
+# Section C - P&L by Product
+Product,Units Made,Units Sold,Price,Revenue,Material Cost,Margin %
+Coaster (set),60,40,10,=C2*D2,=C2*2.5,=IF(E2=0,0,(E2-F2)/E2)
+Desk Organizer,30,18,15,=C3*D3,=C3*3,=IF(E3=0,0,(E3-F3)/E3)
+Keychain,120,95,4,=C4*D4,=C4*0.6,=IF(E4=0,0,(E4-F4)/E4)
+,,,,,
+# Section D - Break-Even Calculator
+Metric,Value
+Fixed Costs (total),=SUM(B6:B8)
+Avg Margin per Unit,=AVERAGE(G2:G4)
+Break-Even Units,=ROUNDUP(B10/B11,0)
+Break-Even Revenue,=B12*AVERAGE(D2:D4)
+,,,,,
+# Section E - Net Position
+Metric,Value
+Total Income,=SUM(D2:D4)
+Total Expenses,=SUM(D10:D12)
+Net Balance,=B17-B18
+Reinvestment to Garden,=B19*0.5

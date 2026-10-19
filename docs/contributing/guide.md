@@ -148,7 +148,7 @@ Brief summary of changes
 ## Screenshots (if UI)
 | Before | After |
 |--------|-------|
-| ![before](url) | ![after](url) |
+| ![before](#) | ![after](#) |
 
 ## Checklist
 - [ ] Code follows style guide
@@ -417,7 +417,7 @@ Include:
 
 ## Code of Conduct
 
-See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) — enforced everywhere (GitHub, Discord, events).
+See [Code of Conduct](conduct.md) - enforced everywhere (GitHub, Discord, events).
 
 **TL;DR:** Be respectful, inclusive, constructive. No harassment, discrimination, spam. Report violations to conduct@capcollective.org.
 

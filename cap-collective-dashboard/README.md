@@ -126,6 +126,12 @@ npm run start    # Preview production build
 npm run lint     # Run ESLint
 ```
 
+## Data Backends
+
+This dashboard reads from **Google Sheets** (via published CSV). The optional
+Supabase path (realtime IoT) lives in `web/supabase_dashboard/` and the firmware
+in `firmware/` — use that for the Center tier; the two are independent.
+
 ## Tech Stack
 
 - **Framework:** Next.js 14 (App Router, Static Export)

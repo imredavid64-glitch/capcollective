@@ -1,0 +1,9 @@
+Grade Band,Unit,Lesson,Standard(s),Duration,Materials,Status,Teacher Notes
+K-2,Sorting,What Are Plastic Caps?,K-ESS3-3; 2-PS1-1,45 min,Cap pile; worksheets,Delivered,Worked great!
+3-5,Build,Build the Box,3-5-ETS1-1,90 min,Box kits; glue,Planned,Need more clamps
+6-8,Tech,Programming the Counter,MS-ETS1-2,90 min,ESP32 kits,Planned,
+9-12,Systems,Systems Optimization,HS-ETS1-3,90 min,Command Center,Planned,
+,,,,,,,
+Summary,Metric,Value,,
+Lessons Delivered,=COUNTIF(G2:G100,"Delivered"),,
+Completion %,=COUNTIF(G2:G100,"Delivered")/COUNTA(C2:C100),,

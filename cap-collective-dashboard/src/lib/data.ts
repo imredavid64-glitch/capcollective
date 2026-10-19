@@ -5,11 +5,11 @@ export const SHEETS_CONFIG = {
   // Get these from your Google Sheet URL: https://docs.google.com/spreadsheets/d/{SHEET_ID}/edit#gid={GID}
   sheetId: process.env.NEXT_PUBLIC_SHEETS_ID || 'YOUR_SHEET_ID_HERE',
   tabs: {
-    impactDashboard: '0', // GID of the Impact Dashboard tab
-    collectionTracker: '123456789', // GID of Collection Tracker tab
-    productInventory: '987654321', // GID of Product Inventory tab
-    studentRoles: '456789123', // GID of Student Roles tab
-    sensorDataLog: '789123456', // GID of Sensor Data Log tab
+    impactDashboard: process.env.NEXT_PUBLIC_GID_IMPACT || '0',
+    collectionTracker: process.env.NEXT_PUBLIC_GID_COLLECTION || '0',
+    productInventory: process.env.NEXT_PUBLIC_GID_PRODUCTS || '0',
+    studentRoles: process.env.NEXT_PUBLIC_GID_ROLES || '0',
+    sensorDataLog: process.env.NEXT_PUBLIC_GID_SENSORS || '0',
   },
 };
 

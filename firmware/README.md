@@ -75,7 +75,7 @@ Adafruit GFX Library
 Adafruit ST7735 and ST7789 Library
 Adafruit SSD1306
 SD_MMC (built-in for ESP32)
-ESPSupabase (https://github.com/your-repo/ESPSupabase)
+ESPSupabase (search "ESPSupabase" in the Arduino Library Manager; or use HTTPClient + ArduinoJson against the REST endpoint documented in cap-collective-dashboard/supabase_schema.sql)
 ArduinoJson (for JSON handling)
 TensorFlowLite_ESP32 (optional, for TFLite model on Node 1)
 ```

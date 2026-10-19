@@ -8,7 +8,7 @@ import os
 import re
 import shutil
 
-ROOT = r"C:\Users\david\Desktop\Cap Collective"
+ROOT = os.path.dirname(os.path.abspath(__file__))
 DOCS = os.path.join(ROOT, "docs")
 
 # Mapping: root file -> docs destination

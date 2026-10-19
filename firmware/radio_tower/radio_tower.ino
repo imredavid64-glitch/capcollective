@@ -18,8 +18,8 @@
 // ─── CONFIG ──────────────────────────────────────────────────
 static const char* WIFI_SSID = "Telekom-181001";
 static const char* WIFI_PASS = "REDACTED";
-static const char* SB_URL    = "https://kccukmdmlznaqiytsqwl.supabase.co";
-static const char* SB_ANON   = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtjY3VrbWRtbHpuYXFpeXRzcXdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg3MTk0MDIsImV4cCI6MjA4NDI5NTQwMn0.YPvHtGUH8Mnar9G0fxBl2pcvMX-dl73bhyxx6JBlON4";
+static const char* SB_URL    = "https://YOUR_PROJECT.supabase.co";
+static const char* SB_ANON   = "YOUR_ANON_KEY";
 
 // ─── PIN MAP ─────────────────────────────────────────────────
 #define TFT_SCK   21

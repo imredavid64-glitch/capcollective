@@ -1,719 +1,358 @@
-# Forms & Permissions Pack
+---
+title: Forms & Permissions Pack
+---
 
-17 ready-to-use forms & permissions for Cap Collective operations.
+# Cap Collective — Forms & Permissions Pack
+### Every Form You Actually Need, Ready to Print or Paste
+**Print, fill, sign, file. Each form is school-ready.**
 
 ---
 
-## Quick Reference
-
-| # | Form | When | Who | Retention |
-|---|------|------|-----|-----------|
-| 1 | Student Application | Launch | Student | 1 yr post-grad |
-| 2 | Safety Pledge | Launch | Student | 1 yr post-grad |
-| 3 | Parent Consent | Launch | Parent | 1 yr post-grad |
-| 4 | Photo/Video Release | Launch | Parent | 3 yrs |
-| 3 | Medical Info | Launch | Parent | 1 yr post-grad |
-| 6 | Teacher Lead Agreement | Hiring | Teacher | Employment + 3 yrs |
-| 7 | Volunteer Agreement | As needed | Volunteer | 1 yr |
-| 8 | Vendor Quote Request | Procurement | Vendor | 3 yrs |
-| 9 | Purchase Requisition | Ordering | Teacher/Admin | 3 yrs |
-| 10 | Receiving Report | Delivery | Receiver | 3 yrs |
-| 11 | Expense Report | Spending | Staff | 3 yrs |
-| 12 | Incident Report | As needed | Witness | 5 yrs |
-| 13 | Near-Miss Report | As needed | Witness | 5 yrs |
-| 14 | Equipment Sign-Out | Per use | Operator | 1 yr |
-| 15 | Facility Use Request | Events | Organizer | 1 yr |
-| 16 | Grant Expense Report | Post-grant | Grant Lead | 7 yrs |
-| 17 | Student Exit Survey | Graduation | Student | Permanent (alumni) |
+## INDEX OF FORMS
+1. Purchase Requisition Form
+2. Vendor Quote Request
+3. Equipment Receiving & Inspection Form
+4. Expense / Reimbursement Form
+5. Program Charter (see Buy-In Playbook) — cross-ref
+6. Safety MOU — cross-ref Safety file Appendix A
+7. Student Safety Contract — cross-ref Safety file
+8. Parent/Guardian Consent & Medical Form
+9. Media / Photo Release Form
+10. Equipment Sign-Out & Loan Form
+11. Inventory Count Sheet
+12. Incident Report — cross-ref Safety file Appendix
+13. Facilities / Space Request Form
+14. IT / Network Access Request Form
+15. Data Privacy Statement (for IT/parents)
+16. Grant Spending Tracker Form
+17. Donation / In-Kind Receipt Form
 
 ---
 
-## Form 1: Student Role Application
-
-```
-CAP COLLECTIVE — STUDENT ROLE APPLICATION
-School: _________________________  Year: ___________
-
-STUDENT INFO
-Name: _________________________  Grade: ___  Homeroom: _______
-Student ID: ___________  Email: _________________________
-Phone: _________________________  Parent Email: _________________________
-
-ROLE PREFERENCES (Rank 1-3, 1 = top choice)
-___ Collection Captain    ___ Wash Station Lead
-___ Shredder Operator*    ___ Press Operator*
-___ Design Engineer       ___ Data Analyst
-___ Business Manager      ___ Quality Control
-* Requires age 14+ and certification
-
-WHY THIS ROLE?
-________________________________________________________________________
-________________________________________________________________________
-
-RELEVANT EXPERIENCE
-________________________________________________________________________
-________________________________________________________________________
-
-AVAILABILITY (Check all that apply)
-☐ Mon AM  ☐ Mon PM  ☐ Tue AM  ☐ Tue PM  ☐ Wed AM  ☐ Wed PM
-☐ Thu AM  ☐ Thu PM  ☐ Fri AM  ☐ Fri PM  ☐ Before School  ☐ Lunch
-
-TEACHER RECOMMENDATION (Required)
-Teacher: _________________________  Signature: _________________________
-Comments: ____________________________________________________________
-
-PARENT/GUARDIAN CONSENT
-I consent to my child participating in Cap Collective, including machine
-operation (if certified), data collection, and product sales.
-
-Parent Name: _________________________  Signature: _________________________
-Date: ___________  Phone: _________________________  Email: _________________________
-
-FOR OFFICE USE
-Application Received: _______  Interview: _______  Role Assigned: _______
-Certifications: ☐ Safety  ☐ Material ID  ☐ Data Entry  ☐ Wash  ☐ Shredder  ☐ Press  ☐ Laser  ☐ Injection
-Start Date: _______  Supervisor: _________________________
-```
-
----
-
-## Form 2: Safety Pledge
-
-```
-CAP COLLECTIVE — STUDENT SAFETY PLEDGE
-School: _________________________  Year: ___________
-
-I, _______________________________________ (print name), pledge to:
-
-☐ Follow ALL safety rules, every time, no exceptions
-☐ Wear required PPE for every machine, every time
-☐ Never operate machinery without current certification
-☐ Report hazards, near-misses, and incidents immediately
-☐ Look out for my teammates and speak up if something is unsafe
-☐ Never use machines when tired, rushed, or distracted
-☐ Keep my workspace clean and organized
-☐ Follow the emergency procedures for each machine
-☐ Respect the equipment and use it only as intended
-☐ Ask for help when unsure — never guess
-
-I understand that violating this pledge may result in:
-- Immediate removal from machine access
-- Re-certification requirement
-- Disciplinary action per school policy
-
-Student Signature: _________________________  Date: ___________
-Witness (Teacher/Lead): _________________________  Date: ___________
-```
-
----
-
-## Form 3: Parent/Guardian Consent & Medical Info
-
-```
-CAP COLLECTIVE — PARENT/GUARDIAN CONSENT & MEDICAL INFORMATION
-School: _________________________  Year: ___________
-
-STUDENT: _________________________  Grade: ___  DOB: ___________
-
-PARENT/GUARDIAN 1
-Name: _________________________  Relationship: ___________
-Phone (Day): ___________  Phone (Eve): ___________  Email: _________________________
-
-PARENT/GUARDIAN 2
-Name: _________________________  Relationship: ___________
-Phone (Day): ___________  Phone (Eve): ___________  Email: _________________________
-
-EMERGENCY CONTACT (If parents unreachable)
-Name: _________________________  Relationship: ___________
-Phone: ___________  Email: _________________________
-
-MEDICAL INFORMATION
-Physician: _________________________  Phone: ___________
-Insurance: _________________________  Policy #: ___________
-
-Allergies: ____________________________________________________________
-Medications: __________________________________________________________
-Conditions (asthma, diabetes, seizures, etc.): ___________________________
-________________________________________________________________________
-
-Physical limitations: __________________________________________________
-________________________________________________________________________
-
-CONSENT CHECKLIST (Check all that apply)
-☐ Participation in Cap Collective program
-☐ Machine operation (after certification): shredder, press, laser, injection
-☐ Use of hand tools, hot surfaces, sharp tools
-☐ Data collection: hours, caps collected, products made
-☐ Photo/video for school/district use (see separate release)
-☐ Product sales (cash handling, customer interaction)
-☐ Field trips / community events / café partnerships
-☐ Transportation to partner sites (if applicable)
-☐ Sharing student work/photos on dashboard/social media (no names)
-
-MEDICAL AUTHORIZATION
-In case of emergency, I authorize Cap Collective staff to seek medical
-treatment for my child. I understand that every effort will be made to
-contact me first.
-
-Parent/Guardian Signature: _________________________  Date: ___________
-Print Name: _________________________
-```
-
----
-
-## Form 4: Photo/Video Release
-
-```
-CAP COLLECTIVE — PHOTO/VIDEO RELEASE
-School: _________________________  Year: ___________
-
-STUDENT: _________________________  Grade: ___
-
-I, _________________________ (parent/guardian), grant permission to
-[School District] and Cap Collective to photograph, film, and record my
-child during Cap Collective activities for the following purposes:
-
-☐ School/district website and social media
-☐ Cap Collective dashboard and public reports
-☐ Grant applications and funder reports
-☐ Press releases and media coverage
-☐ Curriculum materials and teacher resources
-☐ Student portfolios and college applications
-☐ Cap Collective promotional materials (brochures, videos)
-☐ Conference presentations and conference proceedings
-
-I understand that:
-- No last names or personal identifiers will be used without additional consent
-- Images may be used indefinitely unless I revoke in writing
-- I may revoke this consent at any time by written notice
-- No compensation will be provided for use of images
-
-☐ I DO NOT consent to photo/video release (opt out)
-
-Parent/Guardian Signature: _________________________  Date: ___________
-Print Name: _________________________
-```
-
----
-
-## Form 5: Teacher Lead Agreement
-
-```
-CAP COLLECTIVE — TEACHER LEAD AGREEMENT
-School: _________________________  Year: ___________
-
-TEACHER: _________________________  Employee ID: ___________
-Role: ☐ Program Lead  ☐ Co-Lead  ☐ Safety Officer  ☐ Curriculum Lead
-Certifications: ☐ Safety  ☐ Shredder  ☐ Press  ☐ Laser  ☐ Injection  ☐ First Aid/CPR
-
-RESPONSIBILITIES
-As Cap Collective Teacher Lead, I agree to:
-☐ Oversee daily operations and student safety
-☐ Maintain current certifications for all supervised machines
-☐ Complete monthly safety audits and incident reports
-☐ Submit weekly dashboard updates and monthly impact reports
-☐ Manage budget, procurement, and vendor relationships
-☐ Coordinate student certification, scheduling, and rotation
-☐ Attend monthly district coordinator meetings
-☐ Complete annual grant reports and stewardship
-☐ Mentor incoming lead (succession planning)
-
-COMPENSATION
-Stipend: $________/year  (paid: ☐ Monthly  ☐ Semester  ☐ Annual)
-Professional Development: $________/year allocated
-Release Time: ____ periods/week for program management
-
-TERM
-Start: ___________  End: ___________  Renewable: ☐ Yes  ☐ No
-
-SUPERVISION
-Reports to: Principal / District Coordinator
-Evaluated by: Principal (annual) + District Coordinator (semester)
-
-ACKNOWLEDGMENT
-I have read the Cap Collective Safety SOPs, Teacher Implementation Guide,
-and this agreement. I understand the safety-first policy and my
-responsibility for student safety.
-
-Teacher Signature: _________________________  Date: ___________
-Principal Signature: _________________________  Date: ___________
-District Coordinator: _________________________  Date: ___________
-```
-
----
-
-## Form 6: Volunteer Agreement
-
-```
-CAP COLLECTIVE — VOLUNTEER AGREEMENT
-School: _________________________  Year: ___________
-
-VOLUNTEER: _________________________  Phone: ___________
-Email: _________________________  Emergency Contact: _________________________
-
-ROLE: ☐ Collection Helper  ☐ Wash Assistant  ☐ Store Volunteer
-☐ Event Staff  ☐ Mentor  ☐ Other: ___________
-
-AVAILABILITY
-☐ Weekly (Day/Time: ___________)  ☐ Monthly (Date: ___________)
-☐ Events Only  ☐ As Needed
-
-BACKGROUND CHECK
-☐ Completed (Date: ________)  ☐ On File  ☐ Required (School Policy)
-
-SAFETY ACKNOWLEDGMENT
-I understand that as a volunteer I must:
-☐ Follow all Cap Collective safety rules
-☐ Wear required PPE in designated areas
-☐ Never operate machinery (students only)
-☐ Report hazards/incidents immediately
-☐ Sign in/out at office each visit
-☐ Maintain student confidentiality
-
-LIABILITY RELEASE
-I release [School District] and Cap Collective from liability for
-injuries sustained while volunteering, except for gross negligence.
-
-Volunteer Signature: _________________________  Date: ___________
-Coordinator Signature: _________________________  Date: ___________
-```
-
----
-
-## Form 7: Vendor Quote Request
-
-```
-CAP COLLECTIVE — VENDOR QUOTE REQUEST
-School: _________________________  Date: ___________
-
-VENDOR: _________________________  Contact: _________________________
-Phone: ___________  Email: _________________________
-
-REQUESTED BY: _________________________  Role: ___________
-Budget Code: ___________  Required By: ___________
-
-ITEMS REQUESTED
-┌────┬────────────────────┬──────────────┬────┬──────────┬──────────┐
-│ #  │ Item Description   │ Spec/Model   │ Qty │ Unit Cost│ Total    │
-├────┼────────────────────┼──────────────┼────┼──────────┼──────────┤
-│ 1  │                    │              │     │          │          │
-│ 2  │                    │              │     │          │          │
-│ 3  │                    │              │     │          │          │
-│ 4  │                    │              │     │          │          │
-│ 5  │                    │              │     │          │          │
-├────┼────────────────────┼──────────────┼────┼──────────┼──────────┤
-│    │                    │     TOTAL    │     │          │          │
-└────┴────────────────────┴──────────────┴────┴──────────┴──────────┘
-
-SPECIAL REQUIREMENTS
-☐ Educational discount  ☐ Net 30 terms  ☐ Delivery to school
-☐ Installation included  ☐ Training included  ☐ Warranty: ________
-
-APPROVALS
-Requested By: _________________________  Date: ___________
-Approved By: _________________________  Date: ___________
-Budget Authority: _________________________  Date: ___________
-
-VENDOR RESPONSE
-Quote #: ___________  Date: ___________  Valid Until: ___________
-Subtotal: $______  Tax: $______  Shipping: $______  TOTAL: $______
-Notes: ____________________________________________________________
-
-Vendor Signature: _________________________  Date: ___________
-```
-
----
-
-## Form 8: Purchase Requisition
-
+# FORM 1: PURCHASE REQUISITION FORM
 ```
 CAP COLLECTIVE — PURCHASE REQUISITION
-School: _________________________  Req #: ___________  Date: ___________
 
-REQUESTED BY: _________________________  Role: ___________
-Program: Cap Collective  Budget Code: ___________
+School: ______________________  Date: __________
+Requested by: __________________  Department: ________
+Budget code: __________________  Funding source: ________
 
-JUSTIFICATION
-________________________________________________________________________
-________________________________________________________________________
+ITEMIZED REQUEST:
+# | Item & Spec | Vendor | Qty | Unit Cost | Total
+--|-------------|--------|-----|-----------|------
+1 |             |        |     |           |
+2 |             |        |     |           |
+3 |             |        |     |           |
 
-ITEMS
-┌────┬────────────────────┬──────────────┬────┬──────────┬──────────┐
-│ #  │ Item Description   │ Vendor/Quote │ Qty │ Unit Cost│ Total    │
-├────┼────────────────────┼──────────────┼────┼──────────┼──────────┤
-│ 1  │                    │              │     │          │          │
-│ 2  │                    │              │     │          │          │
-│ 3  │                    │              │     │          │          │
-├────┼────────────────────┼──────────────┼────┼──────────┼──────────┤
-│    │                    │     TOTAL    │     │          │          │
-└────┴────────────────────┴──────────────┴────┴──────────┴──────────┘
+SUBTOTAL .............. $________
+Shipping/Tax .......... $________
+TOTAL REQUESTED ....... $________
 
-FUNDING SOURCE
-☐ Grant: ________  ☐ PTA  ☐ School Budget  ☐ Product Revenue  ☐ Other
+Justification (1-2 sentences):
+_________________________________________________
 
-APPROVAL CHAIN
-1. Teacher Lead: _________________________  Date: ___________
-2. Principal: _________________________  Date: ___________
-3. Finance/PTA: _________________________  Date: ___________
-4. District (if >$5K): _________________________  Date: ___________
+☐ Quotes attached (2-3)   ☐ Budget confirmed
 
-STATUS: ☐ Pending  ☐ Approved  ☐ Denied  ☐ Ordered  ☐ Received
-PO #: ___________  Order Date: ___________  Expected: ___________
+Approvals:
+Program Lead: ______  Dept Head: ______
+Finance: ______      Principal: ______
+PO # assigned: __________
 ```
 
 ---
 
-## Form 9: Receiving Report
-
+# FORM 2: VENDOR QUOTE REQUEST
 ```
-CAP COLLECTIVE — RECEIVING REPORT
-School: _________________________  Date Received: ___________
+QUOTE REQUEST — Cap Collective (School)
 
-PO #: ___________  Req #: ___________  Vendor: _________________________
-Delivered By: _________________________  Carrier: ___________
+To: [Vendor]
+From: [School], [address], [VAT/tax status]
 
-ITEMS RECEIVED
-┌────┬────────────────────┬────┬─────┬───────┬────────┬────────┐
-│ #  │ Item Description   │ PO │ Rec │ Cond  │ Serial │ Loc    │
-│    │                    │ Qty│ Qty │ (G/D) │ #      │        │
-├────┼────────────────────┼────┼─────┼───────┼────────┼────────┤
-│ 1  │                    │    │     │       │        │        │
-│ 2  │                    │    │     │       │        │        │
-│ 3  │                    │    │     │       │        │        │
-└────┴────────────────────┴────┴─────┴───────┴────────┴────────┘
+Please quote for the following, with educational pricing:
 
-CONDITION CODES: G = Good  D = Damaged  M = Missing  W = Wrong Item
+1. ____________________  Qty: ____
+2. ____________________  Qty: ____
+3. ____________________  Qty: ____
 
-DISCREPANCIES
-________________________________________________________________________
-________________________________________________________________________
+Required info:
+☐ Unit price  ☐ VAT/tax treatment  ☐ Shipping cost
+☐ Lead time   ☐ Warranty            ☐ Quote valid until
 
-RECEIVED BY: _________________________  Signature: _________________________
-Date/Time: ___________
+☐ Do you accept school purchase orders?
+☐ Can you deliver to: [school address]?
 
-VERIFIED BY: _________________________  Signature: _________________________
-Date/Time: ___________
+Reference: we are a [public/private] school, [VAT-exempt if applicable].
 
-ACTION TAKEN: ☐ Accepted  ☐ Partial  ☐ Returned  ☐ Vendor Notified
+Contact: ____________________  Email: __________
 ```
 
 ---
 
-## Form 10: Expense Report
-
+# FORM 3: EQUIPMENT RECEIVING & INSPECTION
 ```
-CAP COLLECTIVE — EXPENSE REPORT
-School: _________________________  Period: ___________ to ___________
+RECEIVING & INSPECTION RECORD
 
-SUBMITTED BY: _________________________  Role: ___________
+Date received: __________  Received by: __________
+PO #: __________  Vendor: __________
+Delivery note / tracking: __________
 
-EXPENSES
-┌────┬──────────┬────────────────┬──────────┬────────┬────────┬────────┐
-│ #  │ Date     │ Description    │ Category │ Vendor │ Amount │ Receipt│
-├────┼──────────┼────────────────┼──────────┼────────┼────────┼────────┤
-│ 1  │          │                │          │        │        │   ☐    │
-│ 2  │          │                │          │        │        │   ☐    │
-│ 3  │          │                │          │        │        │   ☐    │
-│ 4  │          │                │          │        │        │   ☐    │
-│ 5  │          │                │          │        │        │   ☐    │
-├────┼──────────┼────────────────┼──────────┼────────┼────────┼────────┤
-│    │          │      TOTAL     │          │        │        │        │
-└────┴──────────┴────────────────┴──────────┴────────┴────────┴────────┘
+ITEM CHECK:
+☐ Boxes counted match delivery note
+☐ External packaging undamaged
+☐ Wrong item?  ☐ Missing parts?
+☐ Voltage/plug verified (____V)
+☐ Powered on & tested per SOP
+☐ Serial number recorded: __________
+☐ Manual filed
 
-CATEGORIES: Equipment / Consumables / Marketing / Travel / Training / Other
+DAMAGE / DISCREPANCY (photograph & describe):
+_________________________________________________
 
-FUNDING SOURCE
-☐ Grant: ________  ☐ PTA  ☐ School Budget  ☐ Product Revenue  ☐ Personal (reimburse)
+Action: ☐ Accept  ☐ Accept w/ note  ☐ Reject/Return
+Vendor contacted (date): __________
 
-APPROVAL
-Submitted: _________________________  Date: ___________
-Approved: _________________________  Date: ___________
-Paid: ☐ Yes  ☐ No  Check #: ___________  Date: ___________
+Signature: __________________  Date: __________
 ```
 
 ---
 
-## Form 11: Incident Report
-
+# FORM 4: EXPENSE / REIMBURSEMENT FORM
 ```
-CAP COLLECTIVE — INCIDENT REPORT
-School: _________________________  Report #: ___________
+EXPENSE / REIMBURSEMENT
 
-DATE/TIME OF INCIDENT: ___________  TIME REPORTED: ___________
-LOCATION: _________________________  MACHINE/AREA: ___________
+Name: __________  Date: __________
+Budget line: ☐ Equipment ☐ Consumable ☐ Maintenance ☐ Marketing
 
-PERSONS INVOLVED
-Injured: _________________________  Role: ___________  Grade: ___
-Witnesses: _________________________________________________________
+Date | Description | Vendor | Amount | Receipt?
+-----|-------------|--------|--------|----------
+     |             |        |        | ☐
+     |             |        |        | ☐
+TOTAL: $________
 
-DESCRIPTION (What happened, step by step)
-________________________________________________________________________
-________________________________________________________________________
-________________________________________________________________________
+Purpose: ______________________________________
 
-ROOT CAUSE (5 Whys)
-1. Why? ____________________________________________________________
-2. Why? ____________________________________________________________
-3. Why? ____________________________________________________________
-4. Why? ____________________________________________________________
-5. Why? ____________________________________________________________
+☐ Original receipts attached (all)
 
-INJURY/DAMAGE
-☐ No injury  ☐ Minor (first aid)  ☐ Medical treatment  ☐ ER/Hospital
-☐ Property damage: __________________________________________________
-
-Body part: ___________  Type: ☐ Cut  ☐ Burn  ☐ Bruise  ☐ Eye  ☐ Other: _______
-
-IMMEDIATE ACTION TAKEN
-________________________________________________________________________
-________________________________________________________________________
-
-CORRECTIVE ACTION (To prevent recurrence)
-________________________________________________________________________
-________________________________________________________________________
-
-REPORTED BY: _________________________  Signature: _________________________
-Date/Time: ___________
-
-REVIEWED BY: _________________________  Signature: _________________________
-Date/Time: ___________
-
-FOLLOW-UP DATE: ___________  STATUS: ☐ Open  ☐ In Progress  ☐ Closed
+Claimant signature: __________  Date: ______
+Approver: __________  Approved: ☐ Yes ☐ No
 ```
 
 ---
 
-## Form 12: Near-Miss Report
-
+# FORM 8: PARENT/GUARDIAN CONSENT & MEDICAL FORM
 ```
-CAP COLLECTIVE — NEAR-MISS REPORT
-School: _________________________  Report #: ___________
+CAP COLLECTIVE — PARENT/GUARDIAN CONSENT
 
-DATE/TIME: ___________  LOCATION: _________________________
-MACHINE/AREA: ___________  REPORTED BY: _________________________
+Student name: ____________________  Grade: ______
 
-WHAT ALMOST HAPPENED
-________________________________________________________________________
-________________________________________________________________________
+I give permission for my child to participate in Cap Collective,
+including: ☐ Collection activities ☐ Supervised machine operations
+(after certification) ☐ Eco-Store sales ☐ Community field trips
 
-WHAT PREVENTED IT
-________________________________________________________________________
-________________________________________________________________________
+SAFETY ACKNOWLEDGEMENT
+I understand my child will:
+• Use only certified machines under adult supervision
+• Wear required PPE
+• Follow the Student Safety Contract
+I have read the safety information provided. ☐ Yes
 
-ROOT CAUSE
-________________________________________________________________________
+MEDICAL INFORMATION
+Allergies: ____________________________
+Medical conditions: ____________________
+Medications: __________________________
+Emergency contact: ____________________  Phone: __________
 
-RECOMMENDED FIX
-________________________________________________________________________
-________________________________________________________________________
-
-REPORTED BY: _________________________  Signature: _________________________
-Date: ___________
-
-REVIEWED BY: _________________________  Signature: _________________________
-Date: ___________
-
-STATUS: ☐ Open  ☐ Fix In Progress  ☐ Fixed  ☐ Shared as Safety Alert
+PARENT SIGNATURE: __________________  Date: ______
+Student signature: ________________  Date: ______
 ```
 
 ---
 
-## Form 13: Equipment Sign-Out
-
+# FORM 9: MEDIA / PHOTO RELEASE FORM
 ```
-CAP COLLECTIVE — EQUIPMENT SIGN-OUT LOG
-School: _________________________  Month: ___________
+MEDIA & PHOTO RELEASE
 
-┌────┬──────────┬─────────────┬──────────┬──────────┬────────┬────────┐
-│ #  │ Date     │ Equipment   │ User     │ Purpose  │ Out    │ In     │
-├────┼──────────┼─────────────┼──────────┼──────────┼────────┼────────┤
-│ 1  │          │             │          │          │        │        │
-│ 2  │          │             │          │          │        │        │
-│ 3  │          │             │          │          │        │        │
-│ 4  │          │             │          │          │        │        │
-│ 5  │          │             │          │          │        │        │
-└────┴──────────┴─────────────┴──────────┴──────────┴────────┴────────┘
+Student name: ____________________
 
-EQUIPMENT CODES: PR=Press  SH=Shredder  LA=Laser  IN=Injection  CN=CNC
-                 3D=Printer  IR=Thermometer  SC=Scale  CA=Camera
+I grant/deny permission (circle): GRANT / DENY
+for [School] and Cap Collective to use images, video, and work
+of my child in:
+☐ Internal school communications
+☐ School website & social media
+☐ Press / community reports about the program
+☐ Grant applications & funder reports
 
-RULES: 
-1. Sign out BEFORE use, sign in AFTER
-2. Report damage IMMEDIATELY
-3. Return to designated location
-4. No equipment leaves room without teacher approval
+☐ Name may be used  ☐ First name only  ☐ No name
+
+No compensation is provided. This may be withdrawn in writing.
+
+Parent/Guardian: __________________  Date: ______
 ```
 
 ---
 
-## Form 14: Facility Use Request
-
+# FORM 10: EQUIPMENT SIGN-OUT & LOAN FORM
 ```
-CAP COLLECTIVE — FACILITY USE REQUEST
-School: _________________________  Date: ___________
+EQUIPMENT SIGN-OUT / LOAN
 
-REQUESTOR: _________________________  Role: ___________
-Event: _________________________  Expected Attendance: _______
+Item: __________  Serial: __________
+Loan to: ____________________  Date out: ______
+Purpose: ______________________________________
+Return due: __________
 
-DATE(S): ___________  START TIME: _______  END TIME: _______
-SETUP TIME: _______  BREAKDOWN TIME: _______
+Condition on loan: ____________________
+Condition on return: ____________________
 
-SPACE REQUESTED
-☐ Maker Space  ☐ Cafeteria  ☐ Gym  ☐ Library  ☐ Courtyard  ☐ Classroom: _______
+Borrower agrees to: return on time, report damage, not loan onward.
 
-EQUIPMENT NEEDS
-☐ Tables: ____  ☐ Chairs: ____  ☐ Power Strips: ____
-☐ Press  ☐ Shredder  ☐ Laser  ☐ Projector/Screen
-☐ Tables for Display  ☐ Cash Box  ☐ Square Reader
-
-SERVICES
-☐ Custodial (Setup: ☐  Breakdown: ☐)
-☐ Security  ☐ AV Support  ☐ WiFi Dedicated
-
-SAFETY
-☐ First Aid Kit  ☐ Fire Extinguisher  ☐ Emergency Exits Clear
-☐ Emergency Plan Reviewed  ☐ Student Supervision Plan
-
-APPROVALS
-Teacher Lead: _________________________  Date: ___________
-Facilities: _________________________  Date: ___________
-Admin: _________________________  Date: ___________
-
-STATUS: ☐ Approved  ☐ Denied  ☐ Modified (see notes)
-Notes: ____________________________________________________________
+Borrower: __________  Issued by: __________
+Returned (date): ______  Signature: __________
 ```
 
 ---
 
-## Form 15: Grant Expense Report
-
+# FORM 11: INVENTORY COUNT SHEET
 ```
-CAP COLLECTIVE — GRANT EXPENSE REPORT
-Grant: _________________________  Period: ___________ to ___________
-School: _________________________  Grant Amount: $________
+CAP COLLECTIVE INVENTORY COUNT
 
-EXPENSES BY CATEGORY
-┌──────────────────┬──────────┬──────────┬────────────┐
-│ Category         │ Budgeted │ Expended │ Variance   │
-├──────────────────┼──────────┼──────────┼────────────┤
-│ Equipment        │          │          │            │
-│ Consumables      │          │          │            │
-│ Personnel/Stipend│          │          │            │
-│ Training         │          │          │            │
-│ Travel           │          │          │            │
-│ Indirect/Overhead│          │          │            │
-├──────────────────┼──────────┼──────────┼────────────┤
-│ TOTAL            │          │          │            │
-└──────────────────┴──────────┴──────────┴────────────┘
+Date: __________  Counted by: __________
 
-DETAILED EXPENDITURES (Attach receipts)
-┌────┬──────────┬────────────────┬──────────┬────────┐
-│ #  │ Date     │ Vendor         │ Category │ Amount │
-├────┼──────────┼────────────────┼──────────┼────────┤
-│ 1  │          │                │          │        │
-│ 2  │          │                │          │        │
-│ 3  │          │                │          │        │
-├────┼──────────┼────────────────┼──────────┼────────┤
-│    │          │      TOTAL     │          │        │
-└────┴──────────┴────────────────┴──────────┴────────┘
+RAW MATERIALS:
+Caps on hand (count): ______  Weight (kg): ______
+Flakes (kg): ______  By color: Light ___ Dark ___
 
-MATCH/IN-KIND CONTRIBUTIONS
-| Source | Type (Cash/Time/Materials) | Value |
-|--------|---------------------------|-------|
-|        |                           |       |
+PRODUCTS (by SKU):
+SKU | Product | Qty on hand | Notes
+----|---------|-------------|------
+    |         |             |
+    |         |             |
 
-NARRATIVE (Progress, challenges, changes)
-________________________________________________________________________
-________________________________________________________________________
+CONSUMABLES:
+Parchment paper: ______  Soap: ______  Bags: ______
+PPE (gloves/masks/goggles): ______
 
-CERTIFICATION
-I certify that expenditures are accurate, allowable, and supported by documentation.
+EQUIPMENT (present & functional):
+☐ Heat press  ☐ Shredder  ☐ Sensors  ☐ 3D printer  ☐ Laser
 
-Prepared By: _________________________  Date: ___________
-Approved By: _________________________  Date: ___________
+Discrepancies: ______________________________
+Signature: __________
 ```
 
 ---
 
-## Form 16: Student Exit Survey (Graduation/Transfer)
-
+# FORM 13: FACILITIES / SPACE REQUEST
 ```
-CAP COLLECTIVE — STUDENT EXIT SURVEY
-School: _________________________  Year: ___________
+FACILITIES REQUEST — Cap Collective
 
-STUDENT: _________________________  Grade: ___  Years in Program: ___
-Role(s) Held: _________________________  Certifications: _________________________
+Requested by: __________  Date: ______
+Room/Space: ____________________
+Duration: ☐ Permanent ☐ Term-ly ☐ Recurring weekly
 
-EXPERIENCE RATING (1-5)
-Program Overall: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
-Safety Training: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
-Machine Skills: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
-Leadership Growth: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
-Mentorship Received: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
-College/Career Prep: ☐ 1 ☐ 2 ☐ 3 ☐ 4 ☐ 5
+NEEDS:
+☐ Ventilated room (exhaust ≥100 CFM) or fume hood
+☐ 1× 16A/20A grounded circuit (__V)
+☐ Sink access within 20m
+☐ 3 tables + lockable storage
+☐ Fire extinguisher + first-aid kit on site
+☐ Non-slip, easy-clean floor
 
-WHAT WAS MOST VALUABLE?
-________________________________________________________________________
-________________________________________________________________________
+SCHEDULE: ____________________
+Equipment to be installed: ____________________
 
-WHAT SHOULD IMPROVE?
-________________________________________________________________________
-________________________________________________________________________
+Facilities assessment:
+☐ Exhaust tested (date): ______  ☐ Breaker confirmed: ______
+☐ Room approved by: __________
 
-SKILLS FOR COLLEGE/CAREER
-________________________________________________________________________
-
-POST-GRADUATION PLANS
-☐ College (Major: ___________)  ☐ Trade School  ☐ Workforce
-☐ Military  ☐ Gap Year  ☐ Other: ___________
-
-ALUMNI NETWORK
-☐ Add me to alumni network  Email: _________________________
-☐ Willing to mentor  ☐ Willing to speak  ☐ Willing to hire
-
-FAVORITE MEMORY
-________________________________________________________________________
-
-ADVICE FOR NEXT COHORT
-________________________________________________________________________
-
-Student Signature: _________________________  Date: ___________
+Signature: Facilities __________  Lead __________
 ```
 
 ---
 
-## Digital Versions
+# FORM 14: IT / NETWORK ACCESS REQUEST
+```
+IT / NETWORK ACCESS REQUEST
 
-All forms available as:
-- **Google Forms** (auto-populates Command Center)
-- **Fillable PDF** (offline use)
-- **Google Docs** (editable templates)
-- **Airtable/Notion** (database views)
+Requested by: __________  Date: ______
+Purpose: IoT sensors (ESP32) for real-time collection counting.
 
-Access: `https://github.com/imredavid64-glitch/capcollective/tree/main/templates/forms`
+REQUEST:
+☐ WiFi access for up to ___ IoT devices
+☐ Preferred: isolated/guest VLAN
+☐ Device MAC addresses (attach list)
+☐ Outbound HTTPS to Google Apps Script (or use offline mode)
+
+DATA PRIVACY:
+• Only aggregate counts/weights are transmitted.
+• No personal student data.
+• Public dashboard shows aggregates only.
+• Can run fully offline (manual counting) if denied.
+
+☐ Approved  ☐ Denied — reason: __________
+IT Contact: __________  Signature: __________
+```
 
 ---
 
-## Compliance & Retention
+# FORM 15: DATA PRIVACY STATEMENT (for IT & parents)
+```
+CAP COLLECTIVE DATA PRIVACY STATEMENT
 
-| Form | Retention | Storage | Disposal |
-|------|-----------|---------|----------|
-| Student Application | 1 yr post-grad | Drive + Paper | Shred |
-| Safety Pledge | 1 yr post-grad | Drive + Paper | Shred |
-| Parent Consent | 1 yr post-grad | Drive + Paper | Shred |
-| Photo Release | 3 yrs | Drive | Delete |
-| Medical Info | 1 yr post-grad | Locked + Drive | Shred |
-| Teacher Agreement | Employ + 3 yrs | HR + Drive | Shred |
-| Volunteer Agreement | 1 yr | Drive | Shred |
-| Vendor Quotes | 3 yrs | Drive + Paper | Shred |
-| Purchase Reqs | 3 yrs | Finance + Drive | Shred |
-| Receiving Reports | 3 yrs | Finance + Drive | Shred |
-| Expense Reports | 3 yrs | Finance + Drive | Shred |
-| Incident Reports | 5 yrs | Locked + Drive | Shred |
-| Near-Miss Reports | 5 yrs | Drive | Delete |
-| Equipment Logs | 1 yr | Drive | Delete |
-| Facility Requests | 1 yr | Drive | Delete |
-| Grant Expenses | 7 yrs | Finance + Drive | Archive |
-| Exit Surveys | Permanent | Drive (Alumni) | Never |
+WHAT WE COLLECT:
+• Collection counts and weights (aggregate)
+• Bin fill-level and temperature (sensor data)
+• Internal-only: student names with assigned roles &
+  safety certifications
 
-**All forms with student PII:** FERPA compliant, locked storage, access log
+WHAT WE DO NOT COLLECT:
+• No personal data transmitted by sensors
+• No images or location data
+• No data sold or shared with third parties
+
+WHERE IT LIVES:
+• Internal records: access-controlled school Google Workspace
+• Public dashboard: aggregate numbers only (no names)
+
+RETENTION: End of school year, unless required for grant reporting.
+CONTACT: [Program Lead email]
+```
+
+---
+
+# FORM 16: GRANT SPENDING TRACKER
+```
+GRANT SPENDING TRACKER
+
+Grant name: __________  Award: $______  Code: ______
+
+Approved budget lines:
+Line | Approved $ | Spent $ | Remaining $ | Receipts
+-----|-----------|---------|-------------|---------
+     |           |         |             | ☐
+     |           |         |             | ☐
+TOTAL|           |         |             |
+
+Spend deadline: __________
+Report deadline: __________
+Status: ☐ On track ☐ At risk ☐ Complete
+```
+
+---
+
+# FORM 17: DONATION / IN-KIND RECEIPT
+```
+DONATION / IN-KIND RECEIPT
+
+Thank you for supporting Cap Collective!
+
+Donor: ____________________  Date: ______
+Donation: ☐ Cash $______  ☐ In-kind (describe): __________
+Fair market value (est.): $______
+
+No goods or services were provided in exchange.
+[For tax purposes if applicable.]
+
+Received by: __________  Signature: __________
+```
+
+---
+*Forms Pack v1.0 — 17 forms. Adapt wording to your district's legal requirements; have finance/legal review before use.*

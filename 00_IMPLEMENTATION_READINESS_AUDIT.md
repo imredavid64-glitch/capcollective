@@ -178,3 +178,5 @@ The kit was strong on **what to do** and **why**, but weak on **how institutions
 
 ---
 *Readiness Audit v1.0 — re-run this audit after adding CAD files and real quotes.*
+
+> **Update (post-fix pass):** Technical debt items (firmware restructure, dashboard backends, missing CSVs, sync_docs portability, CI) tracked in `33_REMAINING_GAPS_AND_TECHNICAL_DEBT.md`. Most have now been addressed; remaining external dependencies (CAD files, real quotes, insurance, IT approval, live URLs) still apply.

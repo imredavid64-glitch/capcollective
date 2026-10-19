@@ -27,7 +27,7 @@ Get Cap Collective running in your school in 5 steps.
 | **FabLab** | $2,500–5,000 | Auto press, 3D printer, sensors, GDPR shredder | 2-4 weeks |
 | **Center** | $10,000+ | Injection molder, laser, precision molds | 6-8 weeks |
 
-Use the [Equipment Procurement Planner](https://github.com/imredavid64-glitch/capcollective/blob/main/03_COMMAND_CENTER_SHEETS.md#tab-2-%F0%9F%92%92-equipment-procurement-planner) (Tab 2) + [Supplier Directory](resources/suppliers.md).
+Use the [Equipment Procurement Planner](https://github.com/imredavid64-glitch/capcollective/blob/main/03_COMMAND_CENTER_SHEETS.md#tab-2-%F0%9F%92%92-equipment-procurement-planner) (Tab 2) + [Supplier Directory](../resources/suppliers.md).
 
 ---
 
@@ -56,7 +56,7 @@ Use the [Equipment Procurement Planner](https://github.com/imredavid64-glitch/ca
 ### Option B: Live Dashboard
 1. Fork `cap-collective-dashboard` repo
 2. Create Supabase project
-3. Run [Supabase Schema](technical/supabase.md)
+3. Run [Supabase Schema](../technical/supabase.md)
 4. Deploy to Vercel (2 min)
 5. Add env vars: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 
@@ -64,7 +64,7 @@ Use the [Equipment Procurement Planner](https://github.com/imredavid64-glitch/ca
 
 ## Step 5: Launch Week! (Week 3-4)
 
-Follow the [Launch Week Run-of-Show](implementation/launch-week.md):
+Follow the [Launch Week Run-of-Show](../implementation/launch-week.md):
 
 | Day | Focus | Key Activities |
 |-----|-------|----------------|
