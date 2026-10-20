@@ -41,10 +41,13 @@
   "aliveStatusCodes": [200, 206, 301, 302, 307, 308],
   "retryCount": 3,
   "retryDelay": 1000,
-  "timeout": 10000,
+  "timeout": "20s",
   "httpHeaders": [
     {
-      "User-Agent": "markdown-link-check/3.11.2 (Cap Collective CI)"
+      "urls": ["https://*"],
+      "headers": {
+        "User-Agent": "markdown-link-check/3.11.2 (Cap Collective CI)"
+      }
     }
   ]
 }

@@ -188,14 +188,13 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ## 🔗 LINKS
 
-- **Documentation Site:** [capcollective.org/docs](https://capcollective.org/docs) (MkDocs)
+- **Documentation Site:** [GitHub Pages](https://imredavid64-glitch.github.io/capcollective/) (MkDocs)
 - **Live Dashboard:** [capcollective.vercel.app](https://capcollective.vercel.app)
 - **Cap Tracker:** [bottle-cap-tracker.vercel.app](https://bottle-cap-tracker.vercel.app)
 - **GitHub Repository:** [github.com/imredavid64-glitch/capcollective](https://github.com/imredavid64-glitch/capcollective)
-- **GitHub Discussions:** [Community Q&A](https://github.com/imredavid64-glitch/capcollective/discussions)
 - **Issue Tracker:** [Report Bugs/Request Features](https://github.com/imredavid64-glitch/capcollective/issues)
 - **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective)
-- **Instructables Build Guide:** [12-Step Guide](https://www.instructables.com/Cap-Collective/)
+- **Build Guide (PDF):** [Instructables 12-Step Guide](Cap%20Collective,%20a%20Circular%20Recycle%20System%20for%20Bottle%20Caps(and%20Other%20Plastics%20of%20Course)%20_%2012%20Steps%20-%20Instructables.pdf)
 - **Supabase Dashboard:** (deploy `cap-collective-dashboard/` to Vercel/Netlify)
 
 ---
@@ -235,7 +234,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute, and [CODE_OF_CONDU
 ## SUPPORT & COMMUNITY
 
 - **Troubleshooting FAQ:** Appendix E of the Teacher Guide (`02_TEACHER_IMPLEMENTATION_GUIDE.md`)
-- **GitHub Discussions:** [Ask questions, share ideas](https://github.com/imredavid64-glitch/capcollective/discussions)
+- **GitHub Issues:** [Ask questions, request features](https://github.com/imredavid64-glitch/capcollective/issues)
 - **Discord Community:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg) — 50+ teachers globally
 - **Monthly Office Hours:** First Tuesday, 4pm ET (calendar link in Discord)
 - **Email:** support@capcollective.org
