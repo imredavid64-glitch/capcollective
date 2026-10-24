@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1649,10 +1649,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#espsupabase-library" class="md-nav__link">
+  <a href="#supabase-upload-no-extra-library" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ESPSupabase Library
+        Supabase Upload (no extra library)
       
     </span>
   </a>
@@ -1675,6 +1675,17 @@
   
     <nav class="md-nav" aria-label="Configuration">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#0-secrets-never-commit-credentials" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0. Secrets (never commit credentials)
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#1-radio-channel-must-match-on-all-devices" class="md-nav__link">
@@ -2898,7 +2909,7 @@
 <h2 id="required-arduino-libraries">Required Arduino Libraries<a class="headerlink" href="#required-arduino-libraries" title="Permanent link">&para;</a></h2>
 <p>Install via Arduino Library Manager or PlatformIO <code>lib_deps</code>:</p>
 <div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Built-in (ESP32 core):</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># - WiFi, ESP-NOW, esp_camera, SD_MMC, SPI, Wire</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># - WiFi, ESP-NOW, esp_camera, SD_MMC, SPI, Wire, HTTPClient</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># External (install via Library Manager):</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="na">lib_deps</span><span class="w"> </span><span class="o">=</span>
@@ -2906,107 +2917,116 @@
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="na">adafruit/Adafruit ST7735 and ST7789 Library@^1.9.4</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="na">adafruit/Adafruit SSD1306@^2.5.7</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="na">bblanchon/ArduinoJson@^7.0.4</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="c1"># ESPSupabase - see below</span>
 </span></code></pre></div>
-<h3 id="espsupabase-library">ESPSupabase Library<a class="headerlink" href="#espsupabase-library" title="Permanent link">&para;</a></h3>
-<p>The Radio Tower uses a custom <code>ESPSupabase</code> library for HTTPS REST calls to Supabase.</p>
-<p><strong>Option 1: Install from GitHub (recommended)</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># In PlatformIO, add to lib_deps:</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># https://github.com/your-org/ESPSupabase.git</span>
-</span></code></pre></div></p>
-<p><strong>Option 2: Manual installation</strong>
-1. Download/copy <code>ESPSupabase.h</code> and <code>ESPSupabase.cpp</code> to <code>firmware/libraries/ESPSupabase/</code>
-2. The library provides:
-   <div class="language-cpp highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">class</span><span class="w"> </span><span class="nc">Supabase</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="nf">begin</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">anonKey</span><span class="p">);</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">table</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">String</span><span class="o">&amp;</span><span class="w"> </span><span class="n">json</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">upsert</span><span class="p">);</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">};</span>
-</span></code></pre></div></p>
+<h3 id="supabase-upload-no-extra-library">Supabase Upload (no extra library)<a class="headerlink" href="#supabase-upload-no-extra-library" title="Permanent link">&para;</a></h3>
+<p>The Radio Tower talks to Supabase's PostgREST API with the built-in
+<code>HTTPClient</code> — there is no third-party Supabase library to install:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">HTTPClient</span><span class="w"> </span><span class="n">http</span><span class="p">;</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">http</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="n">SB_URL</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"/rest/v1/cap_counts"</span><span class="p">);</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">http</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">);</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">http</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">"apikey"</span><span class="p">,</span><span class="w"> </span><span class="n">SB_ANON</span><span class="p">);</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">http</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">"Authorization"</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="p">(</span><span class="s">"Bearer "</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">SB_ANON</span><span class="p">);</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">http</span><span class="p">.</span><span class="n">addHeader</span><span class="p">(</span><span class="s">"Prefer"</span><span class="p">,</span><span class="w"> </span><span class="s">"return=minimal"</span><span class="p">);</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">http</span><span class="p">.</span><span class="n">POST</span><span class="p">(</span><span class="n">json</span><span class="p">);</span><span class="w">   </span><span class="c1">// 201 on success</span>
+</span></code></pre></div>
+<p>Compile with <code>-DSUPABASE_UPLOAD_ENABLED=0</code> to run offline (SD logging only).</p>
 <hr />
 <h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">&para;</a></h2>
+<h3 id="0-secrets-never-commit-credentials">0. Secrets (never commit credentials)<a class="headerlink" href="#0-secrets-never-commit-credentials" title="Permanent link">&para;</a></h3>
+<p>Each firmware project reads credentials from a <strong>gitignored</strong> <code>secrets.h</code>:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>firmware/radio_tower
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cp<span class="w"> </span>secrets.h.example<span class="w"> </span>secrets.h<span class="w">     </span><span class="c1"># Windows: copy secrets.h.example secrets.h</span>
+</span></code></pre></div>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#define SECRET_WIFI_SSID "YourWiFiSSID"</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="cp">#define SECRET_WIFI_PASS "YourWiFiPassword"</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="cp">#define SECRET_SB_URL    "https:</span><span class="c1">//your-project.supabase.co"</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cp">#define SECRET_SB_ANON   "your-anon-key"</span>
+</span></code></pre></div>
 <h3 id="1-radio-channel-must-match-on-all-devices">1. Radio Channel (MUST match on ALL devices)<a class="headerlink" href="#1-radio-channel-must-match-on-all-devices" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cp">#define RADIO_CHANNEL   1  </span><span class="c1">// Change 1-13 if interference</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// In each project's secrets.h</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="cp">#define SECRET_RADIO_CHANNEL 1   </span><span class="c1">// Change 1-13 if interference</span>
 </span></code></pre></div>
 <h3 id="2-tower-mac-address-on-nodes">2. Tower MAC Address (on Nodes)<a class="headerlink" href="#2-tower-mac-address-on-nodes" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1">// In node1_*.ino and node2_*.ino</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">TOWER_MAC</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x14</span><span class="p">,</span><span class="mh">0xC1</span><span class="p">,</span><span class="mh">0x9F</span><span class="p">,</span><span class="mh">0x29</span><span class="p">,</span><span class="mh">0xFD</span><span class="p">,</span><span class="mh">0xA4</span><span class="p">};</span><span class="w">  </span><span class="c1">// REPLACE WITH YOUR TOWER'S MAC</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// In firmware/node1_cap_counter/src/main.ino and</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1">//     firmware/node2_cap_counter/src/main.ino</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">TOWER_MAC</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x14</span><span class="p">,</span><span class="mh">0xC1</span><span class="p">,</span><span class="mh">0x9F</span><span class="p">,</span><span class="mh">0x29</span><span class="p">,</span><span class="mh">0xFD</span><span class="p">,</span><span class="mh">0xA4</span><span class="p">};</span><span class="w">  </span><span class="c1">// REPLACE WITH YOUR TOWER'S MAC</span>
 </span></code></pre></div>
 <p><strong>Get Tower MAC:</strong> Boot Radio Tower → Serial Monitor shows <code>&gt;&gt; Tower MAC: 14:C1:9F:29:FD:A4</code></p>
 <h3 id="3-wifi-supabase-radio-tower-only">3. WiFi &amp; Supabase (Radio Tower only)<a class="headerlink" href="#3-wifi-supabase-radio-tower-only" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1">// In radio_tower.ino</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">WIFI_SSID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"YourWiFiSSID"</span><span class="p">;</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">WIFI_PASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"YourWiFiPassword"</span><span class="p">;</span>
-</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">SB_URL</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s">"https://your-project.supabase.co"</span><span class="p">;</span>
-</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="o">*</span><span class="w"> </span><span class="n">SB_ANON</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s">"your-anon-key-from-supabase-settings"</span><span class="p">;</span>
+<p>Put these in <code>secrets.h</code> — never in the tracked <code>.ino</code> file:</p>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cp">#define SECRET_WIFI_SSID "YourWiFiSSID"</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="cp">#define SECRET_WIFI_PASS "YourWiFiPassword"</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="cp">#define SECRET_SB_URL    "https:</span><span class="c1">//your-project.supabase.co"</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="cp">#define SECRET_SB_ANON   "your-anon-key-from-supabase-settings"</span>
 </span></code></pre></div>
 <h3 id="4-supabase-database-setup">4. Supabase Database Setup<a class="headerlink" href="#4-supabase-database-setup" title="Permanent link">&para;</a></h3>
-<div class="language-sql highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1">-- Run in Supabase SQL Editor</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cap_counts</span><span class="w"> </span><span class="p">(</span>
-</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="n">bigserial</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
-</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span><span class="n">created_at</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
-</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span><span class="n">node_id</span><span class="w"> </span><span class="nb">smallint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span><span class="n">cap_count</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
-</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span><span class="n">cap_color</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span>
-</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="p">);</span>
-</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
-</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1">-- Enable realtime for live dashboard</span>
-</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="k">alter</span><span class="w"> </span><span class="n">publication</span><span class="w"> </span><span class="n">supabase_realtime</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">;</span>
-</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
-</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="c1">-- Optional: Index for faster queries</span>
-</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_cap_counts_node_time</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">desc</span><span class="p">);</span>
-</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_cap_counts_color</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">(</span><span class="n">cap_color</span><span class="p">);</span>
+<div class="language-sql highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1">-- Run in Supabase SQL Editor</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cap_counts</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span><span class="n">id</span><span class="w"> </span><span class="n">bigserial</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span><span class="n">created_at</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="k">time</span><span class="w"> </span><span class="k">zone</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">now</span><span class="p">(),</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span><span class="n">node_id</span><span class="w"> </span><span class="nb">smallint</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span><span class="n">cap_count</span><span class="w"> </span><span class="nb">integer</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="w">  </span><span class="n">cap_color</span><span class="w"> </span><span class="nb">text</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="p">);</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1">-- Enable realtime for live dashboard</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="k">alter</span><span class="w"> </span><span class="n">publication</span><span class="w"> </span><span class="n">supabase_realtime</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">;</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+</span><span id="__span-9-13"><a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="c1">-- Optional: Index for faster queries</span>
+</span><span id="__span-9-14"><a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_cap_counts_node_time</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">(</span><span class="n">node_id</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">desc</span><span class="p">);</span>
+</span><span id="__span-9-15"><a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="k">create</span><span class="w"> </span><span class="k">index</span><span class="w"> </span><span class="n">idx_cap_counts_color</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">cap_counts</span><span class="p">(</span><span class="n">cap_color</span><span class="p">);</span>
 </span></code></pre></div>
 <h3 id="5-ultrasound-thresholds-node-1">5. Ultrasound Thresholds (Node 1)<a class="headerlink" href="#5-ultrasound-thresholds-node-1" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cp">#define CAP_DETECT_CM  5.0f    </span><span class="c1">// Detect cap when object &lt; 5cm</span>
-</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="cp">#define DEBOUNCE_MS    800     </span><span class="c1">// Minimum time between counts</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#define CAP_DETECT_CM  5.0f    </span><span class="c1">// Detect cap when object &lt; 5cm</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cp">#define DEBOUNCE_MS    800     </span><span class="c1">// Minimum time between counts</span>
 </span></code></pre></div>
 <h3 id="6-access-gate-tuning-radio-tower">6. Access Gate Tuning (Radio Tower)<a class="headerlink" href="#6-access-gate-tuning-radio-tower" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="cp">#define SKIN_TRIGGER_PCT     8    </span><span class="c1">// % skin pixels to trigger</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="cp">#define SKIN_HOLD_FRAMES     5    </span><span class="c1">// Consecutive frames required</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="cp">#define SKIN_SCAN_INTERVAL   150  </span><span class="c1">// ms between scans</span>
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="cp">#define ACCESS_TIMEOUT_MS    60000 </span><span class="c1">// Auto-grant after 60s</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="cp">#define SKIN_TRIGGER_PCT     8    </span><span class="c1">// % skin pixels to trigger</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="cp">#define SKIN_HOLD_FRAMES     5    </span><span class="c1">// Consecutive frames required</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="cp">#define SKIN_SCAN_INTERVAL   150  </span><span class="c1">// ms between scans</span>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="cp">#define ACCESS_TIMEOUT_MS    60000 </span><span class="c1">// Auto-grant after 60s</span>
 </span></code></pre></div>
 <hr />
 <h2 id="data-protocol-esp-now">Data Protocol (ESP-NOW)<a class="headerlink" href="#data-protocol-esp-now" title="Permanent link">&para;</a></h2>
 <h3 id="capmessage-node-tower">CapMessage (Node → Tower)<a class="headerlink" href="#capmessage-node-tower" title="Permanent link">&para;</a></h3>
-<div class="language-cpp highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">node_id</span><span class="p">;</span><span class="w">       </span><span class="c1">// 1 or 2</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cap_count</span><span class="p">;</span><span class="w">     </span><span class="c1">// Running total from this node</span>
-</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">  </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">color_idx</span><span class="p">;</span><span class="w">     </span><span class="c1">// 0=red, 1=blue, 2=green, 3=white, 4=unknown</span>
-</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp_ms</span><span class="p">;</span><span class="w">  </span><span class="c1">// Millis since node boot</span>
-</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="p">}</span><span class="w"> </span><span class="n">CapMessage</span><span class="p">;</span><span class="w">  </span><span class="c1">// 8 bytes total</span>
+<div class="language-cpp highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">node_id</span><span class="p">;</span><span class="w">       </span><span class="c1">// 1 or 2</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">cap_count</span><span class="p">;</span><span class="w">     </span><span class="c1">// Running total from this node</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">  </span><span class="kt">uint8_t</span><span class="w">  </span><span class="n">color_idx</span><span class="p">;</span><span class="w">     </span><span class="c1">// 0=red, 1=blue, 2=green, 3=white, 4=unknown</span>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">timestamp_ms</span><span class="p">;</span><span class="w">  </span><span class="c1">// Millis since node boot</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="p">}</span><span class="w"> </span><span class="n">CapMessage</span><span class="p">;</span><span class="w">  </span><span class="c1">// 8 bytes total</span>
 </span></code></pre></div>
 <h3 id="event-log-tower-sd-card">Event Log (Tower SD Card)<a class="headerlink" href="#event-log-tower-sd-card" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>uptime_ms,node_id,cap_count,color
-</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>123456,1,42,red
-</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>124001,2,15,blue
+<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>uptime_ms,node_id,cap_count,color
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>123456,1,42,red
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>124001,2,15,blue
 </span></code></pre></div>
 <hr />
 <h2 id="flashing-instructions">Flashing Instructions<a class="headerlink" href="#flashing-instructions" title="Permanent link">&para;</a></h2>
 <h3 id="platformio-recommended">PlatformIO (Recommended)<a class="headerlink" href="#platformio-recommended" title="Permanent link">&para;</a></h3>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Install PlatformIO CLI</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>pip<span class="w"> </span>install<span class="w"> </span>platformio
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># Node 1</span>
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">cd</span><span class="w"> </span>firmware/node1_cap_counter
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a><span class="c1"># Node 2</span>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="nb">cd</span><span class="w"> </span>firmware/node2_cap_counter
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
-</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
-</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
-</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1"># Radio Tower</span>
-</span><span id="__span-13-15"><a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a><span class="nb">cd</span><span class="w"> </span>firmware/radio_tower
-</span><span id="__span-13-16"><a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
-</span><span id="__span-13-17"><a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Install PlatformIO CLI</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>pip<span class="w"> </span>install<span class="w"> </span>platformio
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Node 1</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nb">cd</span><span class="w"> </span>firmware/node1_cap_counter
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="c1"># Node 2</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="nb">cd</span><span class="w"> </span>firmware/node2_cap_counter
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
+</span><span id="__span-14-12"><a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
+</span><span id="__span-14-13"><a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+</span><span id="__span-14-14"><a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="c1"># Radio Tower</span>
+</span><span id="__span-14-15"><a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="nb">cd</span><span class="w"> </span>firmware/radio_tower
+</span><span id="__span-14-16"><a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>pio<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>upload
+</span><span id="__span-14-17"><a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>pio<span class="w"> </span>device<span class="w"> </span>monitor
 </span></code></pre></div>
 <h3 id="arduino-ide">Arduino IDE<a class="headerlink" href="#arduino-ide" title="Permanent link">&para;</a></h3>
 <ol>
 <li><strong>Add ESP32 board support:</strong></li>
 <li>File → Preferences → Additional Board Manager URLs:
-   <div class="language-text highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+   <div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 </span></code></pre></div></li>
 <li>
 <p>Tools → Board → Boards Manager → Search "esp32" → Install "ESP32 by Espressif Systems"</p>
@@ -3048,21 +3068,21 @@
 </ul>
 <h3 id="deploy-dashboard">Deploy Dashboard<a class="headerlink" href="#deploy-dashboard" title="Permanent link">&para;</a></h3>
 <p><strong>Option 1: Static Hosting (Netlify, Vercel, GitHub Pages)</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Just upload the web/supabase_dashboard/ folder</span>
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># No build step needed — pure HTML/JS</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Just upload the web/supabase_dashboard/ folder</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="c1"># No build step needed — pure HTML/JS</span>
 </span></code></pre></div></p>
 <p><strong>Option 2: Supabase Edge Function</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>supabase<span class="w"> </span>functions<span class="w"> </span>deploy<span class="w"> </span>dashboard<span class="w"> </span>--no-verify-jwt
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>supabase<span class="w"> </span>functions<span class="w"> </span>deploy<span class="w"> </span>dashboard<span class="w"> </span>--no-verify-jwt
 </span></code></pre></div></p>
 <p><strong>Option 3: Local Development</strong>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">cd</span><span class="w"> </span>web/supabase_dashboard
-</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>npx<span class="w"> </span>serve<span class="w"> </span>.
-</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># Opens at http://localhost:3000</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>web/supabase_dashboard
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>npx<span class="w"> </span>serve<span class="w"> </span>.
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Opens at http://localhost:3000</span>
 </span></code></pre></div></p>
 <h3 id="dashboard-configuration">Dashboard Configuration<a class="headerlink" href="#dashboard-configuration" title="Permanent link">&para;</a></h3>
 <p>Edit <code>web/supabase_dashboard/index.html</code>:
-<div class="language-javascript highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">SB_URL</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">'https://your-project.supabase.co'</span><span class="p">;</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">SB_ANON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'your-anon-key'</span><span class="p">;</span><span class="w">  </span><span class="c1">// Safe to expose in client (anon key)</span>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kd">const</span><span class="w"> </span><span class="nx">SB_URL</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s1">'https://your-project.supabase.co'</span><span class="p">;</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kd">const</span><span class="w"> </span><span class="nx">SB_ANON</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'your-anon-key'</span><span class="p">;</span><span class="w">  </span><span class="c1">// Safe to expose in client (anon key)</span>
 </span></code></pre></div></p>
 <hr />
 <h2 id="integration-with-main-kit">Integration with Main Kit<a class="headerlink" href="#integration-with-main-kit" title="Permanent link">&para;</a></h2>
@@ -3252,8 +3272,8 @@
 <ol>
 <li>Add BME280/AHT20 to Node (I2C: SDA/SCL)</li>
 <li>Extend <code>CapMessage</code> struct:
-   <div class="language-cpp highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="kt">int16_t</span><span class="w"> </span><span class="n">temperature_c</span><span class="p">;</span><span class="w">  </span><span class="c1">// ×100 for 0.01°C resolution</span>
-</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="kt">uint16_t</span><span class="w"> </span><span class="n">humidity_pct</span><span class="p">;</span><span class="w">  </span><span class="c1">// ×100 for 0.01%</span>
+   <div class="language-cpp highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kt">int16_t</span><span class="w"> </span><span class="n">temperature_c</span><span class="p">;</span><span class="w">  </span><span class="c1">// ×100 for 0.01°C resolution</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kt">uint16_t</span><span class="w"> </span><span class="n">humidity_pct</span><span class="p">;</span><span class="w">  </span><span class="c1">// ×100 for 0.01%</span>
 </span></code></pre></div></li>
 <li>Update Supabase table and dashboard</li>
 </ol>
@@ -3500,10 +3520,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.integrate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "toc.integrate"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
