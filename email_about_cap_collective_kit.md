@@ -169,5 +169,3 @@ P.S. The kit has been through a comprehensive implementation readiness audit (pr
 - CSV importables for command center spreadsheet
 - Live dashboards: capcollective.vercel.app, bottle-cap-tracker.vercel.app
 - MIT License — free to use, modify, distribute
-
-
