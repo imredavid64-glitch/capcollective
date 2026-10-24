@@ -7,8 +7,12 @@
 #include <esp_now.h>
 #include <esp_wifi.h>
 
+// Channel/credentials live in `secrets.h` (GITIGNORED).
+//   cp secrets.h.example secrets.h
+#include "secrets.h"
+
 // ---- CONFIG ----
-#define RADIO_CHANNEL   1
+#define RADIO_CHANNEL   SECRET_RADIO_CHANNEL
 static uint8_t TOWER_MAC[6] = {0x14,0xC1,0x9F,0x29,0xFD,0xA4}; // replace with your tower MAC
 
 #define NODE_ID        2
@@ -35,8 +39,10 @@ void IRAM_ATTR onBeamBreak() {
   }
 }
 
-void onDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
+void onDataSent(const wifi_tx_info_t *info, esp_now_send_status_t status) {
   // optional: log send status
+  (void)info;
+  (void)status;
 }
 
 void setup() {

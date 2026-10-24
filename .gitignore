@@ -27,6 +27,10 @@ venv/
 .env.local
 .env.*.local
 
+# Firmware local secrets (copy secrets.h.example -> secrets.h)
+secrets.h
+**/secrets.h
+
 # OS
 .DS_Store
 Thumbs.db
@@ -39,6 +43,11 @@ desktop.ini
 
 # MkDocs
 site/
+
+# PlatformIO build artifacts
+.pio/
+.pioenvs/
+.piolibdeps/
 
 # Logs
 *.log

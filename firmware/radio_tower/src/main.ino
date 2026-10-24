@@ -13,13 +13,22 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_ST7735.h>
 #include <Adafruit_SSD1306.h>
-#include <ESPSupabase.h>
+#include <HTTPClient.h>
 
 // ─── CONFIG ──────────────────────────────────────────────────
-static const char* WIFI_SSID = "Telekom-181001";
-static const char* WIFI_PASS = "REDACTED";
-static const char* SB_URL    = "https://YOUR_PROJECT.supabase.co";
-static const char* SB_ANON   = "YOUR_ANON_KEY";
+// Credentials live in `secrets.h`, which is GITIGNORED.
+//   cp secrets.h.example secrets.h   then edit it.
+// Do not commit real credentials to this file.
+#include "secrets.h"
+static const char* WIFI_SSID = SECRET_WIFI_SSID;
+static const char* WIFI_PASS = SECRET_WIFI_PASS;
+static const char* SB_URL    = SECRET_SB_URL;
+static const char* SB_ANON   = SECRET_SB_ANON;
+
+// Optional compile-time override, e.g. from platformio.ini build_flags.
+#ifndef SUPABASE_UPLOAD_ENABLED
+#define SUPABASE_UPLOAD_ENABLED 1
+#endif
 
 // ─── PIN MAP ─────────────────────────────────────────────────
 #define TFT_SCK   21
@@ -91,7 +100,6 @@ static unsigned long last_rx_ms[3] = {0,0,0};
 
 static Adafruit_ST7735  tft(TFT_CS, TFT_DC, TFT_RST);
 static Adafruit_SSD1306 oled(OLED_W, OLED_H, &Wire, -1);
-static Supabase         db;
 
 static uint8_t  tft_view       = 0;
 static uint8_t  drawn_view     = 255;
@@ -479,7 +487,7 @@ void onRecv(const esp_now_recv_info_t*, const uint8_t* data, int len) {
 }
 
 // ============================================================
-//  WIFI + SUPABASE
+//  WIFI + SUPABASE (PostgREST over plain HTTPClient)
 // ============================================================
 void connectWiFi() {
   if (WiFi.status() == WL_CONNECTED) return;
@@ -511,7 +519,25 @@ void pumpUploads() {
   json += "\"cap_count\":" + String(e.cap_count)                  + ",";
   json += "\"cap_color\":\"" + String(COLOR_NAMES[e.color_idx]) + "\"}";
 
-  int code = db.insert("cap_counts", json, false);
+  int code = 0;
+#if SUPABASE_UPLOAD_ENABLED
+  // PostgREST insert: POST {url}/rest/v1/cap_counts
+  // Needs the anon key plus Prefer: return=minimal.
+  HTTPClient http;
+  String endpoint = String(SB_URL) + "/rest/v1/cap_counts";
+  http.begin(endpoint);
+  http.setTimeout(10000);
+  http.addHeader("Content-Type", "application/json");
+  http.addHeader("apikey", SB_ANON);
+  http.addHeader("Authorization", String("Bearer ") + SB_ANON);
+  http.addHeader("Prefer", "return=minimal");
+  code = http.POST(json);
+  http.end();
+#else
+  // Upload disabled (no Supabase project configured): log locally only.
+  code = 204;
+#endif
+
   if (code >= 200 && code < 300) {
     e.uploaded = true;
     upload_cursor++;
@@ -552,7 +578,6 @@ void setup() {
   }
 
   connectWiFi();
-  db.begin(SB_URL, SB_ANON);
   Serial.printf("\n>> Tower MAC: %s\n", WiFi.macAddress().c_str());
   Serial.printf(">> Tower CH:  %d   <-- put this in RADIO_CHANNEL on both counters\n\n",
                 WiFi.channel());

@@ -73,6 +73,9 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Run tests
+        run: npm test
+
       - name: TypeScript type check
         run: npx tsc --noEmit
 
@@ -86,14 +89,18 @@ jobs:
   # FIRMWARE - PLATFORMIO COMPILE CHECK
   # ============================================================
   firmware-compile:
-    name: Firmware Compile Check
+    name: Firmware Compile
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
-        firmware_dir:
-          - firmware/node1_cap_counter
-          - firmware/node2_cap_counter
-          - firmware/radio_tower
+        include:
+          - firmware_dir: firmware/node1_cap_counter
+            env: freenove_esp32_s3_wroom
+          - firmware_dir: firmware/node2_cap_counter
+            env: esp32dev
+          - firmware_dir: firmware/radio_tower
+            env: esp32-s3-devkitm-1
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -103,16 +110,29 @@ jobs:
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: pio-${{ matrix.env }}-${{ hashFiles('**/platformio.ini') }}
+
       - name: Install PlatformIO
         run: pip install platformio
 
-      - name: Compile firmware
+      - name: Provide placeholder secrets
         working-directory: ${{ matrix.firmware_dir }}
         run: |
-          # Try to compile for common ESP32 boards
-          pio run -e esp32dev || true
-          pio run -e esp32s3 || true
-          echo "Compile check completed for ${{ matrix.firmware_dir }}"
+          # secrets.h is gitignored. Real values are never in CI, so use
+          # the placeholder template shipped for this purpose.
+          if [ -f secrets.ci.h ]; then
+            cp secrets.ci.h secrets.h
+          else
+            cp secrets.h.example secrets.h
+          fi
+
+      - name: Compile firmware
+        working-directory: ${{ matrix.firmware_dir }}
+        run: pio run -e ${{ matrix.env }}
 
   # ============================================================
   # CAD VALIDATION

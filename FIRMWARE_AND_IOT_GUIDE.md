@@ -106,7 +106,7 @@ Install via Arduino Library Manager or PlatformIO `lib_deps`:
 
 ```ini
 # Built-in (ESP32 core):
-# - WiFi, ESP-NOW, esp_camera, SD_MMC, SPI, Wire
+# - WiFi, ESP-NOW, esp_camera, SD_MMC, SPI, Wire, HTTPClient
 
 # External (install via Library Manager):
 lib_deps =
@@ -114,52 +114,69 @@ lib_deps =
     adafruit/Adafruit ST7735 and ST7789 Library@^1.9.4
     adafruit/Adafruit SSD1306@^2.5.7
     bblanchon/ArduinoJson@^7.0.4
-    # ESPSupabase - see below
 ```
 
-### ESPSupabase Library
-The Radio Tower uses a custom `ESPSupabase` library for HTTPS REST calls to Supabase.
+### Supabase Upload (no extra library)
 
-**Option 1: Install from GitHub (recommended)**
-```bash
-# In PlatformIO, add to lib_deps:
-# https://github.com/your-org/ESPSupabase.git
+The Radio Tower talks to Supabase's PostgREST API with the built-in
+`HTTPClient` — there is no third-party Supabase library to install:
+
+```cpp
+HTTPClient http;
+http.begin(String(SB_URL) + "/rest/v1/cap_counts");
+http.addHeader("Content-Type", "application/json");
+http.addHeader("apikey", SB_ANON);
+http.addHeader("Authorization", String("Bearer ") + SB_ANON);
+http.addHeader("Prefer", "return=minimal");
+int code = http.POST(json);   // 201 on success
 ```
 
-**Option 2: Manual installation**
-1. Download/copy `ESPSupabase.h` and `ESPSupabase.cpp` to `firmware/libraries/ESPSupabase/`
-2. The library provides:
-   ```cpp
-   class Supabase {
-       void begin(const char* url, const char* anonKey);
-       int insert(const char* table, const String& json, bool upsert);
-   };
-   ```
+Compile with `-DSUPABASE_UPLOAD_ENABLED=0` to run offline (SD logging only).
 
 ---
 
 ## Configuration
 
+### 0. Secrets (never commit credentials)
+
+Each firmware project reads credentials from a **gitignored** `secrets.h`:
+
+```bash
+cd firmware/radio_tower
+cp secrets.h.example secrets.h     # Windows: copy secrets.h.example secrets.h
+```
+
+```cpp
+#define SECRET_WIFI_SSID "YourWiFiSSID"
+#define SECRET_WIFI_PASS "YourWiFiPassword"
+#define SECRET_SB_URL    "https://your-project.supabase.co"
+#define SECRET_SB_ANON   "your-anon-key"
+```
+
 ### 1. Radio Channel (MUST match on ALL devices)
 ```cpp
-#define RADIO_CHANNEL   1  // Change 1-13 if interference
+// In each project's secrets.h
+#define SECRET_RADIO_CHANNEL 1   // Change 1-13 if interference
 ```
 
 ### 2. Tower MAC Address (on Nodes)
 ```cpp
-// In node1_*.ino and node2_*.ino
+// In firmware/node1_cap_counter/src/main.ino and
+//     firmware/node2_cap_counter/src/main.ino
 static uint8_t TOWER_MAC[6] = {0x14,0xC1,0x9F,0x29,0xFD,0xA4};  // REPLACE WITH YOUR TOWER'S MAC
 ```
 
 **Get Tower MAC:** Boot Radio Tower → Serial Monitor shows `>> Tower MAC: 14:C1:9F:29:FD:A4`
 
 ### 3. WiFi & Supabase (Radio Tower only)
+
+Put these in `secrets.h` — never in the tracked `.ino` file:
+
 ```cpp
-// In radio_tower.ino
-static const char* WIFI_SSID = "YourWiFiSSID";
-static const char* WIFI_PASS = "YourWiFiPassword";
-static const char* SB_URL    = "https://your-project.supabase.co";
-static const char* SB_ANON   = "your-anon-key-from-supabase-settings";
+#define SECRET_WIFI_SSID "YourWiFiSSID"
+#define SECRET_WIFI_PASS "YourWiFiPassword"
+#define SECRET_SB_URL    "https://your-project.supabase.co"
+#define SECRET_SB_ANON   "your-anon-key-from-supabase-settings"
 ```
 
 ### 4. Supabase Database Setup

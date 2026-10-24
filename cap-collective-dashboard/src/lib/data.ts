@@ -14,21 +14,24 @@ export const SHEETS_CONFIG = {
 };
 
 // Build CSV export URLs
-function buildCsvUrl(gid: string): string {
+export function buildCsvUrl(gid: string): string {
   const base = `https://docs.google.com/spreadsheets/d/${SHEETS_CONFIG.sheetId}/export`;
   return `${base}?format=csv&gid=${gid}`;
 }
 
 // Parse CSV text to array of objects
-function parseCsv(csvText: string): Record<string, string>[] {
+export function parseCsv(csvText: string): Record<string, string>[] {
   const lines = csvText.trim().split('\n');
   if (lines.length < 2) return [];
-  
-  const headers = lines[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+
+  // Strip surrounding quotes, then trim: handles ` " value " ` correctly.
+  const cleanCell = (cell: string) => cell.trim().replace(/^"|"$/g, '').trim();
+
+  const headers = lines[0].split(',').map(cleanCell);
   const rows: Record<string, string>[] = [];
-  
+
   for (let i = 1; i < lines.length; i++) {
-    const values = lines[i].split(',').map(v => v.trim().replace(/^"|"$/g, ''));
+    const values = lines[i].split(',').map(cleanCell);
     if (values.length === headers.length) {
       const row: Record<string, string> = {};
       headers.forEach((header, index) => {

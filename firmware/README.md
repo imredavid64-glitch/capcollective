@@ -75,7 +75,7 @@ Adafruit GFX Library
 Adafruit ST7735 and ST7789 Library
 Adafruit SSD1306
 SD_MMC (built-in for ESP32)
-ESPSupabase (search "ESPSupabase" in the Arduino Library Manager; or use HTTPClient + ArduinoJson against the REST endpoint documented in cap-collective-dashboard/supabase_schema.sql)
+HTTPClient (built-in; used for the Supabase PostgREST upload)
 ArduinoJson (for JSON handling)
 TensorFlowLite_ESP32 (optional, for TFLite model on Node 1)
 ```
@@ -83,26 +83,52 @@ TensorFlowLite_ESP32 (optional, for TFLite model on Node 1)
 ## Configuration
 
 ### 1. Set Radio Channel (must match on all devices)
+
+Edit `secrets.h` in each firmware project (see step 3):
+
 ```cpp
-#define RADIO_CHANNEL   1  // Change if interference
+#define SECRET_RADIO_CHANNEL 1   // Change if interference
 ```
+
+All three devices must use the same channel. The tower prints its channel at
+boot — use that value for the two counters.
 
 ### 2. Set Tower MAC Address on Nodes
 ```cpp
-// In node1_cap_counter.ino / node2_cap_counter.ino
+// In firmware/node1_cap_counter/src/main.ino and
+//     firmware/node2_cap_counter/src/main.ino
 static uint8_t TOWER_MAC[6] = {0x14,0xC1,0x9F,0x29,0xFD,0xA4};  // Replace with your Tower's MAC
 ```
 
 Get Tower MAC from Serial Monitor on boot: `>> Tower MAC: 14:C1:9F:29:FD:A4`
 
 ### 3. Configure WiFi & Supabase (Radio Tower only)
-```cpp
-// In radio_tower.ino
-static const char* WIFI_SSID = "YourWiFiSSID";
-static const char* WIFI_PASS = "YourWiFiPassword";
-static const char* SB_URL    = "https://your-project.supabase.co";
-static const char* SB_ANON   = "your-anon-key";
+
+**Never edit credentials into the tracked `.ino` files.** Each firmware project
+reads them from a gitignored `secrets.h`:
+
+```bash
+cd firmware/radio_tower
+cp secrets.h.example secrets.h    # Windows: copy secrets.h.example secrets.h
 ```
+
+Then edit `secrets.h`:
+
+```cpp
+#define SECRET_WIFI_SSID "YourWiFiSSID"
+#define SECRET_WIFI_PASS "YourWiFiPassword"
+#define SECRET_SB_URL    "https://your-project.supabase.co"
+#define SECRET_SB_ANON   "your-anon-key"
+```
+
+`secrets.h` is listed in `.gitignore` — verify with `git status` that it does
+not appear before you commit. Nodes 1 and 2 use `secrets.h` only for
+`SECRET_RADIO_CHANNEL`; they speak ESP-NOW and need no WiFi credentials.
+
+The tower uploads with a plain `HTTPClient` POST to Supabase's PostgREST
+endpoint (`POST {SB_URL}/rest/v1/cap_counts`), so there is **no** third-party
+Supabase library to install. Set `-DSUPABASE_UPLOAD_ENABLED=0` in the
+`build_flags` to run the tower with local SD logging only.
 
 ### 4. Create Supabase Table
 ```sql

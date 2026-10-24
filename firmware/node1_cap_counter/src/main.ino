@@ -8,8 +8,12 @@
 #include <esp_wifi.h>
 #include "esp_camera.h"
 
+// Channel/credentials live in `secrets.h` (GITIGNORED).
+//   cp secrets.h.example secrets.h
+#include "secrets.h"
+
 // ─── CONFIG ──────────────────────────────────────────────────
-#define RADIO_CHANNEL   1
+#define RADIO_CHANNEL   SECRET_RADIO_CHANNEL
 static uint8_t TOWER_MAC[6] = {0x14,0xC1,0x9F,0x29,0xFD,0xA4};
 
 #define NODE_ID        1
