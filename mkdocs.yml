@@ -114,6 +114,7 @@ nav:
       - Operations Playbook: implementation/operations.md
       - Command Center: implementation/command-center.md
       - Student Roles: implementation/student-roles.md
+      - Visual Tracker: implementation/visual-tracker.md
   - Curriculum:
       - Standards Mapping: curriculum/standards.md
       - Lesson Plans: curriculum/lesson-plans.md
