@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'docs/**'
+      - '*.md'
       - 'mkdocs.yml'
       - 'requirements-docs.txt'
       - 'sync_docs.py'
