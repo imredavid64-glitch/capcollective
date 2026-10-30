@@ -2,6 +2,22 @@
 
 Complete PostgreSQL schema for Cap Collective dashboard.
 
+!!! info "Two backends — read this first"
+    Cap Collective ships **two separate data paths**, and they are not connected:
+
+    | Path | Used by | Data lives in |
+    |------|---------|---------------|
+    | **Google Sheets** | The Next.js dashboard (`cap-collective-dashboard`) | A published Google Sheet you own |
+    | **Supabase** | ESP32 firmware uploads + `web/supabase_dashboard/index.html` | A Supabase Postgres project you own |
+
+    The Next.js dashboard reads Google Sheets only — it does **not** query Supabase.
+    You do not need Supabase unless you are deploying the IoT sensor path
+    ([Firmware](firmware.md) → `cap_counts`) or the standalone Supabase dashboard.
+
+    If you want a single source of truth, pick one: point the sensors at a Google
+    Apps Script webhook (simplest), or rewrite `cap-collective-dashboard/src/lib/data.ts`
+    to query Supabase instead of Sheets.
+
 ```sql
 -- Cap Collective Supabase Schema
 -- ============================================================

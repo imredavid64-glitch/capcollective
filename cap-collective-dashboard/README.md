@@ -2,6 +2,11 @@
 
 A beautiful, real-time Next.js dashboard for the Cap Collective school circular economy program. Displays live data from Google Sheets including cap collection metrics, product revenue, student leaderboards, and IoT sensor status.
 
+> **Data source:** this app reads **Google Sheets** only. The `supabase_schema.sql`
+> file in this folder is for the optional IoT/ESP32 data path and the standalone
+> `web/supabase_dashboard/index.html` — this dashboard does not query Supabase.
+> See [Two backends](../docs/technical/supabase.md) in the docs.
+
 ## Features
 
 - **Real-time Metrics** — Caps collected, weight diverted, CO₂e avoided, revenue, student engagement
