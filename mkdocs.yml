@@ -85,16 +85,18 @@ extra:
       link: https://twitter.com/capcollective
     - icon: fontawesome/brands/youtube
       link: https://youtube.com/@CapCollective
-  analytics:
-    provider: google
-    property: G-XXXXXXXXXX  # Replace with your GA4 Measurement ID
-  consent:
-    title: Cookie consent
-    description: >-
-      We use cookies to recognize your repeated visits and preferences, as well
-      as to measure the effectiveness of our documentation and whether users
-      find what they're searching for. With your consent, you're helping us to
-      make our documentation better.
+  # Analytics is disabled until a real GA4 property exists. To enable it, uncomment
+  # the two blocks below and replace the placeholder with your Measurement ID.
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX  # your GA4 Measurement ID
+  # consent:
+  #   title: Cookie consent
+  #   description: >-
+  #     We use cookies to recognize your repeated visits and preferences, as well
+  #     as to measure the effectiveness of our documentation and whether users
+  #     find what they're searching for. With your consent, you're helping us to
+  #     make our documentation better.
 
 nav:
   - Home: index.md

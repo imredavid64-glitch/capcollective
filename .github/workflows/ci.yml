@@ -195,9 +195,13 @@ jobs:
       - name: Run cspell
         uses: streetsidesoftware/cspell-action@v6
         with:
-          files: '**/*.md'
-          config_file: .cspell.json
-          incremental: true
+          files: |
+            **/*.md
+            *.py
+            csv/*.csv
+            cad/**
+          config: .cspell.json
+          incremental_files_only: true
 
   # ============================================================
   # RELEASE BUILD (on tag push)

@@ -1,0 +1,4 @@
+Product,Units Made,Units Sold,Price,Revenue,Material Cost,Margin %
+Coaster (set),60,40,10,=C2*D2,=C2*2.5,=IF(E2=0,0,(E2-F2)/E2)
+Desk Organizer,30,18,15,=C3*D3,=C3*3,=IF(E3=0,0,(E3-F3)/E3)
+Keychain,120,95,4,=C4*D4,=C4*0.6,=IF(E4=0,0,(E4-F4)/E4)

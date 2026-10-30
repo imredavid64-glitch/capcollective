@@ -269,7 +269,7 @@ Start Core. Scale up. Every tier produces real products.
 | Burn marks | Temp / time / parchment | -5°C, -1 min, fresh paper |
 | Uneven melt | Flake size / spread | Sieve 5-8mm, spread even |
 | Shredder jam | Feed rate / debris | Reverse→Stop→Stick |
-| Sensor offline | WiFi / webhook / power | Reboot, check creds |
+| Sensor offline | WiFi / webhook / power | Reboot, check credentials |
 | No data in dashboard | Sheets not published | Publish to web → CSV |
 | Low sales | Price / visibility | Promo, bundle, relocate |
 | Contamination | Liners / dirt | Longer soak, better sort |

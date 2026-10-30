@@ -84,6 +84,20 @@ Trotec Speedy 50 | Center | 1 | 12000 | EUR | ... | Trotec | [link] | Research |
 ## TAB 3: 💰 Budget & Finance
 **Purpose:** Income, expenses, P&L per product, break-even.
 
+> **Importing this tab:** unlike the other tabs, Budget & Finance holds five
+> sections that cannot share one header row, so the kit ships **three importable
+> CSVs** instead of one:
+>
+> | File | Import into |
+> |------|-------------|
+> | `csv/07a_Budget_Income.csv` | Section A (Income) |
+> | `csv/07b_Budget_Expenses.csv` | Section B (Expenses) |
+> | `csv/07c_Budget_Product_PnL.csv` | Section C (P&L by Product) |
+>
+> `csv/07_Budget_Finance.csv` is the combined reference sheet (all five sections,
+> `#`-prefixed section headers). Use it to copy the formulas, not to import.
+> Sections D and E are pure formulas — build them by hand from the layout below.
+
 ### Section A: Income
 | A | B | C | D |
 |---|---|---|---|
