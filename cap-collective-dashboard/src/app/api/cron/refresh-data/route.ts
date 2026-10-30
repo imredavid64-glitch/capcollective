@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 import { fetchDashboardData } from '@/lib/data';
 
-// This endpoint is called by Vercel Cron every 15 minutes
-// It warms up the data cache and can trigger revalidation
+// This endpoint is called by Vercel Cron once a day (see vercel.json).
+// It warms up the data cache and can trigger revalidation.
+// Note: the Hobby plan allows daily crons; increase the schedule on Pro.
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: Request) {

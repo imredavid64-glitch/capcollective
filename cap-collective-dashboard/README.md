@@ -43,15 +43,34 @@ Open [http://localhost:3000](http://localhost:3000) to see the dashboard.
 
 ### 4. Deploy to Vercel
 
-```bash
-# Install Vercel CLI
-npm i -g vercel
+1. Push this repo to GitHub.
+2. In Vercel: **Add New → Project → Import** the repo.
+3. Set **Root Directory** to `cap-collective-dashboard`.
+4. Set **Production Branch** to `master` (this is what makes it a *production*
+   deployment instead of preview-only).
+5. Add these Environment Variables (Production + Preview):
 
-# Deploy
-vercel
+   | Variable | Required | Example |
+   |----------|----------|---------|
+   | `NEXT_PUBLIC_SHEETS_ID` | Yes | `1BxiMVs0...` |
+   | `NEXT_PUBLIC_GID_IMPACT` | Yes | `1234567890` |
+   | `NEXT_PUBLIC_GID_COLLECTION` | Yes | `1234567891` |
+   | `NEXT_PUBLIC_GID_PRODUCTS` | Yes | `1234567892` |
+   | `NEXT_PUBLIC_GID_ROLES` | Yes | `1234567893` |
+   | `NEXT_PUBLIC_GID_SENSORS` | Yes | `1234567894` |
+   | `NEXT_PUBLIC_SITE_URL` | Recommended | `https://capcollective.vercel.app` |
+   | `CRON_SECRET` | Recommended | random string |
 
-# Or connect your GitHub repo to Vercel for automatic deployments
-```
+6. Deploy. Vercel auto-detects Next.js — do **not** set an output directory.
+
+The included `vercel.json` adds security headers, a `/health` rewrite, and a
+**daily** cron (`0 6 * * *`) that warms the data cache. The daily schedule works
+on the Hobby plan; raise it on Pro if you want fresher data.
+
+!!! note
+    `next.config.js` uses `output: 'standalone'` for the Docker build. Vercel
+    ignores that setting and handles the Next.js build itself.
+
 
 ## Google Sheets Structure
 
