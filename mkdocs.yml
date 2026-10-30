@@ -6,7 +6,7 @@
 site_name: Cap Collective — School Implementation Kit
 site_description: Complete K-12 circular economy program where students turn bottle caps into products
 site_author: Cap Collective Community
-site_url: https://capcollective.org
+site_url: https://imredavid64-glitch.github.io/capcollective/
 
 repo_name: imredavid64-glitch/capcollective
 repo_url: https://github.com/imredavid64-glitch/capcollective
@@ -80,7 +80,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/imredavid64-glitch/capcollective
     - icon: fontawesome/brands/discord
-      link: https://discord.gg/capcollective
+      link: https://discord.gg/MpYwN3Kyg
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/capcollective
     - icon: fontawesome/brands/youtube

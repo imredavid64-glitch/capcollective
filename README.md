@@ -10,12 +10,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Build Status](https://github.com/imredavid64-glitch/capcollective/actions/workflows/ci.yml/badge.svg)](https://github.com/imredavid64-glitch/capcollective/actions)
 [![Contributors](https://img.shields.io/github/contributors/imredavid64-glitch/capcollective)](https://github.com/imredavid64-glitch/capcollective/graphs/contributors)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord)](https://discord.gg/capcollective)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?logo=discord)](https://discord.gg/MpYwN3Kyg)
 
 ---
 
 ## WHAT IS THIS KIT?
-This is a **complete implementation kit** for bringing the Cap Collective circular recycling program into any school. Students collect HDPE bottle caps, process them through a safe 5-step workflow (Collect â†’ Clean â†’ Shred â†’ Melt â†’ Refine), and manufacture valuable products â€” all while learning STEM, entrepreneurship, and environmental stewardship.
+This is a **complete implementation kit** for bringing the Cap Collective circular recycling program into any school. Students collect HDPE bottle caps, process them through a safe 5-step workflow (Collect → Clean → Shred → Melt → Refine), and manufacture valuable products — all while learning STEM, entrepreneurship, and environmental stewardship.
 
 Everything you need is here: presentations, guides, spreadsheets, safety docs, curriculum maps, grant templates, printable posters, and sensor code.
 
@@ -72,6 +72,7 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 | — | `firmware/` | ESP32/ESP32-S3 firmware (Node 1, Node 2, Radio Tower) | FabLab+ students |
 | — | `cap-collective-dashboard/` | Next.js + Supabase live analytics dashboard | Data leads, students |
 | — | `docs/` | MkDocs documentation site source | Everyone |
+| — | `pdf/` | Print-ready PDFs (Implementation Kit + Overview) | Everyone |
 
 ---
 
@@ -86,7 +87,7 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## đźš€ QUICK START (Do This First)
+## 🚀 QUICK START (Do This First)
 
 ### For Administrators
 1. Read `07_ADMIN_QUICKSTART_CHECKLIST.md` (1 page) + `00_IMPLEMENTATION_READINESS_AUDIT.md`
@@ -137,19 +138,19 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## đź—“ď¸Ź THE 5-STEP PROCESS
+## 🔥 THE 5-STEP PROCESS
 ```
-1. COLLECT  â†’  HDPE (#2) / PP (#5) caps from campus boxes
-2. CLEAN    â†’  Remove liners, wash, air-dry 24 hrs
-3. SHRED    â†’  5-8mm uniform flakes
-4. MELT     â†’  Heat press: HDPE 140Â°C / PP 170Â°C (never >200Â°C)
-5. REFINE   â†’  Laser cut / injection mold / 3D filament
+1. COLLECT  →  HDPE (#2) / PP (#5) caps from campus boxes
+2. CLEAN    →  Remove liners, wash, air-dry 24 hrs
+3. SHRED    →  5-8mm uniform flakes
+4. MELT     →  Heat press: HDPE 140°C / PP 170°C (never >200°C)
+5. REFINE   →  Laser cut / injection mold / 3D filament
 ```
-**Closed loop:** Products are themselves recyclable â†’ back to Step 3.
+**Closed loop:** Products are themselves recyclable → back to Step 3.
 
 ---
 
-## đź’° BUDGET TIERS
+## 💰 BUDGET TIERS
 | Tier | Cost | Best For |
 |------|------|----------|
 | **Core** | $500-1,000 | Primary, clubs, pilots |
@@ -158,42 +159,43 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 
 ---
 
-## âš ď¸Ź SAFETY FIRST
+## ⚠️ SAFETY FIRST
 - **No certification = no machine access.**
-- Maximum temperature: **200Â°C** (never exceed).
+- Maximum temperature: **200°C** (never exceed).
 - Ventilation mandatory for all heating.
 - PPE required per station.
 - See `04_SAFETY_SOPS_AND_RISK_ASSESSMENT.md` before anything else.
 
 ---
 
-## đź“Š MEASURABLE GOALS (Per Semester)
+## 📊 MEASURABLE GOALS (Per Semester)
 | Metric | Target |
 |--------|--------|
 | Caps Collected | 10,000+ |
 | Waste Diverted | 35+ kg |
-| COâ‚‚e Avoided | 65+ kg |
+| CO₂e Avoided | 65+ kg |
 | Product Revenue | $500+ |
 | Student Participation | 80% |
 
 ---
 
-## đźŚŤ GRADE-BAND PROGRAMS
-- **K-2:** "Cap Detectives" â€” observation, sorting, storytelling
-- **3-5:** "Cap Engineers" â€” measurement, build, basic design
-- **6-8:** "Cap Innovators" â€” data, sensors, entrepreneurship
-- **9-12:** "Cap Systems Designers" â€” engineering, LCA, policy, scale
+## 🌍 GRADE-BAND PROGRAMS
+- **K-2:** "Cap Detectives" — observation, sorting, storytelling
+- **3-5:** "Cap Engineers" — measurement, build, basic design
+- **6-8:** "Cap Innovators" — data, sensors, entrepreneurship
+- **9-12:** "Cap Systems Designers" — engineering, LCA, policy, scale
 
 ---
 
 ## 🔗 LINKS
 
 - **Documentation Site:** [GitHub Pages](https://imredavid64-glitch.github.io/capcollective/) (MkDocs)
+- **Print-Ready PDFs:** [Implementation Kit](pdf/CapCollective_Implementation_Kit.pdf) · [Overview](pdf/CapCollective_Overview.pdf)
 - **Live Dashboard:** [capcollective.vercel.app](https://capcollective.vercel.app)
 - **Cap Tracker:** [bottle-cap-tracker.vercel.app](https://bottle-cap-tracker.vercel.app)
 - **GitHub Repository:** [github.com/imredavid64-glitch/capcollective](https://github.com/imredavid64-glitch/capcollective)
 - **Issue Tracker:** [Report Bugs/Request Features](https://github.com/imredavid64-glitch/capcollective/issues)
-- **Discord Community:** [discord.gg/capcollective](https://discord.gg/capcollective)
+- **Discord Community:** [discord.gg/MpYwN3Kyg](https://discord.gg/MpYwN3Kyg)
 - **Build Guide (PDF):** [Instructables 12-Step Guide](Cap%20Collective,%20a%20Circular%20Recycle%20System%20for%20Bottle%20Caps(and%20Other%20Plastics%20of%20Course)%20_%2012%20Steps%20-%20Instructables.pdf)
 - **Supabase Dashboard:** (deploy `cap-collective-dashboard/` to Vercel/Netlify)
 
@@ -217,8 +219,8 @@ See `FIRMWARE_AND_IOT_GUIDE.md` for complete hardware specs, wiring, configurati
 
 ## HOW TO CONVERT THESE FILES TO GOOGLE FORMAT
 1. **Slides:** Copy `01_LAUNCH_DECK_PRESENTATION.md` content into Google Slides (one slide per `## SLIDE`). Use the presentation content as-is.
-2. **Docs:** Import `02_TEACHER_IMPLEMENTATION_GUIDE.md` directly into Google Docs (File â†’ Import). Or paste markdown into a converter.
-3. **Sheets:** Create tabs per `03_COMMAND_CENTER_SHEETS.md` and import the `csv/` files (File â†’ Import â†’ replace).
+2. **Docs:** Import `02_TEACHER_IMPLEMENTATION_GUIDE.md` directly into Google Docs (File → Import). Or paste markdown into a converter.
+3. **Sheets:** Create tabs per `03_COMMAND_CENTER_SHEETS.md` and import the `csv/` files (File → Import → replace).
 4. **PDFs:** Any markdown editor can export these to PDF for printing.
 
 ---

@@ -77,6 +77,21 @@ def extract_section(content, section_marker, end_marker=None):
             result.append(line)
     return '\n'.join(result).strip()
 
+def write_page(path, frontmatter, body, min_body_len=200):
+    """Write a docs page, but never replace a substantial existing page with a
+    short/failed extraction. Prevents sync from wiping hand-written content."""
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    body = body.strip()
+    if os.path.exists(path):
+        existing = open(path, encoding='utf-8', errors='ignore').read()
+        existing_body = max(0, len(existing) - len(frontmatter))
+        if len(body) < min_body_len or (existing_body > 800 and len(body) < existing_body * 0.7):
+            print(f"    skip (kept existing): {os.path.relpath(path, DOCS)}")
+            return
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(frontmatter + body)
+
+
 def clean_content(content, source_file):
     """Clean up content for docs site."""
     # Fix internal links
@@ -340,11 +355,11 @@ def main():
     # 25. FAQ (NEW - extract from Teacher Guide appendix)
     print("  Creating FAQ...")
     faq_content = extract_section(tg, "## Appendix E: Troubleshooting FAQ", "## Appendix")
-    if not faq_content:
-        faq_content = "# FAQ & Troubleshooting\n\nSee the [Teacher Guide](../implementation/teacher-guide.md#appendix-e-troubleshooting-faq) for the full FAQ."
-    os.makedirs(os.path.join(DOCS, "resources"), exist_ok=True)
-    with open(os.path.join(DOCS, "resources/faq.md"), 'w', encoding='utf-8') as f:
-        f.write(f"---\ntitle: FAQ & Troubleshooting\n---\n\n{faq_content}")
+    write_page(
+        os.path.join(DOCS, "resources/faq.md"),
+        "---\ntitle: FAQ & Troubleshooting\n---\n\n",
+        faq_content or "# FAQ & Troubleshooting\n\nSee the [Teacher Guide](../implementation/teacher-guide.md#appendix-e-troubleshooting-faq) for the full FAQ.",
+    )
     
     # 26. Admin Checklist (NEW)
     print("  Converting Admin Checklist...")
@@ -361,9 +376,11 @@ def main():
     budget_content = extract_section(readme, "## BUDGET TIERS", "## ")
     if not budget_content:
         budget_content = extract_section(readme, "## 💰 BUDGET TIERS", "## ")
-    os.makedirs(os.path.join(DOCS, "getting-started"), exist_ok=True)
-    with open(os.path.join(DOCS, "getting-started/budget-tiers.md"), 'w') as f:
-        f.write(f"---\ntitle: Budget Tiers\n---\n\n{budget_content}")
+    write_page(
+        os.path.join(DOCS, "getting-started/budget-tiers.md"),
+        "---\ntitle: Budget Tiers\n---\n\n",
+        budget_content,
+    )
     
     # 28. Program Overview (full)
     print("  Converting Program Overview...")
@@ -377,23 +394,32 @@ def main():
     print("  Creating Process page...")
     process_content = extract_section(readme, "## THE 5-STEP PROCESS", "## ")
     if not process_content:
-        process_content = extract_section(readme, "## 📋 THE 5-STEP PROCESS", "## ")
-    with open(os.path.join(DOCS, "program/process.md"), 'w') as f:
-        f.write(f"---\ntitle: The 5-Step Process\n---\n\n{process_content}")
+        process_content = extract_section(readme, "## 🔥 THE 5-STEP PROCESS", "## ")
+    write_page(
+        os.path.join(DOCS, "program/process.md"),
+        "---\ntitle: The 5-Step Process\n---\n\n",
+        process_content,
+    )
     
     # 30. Grade Bands (extract from README)
     print("  Creating Grade Bands page...")
     grade_content = extract_section(readme, "## GRADE-BAND PROGRAMS", "## ")
     if not grade_content:
-        grade_content = extract_section(readme, "## 🎓 GRADE-BAND PROGRAMS", "## ")
-    with open(os.path.join(DOCS, "program/grade-bands.md"), 'w') as f:
-        f.write(f"---\ntitle: Grade-Band Programs\n---\n\n{grade_content}")
+        grade_content = extract_section(readme, "## 🌍 GRADE-BAND PROGRAMS", "## ")
+    write_page(
+        os.path.join(DOCS, "program/grade-bands.md"),
+        "---\ntitle: Grade-Band Programs\n---\n\n",
+        grade_content,
+    )
     
     # 31. Operations Playbook (extract Chapter 3 from Teacher Guide)
     print("  Creating Operations Playbook...")
     ops_content = extract_section(tg, "## CHAPTER 3: OPERATIONS PLAYBOOK", "## CHAPTER 4")
-    with open(os.path.join(DOCS, "implementation/operations.md"), 'w') as f:
-        f.write(f"---\ntitle: Operations Playbook\n---\n\n{ops_content}")
+    write_page(
+        os.path.join(DOCS, "implementation/operations.md"),
+        "---\ntitle: Operations Playbook\n---\n\n",
+        ops_content,
+    )
     
     print("\n[OK] Sync complete!")
     print(f"Generated docs in {DOCS}")
