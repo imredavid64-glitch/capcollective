@@ -33,7 +33,7 @@
 | B3 | Hardcoded GIDs in `src/lib/data.ts` | Medium | **Fixed** (env-driven with fallback) |
 | B4 | No tests (unit/e2e) | Low | **Fixed** — 22 vitest unit tests wired into CI |
 | B5 | `metadataBase` not set → OG image uses localhost | Low | **Fixed** |
-| B6 | Vercel only ever produced **Preview** deployments — no production build; `vercel.json` used a legacy `@sheets_id` secret ref; `NEXT_PUBLIC_GID_*` all default to `0` | High | Open — needs Vercel project settings (production branch → `master`, env vars) |
+| B6 | Vercel only ever produced **Preview** deployments — no production build; `vercel.json` used a legacy `@sheets_id` secret ref; `NEXT_PUBLIC_GID_*` all default to `0` | High | **Config fixed** — `vercel.json` no longer sets a static `out` directory or secret ref, cron is Hobby-compatible, and the README documents root dir / production branch / env vars. Still needs Vercel project settings (manual) |
 | B7 | `parseCsv` left whitespace inside quoted cells (` " Alex " ` → ` Alex `) | Low | **Fixed** — strip quotes then trim (covered by tests) |
 
 ## C. Firmware (ESP32)
@@ -58,13 +58,16 @@
 | D2 | `sync_docs.py` hardcoded Windows path | Medium | **Fixed** (relative to script) |
 | D3 | `sync_docs.py` not wired into docs workflow | Low | **Fixed** |
 | D4 | No spell-check gating (cspell runs but allow-fail?) | Low | **Fixed** — blocking; dictionary covers domain terms |
+| D5 | Docs workflow pushed to a `gh-pages` branch while Pages `build_type` was `workflow` — the live site served stale content and `.html` URLs | High | **Fixed** — switched to `upload-pages-artifact` + `deploy-pages`; live site now serves directory URLs and the Visual Tracker |
+| D6 | `mkdocs.yml` shipped a placeholder GA4 ID (`G-XXXXXXXXXX`) and cookie consent, so analytics was broken/lying | Low | **Fixed** — both commented out with instructions until a real property exists |
 
 ## E. Data / spreadsheets
 
 | # | Gap | Severity | Status |
 |---|-----|----------|--------|
 | E1 | Missing CSVs for Tabs 3 & 4 | Medium | **Fixed** (`csv/07_`, `csv/08_`) |
-| E2 | CSVs have inconsistent trailing-column counts (cosmetic) | Low | Open |
+| E2 | CSVs have inconsistent trailing-column counts (cosmetic) | Low | **Fixed** — formula cells with commas are now properly quoted, so every file in `csv/` parses to its header width |
+| E3 | Multi-section tabs (Budget, Impact) could not be imported as a single table | Medium | **Fixed** — `07a/07b/07c` and `05b` single-table files; combined budget workbook moved to `csv/reference/` |
 
 ## F. Content / kit completeness
 
@@ -74,14 +77,20 @@
 | F2 | README Discord badge uses placeholder server id | Low | **Fixed** |
 | F3 | No `CHANGELOG` automation for root md → docs drift over time | Low | Open |
 | F4 | Readiness audit overclaim 10/10 | Medium | **Fixed** (note added) |
+| F5 | Every `@capcollective.org` address (support@, security@, conduct@, …) bounces — the domain has no MX records | High | Open — needs email routing on the domain, or the addresses should be replaced with GitHub Issues/Discussions links |
+| F6 | GitHub Sponsors not enabled on the profile, so the Sponsor button and `FUNDING.yml` do nothing | Medium | Open — enable at `github.com/settings/sponsors` |
 
 ## Recommended next actions (remaining)
 
-1. Provide a real ESPSupabase (or REST) client for the radio tower (C4) — blocks Center tier.
-2. Wire Supabase into the Next.js dashboard OR remove Supabase references (B2) — removes confusion.
-3. Add unit/e2e tests for the dashboard (B4).
-4. Tidy CSV trailing-column counts (E2).
-5. Add real CAD (STL/DXF) files (F1, external).
+1. **Email (F5):** either add MX records / email forwarding for `capcollective.org`,
+   or swap the 13 published addresses for GitHub Issues + Discussions links.
+2. **Sponsors (F6):** enable GitHub Sponsors so the Sponsor button works.
+3. **Vercel (B6):** set Root Directory `cap-collective-dashboard`, Production Branch
+   `master`, and the `NEXT_PUBLIC_*` env vars so a production build exists.
+4. **Supabase (B2):** wire it into the dashboard or remove the references — the
+   schema exists but nothing uses it.
+5. **CAD (F1):** add real STL/DXF files (external dependency).
+6. **Changelog drift (F3):** generate `CHANGELOG.md` from git history in CI.
 
 ---
 

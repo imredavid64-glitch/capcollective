@@ -12,7 +12,7 @@ Trotec Speedy 50,Center,1,12000,EUR,,Trotec,,Research,8
 Precision Aluminum Molds,Center,3,450,EUR,,DME,,Research,4
 Industrial Ventilation,Center,1,1500,EUR,,Local HVAC,,Research,3
 ,,,,,,,,,
-Core Total,,,,,,=SUMIF($B$2:$B$100,"Core",$F$2:$F$100),,,,
-FabLab Total,,,,,,=SUMIF($B$2:$B$100,"FabLab",$F$2:$F$100),,,,
-Center Total,,,,,,=SUMIF($B$2:$B$100,"Center",$F$2:$F$100),,,,
-GRAND TOTAL,,,,,,=SUM(F2:F100),,,,
+Core Total,,,,,,"=SUMIF($B$2:$B$100,""Core"",$F$2:$F$100)",,,
+FabLab Total,,,,,,"=SUMIF($B$2:$B$100,""FabLab"",$F$2:$F$100)",,,
+Center Total,,,,,,"=SUMIF($B$2:$B$100,""Center"",$F$2:$F$100)",,,
+GRAND TOTAL,,,,,,=SUM(F2:F100),,,

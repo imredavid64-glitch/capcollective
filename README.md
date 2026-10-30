@@ -66,7 +66,7 @@ Everything you need is here: presentations, guides, spreadsheets, safety docs, c
 | 31 | `31_TRAIN_THE_TRAINER_AND_AMBASSADOR_PROGRAM.md` | Student-as-trainer certification + ambassadors | Everyone |
 | 32 | `32_DIGITAL_PRODUCTS_AND_ONLINE_STORE.md` | Online store, digital goods, compliance, batches | Store managers |
 | 33 | `FIRMWARE_AND_IOT_GUIDE.md` | Complete ESP32/ESP32-S3 IoT firmware & integration guide | FabLab+, data leads |
-| — | `csv/` | Importable CSVs for the Sheets workbook | Data leads |
+| - | `csv/` | Importable CSVs for the Sheets workbook (`csv/reference/` holds the combined budget workbook) | Data leads |
 | — | `cad/` | Parametric starter CAD (box, coaster frame, keychain mold) | FabLab+ |
 | — | `resources/sensor_count.ino` | ESP32 bottle cap counter code (WiFi→Sheets) | FabLab+ students |
 | — | `firmware/` | ESP32/ESP32-S3 firmware (Node 1, Node 2, Radio Tower) | FabLab+ students |

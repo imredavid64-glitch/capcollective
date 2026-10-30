@@ -6,6 +6,6 @@ Date,Location,Collector(s),Cap Count,Weight (kg),Avg Cap Mass (g),Color Mix % (L
 ,,,,,,,,,
 TOTAL CAPS,,,,,,,,,=SUM(D2:D)
 TOTAL WEIGHT (kg),,,,,,,,,=SUM(E2:E)
-AVG CAP MASS (g),,,,,,,,,=IF(SUM(D2:D)=0,0,SUM(E2:E)*1000/SUM(D2:D))
+AVG CAP MASS (g),,,,,,,,,"=IF(SUM(D2:D)=0,0,SUM(E2:E)*1000/SUM(D2:D))"
 % TOWARD 10K GOAL,,,,,,,,,=SUM(D2:D)/10000
 CO2e AVOIDED (kg),,,,,,,,,=SUM(E2:E)*1.9

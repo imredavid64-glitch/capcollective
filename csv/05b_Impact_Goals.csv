@@ -1,0 +1,5 @@
+Goal,Current,Target,Status
+Caps,,10000,"=IF(B2>=C2,""ACHIEVED"",""TO GO"")"
+Weight (kg),,35,"=IF(B3>=C3,""ACHIEVED"",""TO GO"")"
+Revenue,,500,"=IF(B4>=C4,""ACHIEVED"",""TO GO"")"
+Participation (%),,80,"=IF(B5>=C5,""ACHIEVED"",""TO GO"")"
