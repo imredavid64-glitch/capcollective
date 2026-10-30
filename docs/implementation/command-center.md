@@ -6,7 +6,7 @@ title: Command Center Workbook
 ### Google Sheets Structure, Formulas & Setup Guide
 **8 Tabs | Auto-calculating | Chart-ready | Grant-report-ready**
 
-> **How to build it:** Create a new Google Sheet named **"Cap Collective Command Center"**. Create 8 tabs with the exact names below, paste the headers and starting formulas, then duplicate rows as needed. Importable CSV files for each tab are in the `csv/` folder of this kit.
+> **How to build it:** Create a new Google Sheet named **"Cap Collective Command Center"**. Create 8 tabs with the exact names below, paste the headers and starting formulas, then duplicate rows as needed. Importable CSV files for each tab are in the `csv/` folder of this kit. Tabs whose data does not fit a single header row are split into extra files (see the notes on Tabs 3 and 7); `csv/reference/` holds the combined multi-section workbook for copying formulas.
 
 ---
 
@@ -87,6 +87,21 @@ Trotec Speedy 50 | Center | 1 | 12000 | EUR | ... | Trotec | [link] | Research |
 
 ## TAB 3: 💰 Budget & Finance
 **Purpose:** Income, expenses, P&L per product, break-even.
+
+> **Importing this tab:** unlike the other tabs, Budget & Finance holds five
+> sections that cannot share one header row, so the kit ships **three importable
+> CSVs** instead of one:
+>
+> | File | Import into |
+> |------|-------------|
+> | `csv/07a_Budget_Income.csv` | Section A (Income) |
+> | `csv/07b_Budget_Expenses.csv` | Section B (Expenses) |
+> | `csv/07c_Budget_Product_PnL.csv` | Section C (P&L by Product) |
+>
+> `csv/reference/07_Budget_Finance.csv` is the combined reference sheet (all five
+> sections, `#`-prefixed section headers). Use it to copy the formulas, not to
+> import. Sections D and E are pure formulas — build them by hand from the layout
+> below.
 
 ### Section A: Income
 | A | B | C | D |
@@ -220,6 +235,12 @@ ORG-001 | Desk Organizer | B003 | 30 | 18 | 12 | 15 | ... | ... | | Staff
 
 ## TAB 7: 🌍 Impact Dashboard
 **Purpose:** Summary view. All charts feed here. Export for reports/grants.
+
+> **Importing this tab:** the metrics block imports from
+> `csv/05_Impact_Dashboard.csv` (Metric / Value / Formula Reference). The Goals
+> Tracker is a second table with its own header — import it from
+> `csv/05b_Impact_Goals.csv` below the metrics block, or build it by hand from
+> the layout at the bottom of this section.
 
 ### Key Metrics Block
 | Metric | Value | Formula |
