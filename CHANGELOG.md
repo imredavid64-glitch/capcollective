@@ -7,6 +7,35 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.0.1] - 2026-10-30
+
+### 🐛 Fixed
+- Restored five documentation pages that the sync script had overwritten with
+  empty extractions: Budget Tiers, 5-Step Process, Grade Bands, Operations
+  Playbook, and FAQ
+- `sync_docs.py` now refuses to replace a substantial page with a short or
+  failed extraction
+- README emoji/arrows were double-encoded; restored proper UTF-8
+- Stale `discord.gg/capcollective` invites replaced with the real
+  `discord.gg/MpYwN3Kyg` in the README and docs site
+- `mkdocs.yml` `site_url` now points at the live GitHub Pages URL (correct
+  canonical links and sitemap)
+
+### 🚀 Improved
+- Added **Visual Implementation Tracker** page to the docs site
+- Added `requirements-docs.txt` and pinned the docs workflow to it
+- Documented print-ready PDFs in the README kit contents
+- Release assets now include PDFs plus CSV, CAD, and firmware zips
+
+### 🔧 Dashboard / Deployment
+- Fixed `vercel.json`: removed the static `out` output directory (the app is a
+  Next.js build), removed the legacy `@sheets_id` secret reference, and switched
+  the cron to a daily schedule compatible with the Vercel Hobby plan
+- Documented the correct Vercel production setup (root directory, production
+  branch, environment variables)
+
+---
+
 ## [1.0.0] - 2024-10-18
 
 ### 🚀 Features
