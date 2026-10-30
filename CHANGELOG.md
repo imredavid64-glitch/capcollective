@@ -26,6 +26,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `requirements-docs.txt` and pinned the docs workflow to it
 - Documented print-ready PDFs in the README kit contents
 - Release assets now include PDFs plus CSV, CAD, and firmware zips
+- Every CSV in `csv/` is now genuinely importable: formula cells containing
+  commas or quotes are properly quoted, so each file parses to its header width
+- Budget and Impact tabs ship single-table files (`07a`/`07b`/`07c`, `05b`); the
+  combined five-section budget workbook moved to `csv/reference/`
 
 ### 🔧 Dashboard / Deployment
 - Fixed `vercel.json`: removed the static `out` output directory (the app is a
