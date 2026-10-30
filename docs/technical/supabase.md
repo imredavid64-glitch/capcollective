@@ -1,3 +1,7 @@
+---
+title: Supabase Schema
+---
+
 # Supabase Schema
 
 Complete PostgreSQL schema for Cap Collective dashboard.
@@ -15,8 +19,8 @@ Complete PostgreSQL schema for Cap Collective dashboard.
     ([Firmware](firmware.md) → `cap_counts`) or the standalone Supabase dashboard.
 
     If you want a single source of truth, pick one: point the sensors at a Google
-    Apps Script webhook (simplest), or rewrite `cap-collective-dashboard/src/lib/data.ts`
-    to query Supabase instead of Sheets.
+    Apps Script webhook (simplest), or rewrite
+    `cap-collective-dashboard/src/lib/data.ts` to query Supabase instead of Sheets.
 
 ```sql
 -- Cap Collective Supabase Schema
@@ -225,7 +229,7 @@ CREATE TABLE IF NOT EXISTS sensor_data_log (
     count INTEGER NOT NULL CHECK (count >= 0),
     fill_pct SMALLINT CHECK (fill_pct BETWEEN 0 AND 100),
     temperature_c DECIMAL(4,1),
-    status VARCHAR(20) DEFAULT 'OK' CHECK (status IN ('OK', 'Monitor', 'FULL — COLLECT NOW')),
+    status VARCHAR(20) DEFAULT 'OK' CHECK (status IN ('OK', 'Monitor', 'FULL â€” COLLECT NOW')),
     source VARCHAR(20) DEFAULT 'ESP32',
     recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

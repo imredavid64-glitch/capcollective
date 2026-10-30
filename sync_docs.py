@@ -299,10 +299,26 @@ def main():
     print("  Converting Supabase Schema...")
     with open(os.path.join(ROOT, "cap-collective-dashboard", "supabase_schema.sql"), 'r') as f:
         sql = f.read()
-    content = f"# Supabase Schema\n\nComplete PostgreSQL schema for Cap Collective dashboard.\n\n```sql\n{sql}\n```"
-    os.makedirs(os.path.join(DOCS, "technical"), exist_ok=True)
-    with open(os.path.join(DOCS, "technical/supabase.md"), 'w') as f:
-        f.write(content)
+    two_backends = (
+        "!!! info \"Two backends — read this first\"\n"
+        "    Cap Collective ships **two separate data paths**, and they are not connected:\n\n"
+        "    | Path | Used by | Data lives in |\n"
+        "    |------|---------|---------------|\n"
+        "    | **Google Sheets** | The Next.js dashboard (`cap-collective-dashboard`) | A published Google Sheet you own |\n"
+        "    | **Supabase** | ESP32 firmware uploads + `web/supabase_dashboard/index.html` | A Supabase Postgres project you own |\n\n"
+        "    The Next.js dashboard reads Google Sheets only — it does **not** query Supabase.\n"
+        "    You do not need Supabase unless you are deploying the IoT sensor path\n"
+        "    ([Firmware](firmware.md) \u2192 `cap_counts`) or the standalone Supabase dashboard.\n\n"
+        "    If you want a single source of truth, pick one: point the sensors at a Google\n"
+        "    Apps Script webhook (simplest), or rewrite\n"
+        "    `cap-collective-dashboard/src/lib/data.ts` to query Supabase instead of Sheets.\n\n"
+    )
+    content = f"# Supabase Schema\n\nComplete PostgreSQL schema for Cap Collective dashboard.\n\n{two_backends}```sql\n{sql}\n```"
+    write_page(
+        os.path.join(DOCS, "technical/supabase.md"),
+        "---\ntitle: Supabase Schema\n---\n\n",
+        content,
+    )
     
     # 19. District Scaling (NEW)
     print("  Converting District Scaling...")
